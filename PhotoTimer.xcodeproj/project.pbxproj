@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477C6209F79C900E2A9DA /* AppDelegate.swift */; };
-		EA2477C9209F79C900E2A9DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477C8209F79C900E2A9DA /* ViewController.swift */; };
 		EA2477CC209F79C900E2A9DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CA209F79C900E2A9DA /* Main.storyboard */; };
 		EA2477CE209F79CB00E2A9DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CD209F79CB00E2A9DA /* Assets.xcassets */; };
 		EA2477D1209F79CB00E2A9DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CF209F79CB00E2A9DA /* LaunchScreen.storyboard */; };
 		EA2477DC209F79CB00E2A9DA /* PhotoTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477DB209F79CB00E2A9DA /* PhotoTimerTests.swift */; };
+		EA2477EA209F870400E2A9DA /* TimerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477E9209F870400E2A9DA /* TimerListViewController.swift */; };
+		EA2477EC209F87E900E2A9DA /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */; };
+		EA7B117820A0D49A0022040C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B117720A0D49A0022040C /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,6 @@
 /* Begin PBXFileReference section */
 		EA2477C3209F79C800E2A9DA /* PhotoTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2477C6209F79C900E2A9DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA2477C8209F79C900E2A9DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EA2477CB209F79C900E2A9DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA2477CD209F79CB00E2A9DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA2477D0209F79CB00E2A9DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,9 @@
 		EA2477D7209F79CB00E2A9DA /* PhotoTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2477DB209F79CB00E2A9DA /* PhotoTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTimerTests.swift; sourceTree = "<group>"; };
 		EA2477DD209F79CB00E2A9DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA2477E9209F870400E2A9DA /* TimerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListViewController.swift; sourceTree = "<group>"; };
+		EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
+		EA7B117720A0D49A0022040C /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,12 @@
 		EA2477C5209F79C800E2A9DA /* PhotoTimer */ = {
 			isa = PBXGroup;
 			children = (
+				EA7B117720A0D49A0022040C /* Time.swift */,
 				EA2477C6209F79C900E2A9DA /* AppDelegate.swift */,
-				EA2477C8209F79C900E2A9DA /* ViewController.swift */,
-				EA2477CA209F79C900E2A9DA /* Main.storyboard */,
-				EA2477CD209F79CB00E2A9DA /* Assets.xcassets */,
-				EA2477CF209F79CB00E2A9DA /* LaunchScreen.storyboard */,
+				EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */,
+				EA2477E9209F870400E2A9DA /* TimerListViewController.swift */,
 				EA2477D2209F79CB00E2A9DA /* Info.plist */,
+				EA2477E6209F7A9300E2A9DA /* Resourses */,
 			);
 			path = PhotoTimer;
 			sourceTree = "<group>";
@@ -94,6 +98,16 @@
 				EA2477DD209F79CB00E2A9DA /* Info.plist */,
 			);
 			path = PhotoTimerTests;
+			sourceTree = "<group>";
+		};
+		EA2477E6209F7A9300E2A9DA /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				EA2477CD209F79CB00E2A9DA /* Assets.xcassets */,
+				EA2477CA209F79C900E2A9DA /* Main.storyboard */,
+				EA2477CF209F79CB00E2A9DA /* LaunchScreen.storyboard */,
+			);
+			path = Resourses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA2477C9209F79C900E2A9DA /* ViewController.swift in Sources */,
+				EA7B117820A0D49A0022040C /* Time.swift in Sources */,
+				EA2477EA209F870400E2A9DA /* TimerListViewController.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
+				EA2477EC209F87E900E2A9DA /* TimerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
