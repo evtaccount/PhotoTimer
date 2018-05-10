@@ -24,12 +24,16 @@ class TimerListViewController: UIViewController {
     
     let cellIdentifier = "TimerTableViewCell"
     
-    var timeProcessCounter: Time!
-    var counter: Int!
+    var timeProcessCounter: Timers!
+    var startTimers: Timers!
     
-    var developTimer: Timer!
+    var timeCounter: Timer?
+    var counter: Int!
     var isPaused = true
-
+    
+    var timerName: String?
+    
+    @IBOutlet weak var circularProgressBar: CircularProgressBar!
     
     @IBOutlet weak var bigTimeLabel: UILabel!
     @IBOutlet weak var devTimeLabel: UILabel!
@@ -38,6 +42,12 @@ class TimerListViewController: UIViewController {
     @IBOutlet weak var washTimeLabel: UILabel!
     @IBOutlet weak var dryTimeLabel: UILabel!
     
+    @IBOutlet weak var devProgressBar: UIProgressView!
+    @IBOutlet weak var stopProgressBar: UIProgressView!
+    @IBOutlet weak var fixProgressBar: UIProgressView!
+    @IBOutlet weak var washProgressBar: UIProgressView!
+    @IBOutlet weak var dryProgressBar: UIProgressView!
+    
     @IBOutlet weak var startPauseButton: UIButton!
     
     
@@ -45,14 +55,11 @@ class TimerListViewController: UIViewController {
         super.viewDidLoad()
 
         setupTimers()
-        updateTimersViews()
-//        currentTimerCountDown()
+        updateAllTimersView()
+        
         
         // Do any additional setup after loading the view.
     }
-
-    
-    
     
     /*
     // MARK: - Navigation
@@ -67,63 +74,160 @@ class TimerListViewController: UIViewController {
     
     //MARK: Private Methods
 
-    private func setupTimers() {
-        timeProcessCounter = Time(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
-        counter = timeProcessCounter.devTime
+    func setupTimers() {
+        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
+        timeProcessCounter = startTimers
+        
+        circularProgressBar.maxBarValue = Float(timeProcessCounter.devTime)
+//        circularProgressBar.currentValue = Float(timeProcessCounter.devTime)
+        timerName = "devTime"
     }
 
-//    private func currentTimerCountDown()
-//    {
-//
-//    }
-
+    //Функция обновляет значение таймера
     @objc func updateCountDown() {
         
+        updateTimer(for: timerName)
+        updateCurrentTimersView(for: timerName)
         
-        updateTimer()
+        
+    }
+    
+    private func updateTimer(for timer: String!) {
+        
+        guard let timer = timer else {
+            fatalError("unknown timer's name")
+        }
+        
+        switch timer {
+        case "devTime":
+            if timeProcessCounter.devTime > 0 {
+                timeProcessCounter.devTime -= 1
+                circularProgressBar.currentValue = Float(timeProcessCounter.devTime)
+            } else {
+                stopTimer()
+                timerName = "stopTime"
+                circularProgressBar.maxBarValue = Float(timeProcessCounter.stopTime)
+            }
+            
+        case "stopTime":
+            if timeProcessCounter.stopTime > 0 {
+                timeProcessCounter.stopTime -= 1
+                circularProgressBar.currentValue = Float(timeProcessCounter.stopTime)
+            } else {
+                stopTimer()
+                timerName = "fixTime"
+                circularProgressBar.maxBarValue = Float(timeProcessCounter.fixTime)
+            }
+            
+        case "fixTime":
+            if timeProcessCounter.fixTime > 0 {
+                timeProcessCounter.fixTime -= 1
+                circularProgressBar.currentValue = Float(timeProcessCounter.fixTime)
+            } else {
+                stopTimer()
+                timerName = "washTime"
+                circularProgressBar.maxBarValue = Float(timeProcessCounter.washTime)
+            }
+            
+        case "washTime":
+            if timeProcessCounter.washTime > 0 {
+                timeProcessCounter.washTime -= 1
+                circularProgressBar.currentValue = Float(timeProcessCounter.washTime)
+            } else {
+                stopTimer()
+                timerName = "dryTime"
+                circularProgressBar.maxBarValue = Float(timeProcessCounter.dryTime)
+            }
+            
+        case "dryTime":
+            if timeProcessCounter.dryTime > 0 {
+                timeProcessCounter.dryTime -= 1
+                circularProgressBar.currentValue = Float(timeProcessCounter.dryTime)
+            } else {
+                stopTimer()
+                timerName = "devTimer"
+                circularProgressBar.maxBarValue = Float(timeProcessCounter.devTime)
+            }
+        default:
+            fatalError("Case вышел за пределы цикцла")
+        }
+        
         
     }
 
-    private func updateTimersViews() {
-        bigTimeLabel.text = secondsToMinutesSeconds(time: counter)
+    private func updateCurrentTimersView(for timer: String?) {
         
-        devTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
-        stopTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
-        fixTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
-        washTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
-        dryTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
-    }
-    
-    private func updateTimer() {
-        if timeProcessCounter.devTime > 0 {
-            timeProcessCounter.devTime -= 1
-            counter = timeProcessCounter.devTime
-            
-        } else if timeProcessCounter.stopTime > 0 {
-            timeProcessCounter.stopTime -= 1
-            counter = timeProcessCounter.stopTime
-            
-        } else if timeProcessCounter.fixTime > 0 {
-            timeProcessCounter.fixTime -= 1
-            counter = timeProcessCounter.fixTime
-            
-        } else if timeProcessCounter.washTime > 0 {
-            timeProcessCounter.washTime -= 1
-            counter = timeProcessCounter.washTime
-            
-        } else if timeProcessCounter.dryTime > 0 {
-            timeProcessCounter.dryTime -= 1
-            counter = timeProcessCounter.dryTime
+        guard let timer = timer else {
+            fatalError("unknown timer's name")
         }
         
-        updateTimersViews()
+        
+        
+        switch timer {
+        case "devTime":
+            bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
+            progressBarUpdate(startValue: startTimers.devTime, currentValue: timeProcessCounter.devTime, progressBar: devProgressBar)
+            
+        case "stopTime":
+            bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
+            progressBarUpdate(startValue: startTimers.stopTime, currentValue: timeProcessCounter.stopTime, progressBar: stopProgressBar)
+            
+        case "fixTime":
+            bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
+            progressBarUpdate(startValue: startTimers.fixTime, currentValue: timeProcessCounter.fixTime, progressBar: fixProgressBar)
+            
+        case "washTime":
+            bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
+            progressBarUpdate(startValue: startTimers.washTime, currentValue: timeProcessCounter.washTime, progressBar: washProgressBar)
+            
+        case "dryTime":
+            bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
+            progressBarUpdate(startValue: startTimers.dryTime, currentValue: timeProcessCounter.dryTime, progressBar: dryProgressBar)
+            
+        default:
+            fatalError("Вышел за пределы цикла")
+        }
     }
     
-    func secondsToMinutesSeconds (time counter: Int) -> (String) {
+    private func updateAllTimersView() {
+        
+        bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
+        
+        devTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
+        progressBarUpdate(startValue: startTimers.devTime, currentValue: timeProcessCounter.devTime, progressBar: devProgressBar)
+        
+        stopTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
+        progressBarUpdate(startValue: startTimers.stopTime, currentValue: timeProcessCounter.stopTime, progressBar: stopProgressBar)
+        
+        fixTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
+        progressBarUpdate(startValue: startTimers.fixTime, currentValue: timeProcessCounter.fixTime, progressBar: fixProgressBar)
+        
+        washTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
+        progressBarUpdate(startValue: startTimers.washTime, currentValue: timeProcessCounter.washTime, progressBar: washProgressBar)
+        
+        dryTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
+        progressBarUpdate(startValue: startTimers.dryTime, currentValue: timeProcessCounter.dryTime, progressBar: dryProgressBar)
+    }
+
+    
+    private func secondsToMinutesSeconds (time counter: Int) -> (String) {
         
         let minutes = counter/60
         let seconds = counter - minutes * 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
+    }
+    
+    private func progressBarUpdate(startValue: Int, currentValue: Int, progressBar: UIProgressView) {
+        let start = Float(startValue)
+        let current = Float(currentValue)
+        let progress = (start-current)/start
+        progressBar.setProgress(progress, animated: true)
+    }
+    
+    private func stopTimer() {
+        timeCounter?.invalidate()
+        isPaused = true
+        startPauseButton.setTitle("Старт", for: .normal)
     }
     
     //MARK: Actions
@@ -131,21 +235,19 @@ class TimerListViewController: UIViewController {
     @IBAction func startPauseTimeAction(_ sender: UIButton) {
         
         if isPaused{
-            developTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
+            timeCounter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
             isPaused = false
             startPauseButton.setTitle("Пауза", for: .normal)
         } else {
-            developTimer.invalidate()
-            isPaused = true
-            startPauseButton.setTitle("Старт", for: .normal)
+            stopTimer()
         }
     }
     
     @IBAction func resetTimeAction(_ sender: UIButton) {
         setupTimers()
-        developTimer.invalidate()
+        timeCounter?.invalidate()
         isPaused = true
-        updateTimersViews()
+        updateAllTimersView()
     }
     
     

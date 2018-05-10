@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF4D8AC945FB3D17045468D7 /* Pods_PhotoTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */; };
 		EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477C6209F79C900E2A9DA /* AppDelegate.swift */; };
 		EA2477CC209F79C900E2A9DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CA209F79C900E2A9DA /* Main.storyboard */; };
 		EA2477CE209F79CB00E2A9DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CD209F79CB00E2A9DA /* Assets.xcassets */; };
@@ -14,7 +15,9 @@
 		EA2477DC209F79CB00E2A9DA /* PhotoTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477DB209F79CB00E2A9DA /* PhotoTimerTests.swift */; };
 		EA2477EA209F870400E2A9DA /* TimerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477E9209F870400E2A9DA /* TimerListViewController.swift */; };
 		EA2477EC209F87E900E2A9DA /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */; };
+		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA7B117820A0D49A0022040C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B117720A0D49A0022040C /* Time.swift */; };
+		F3798C6EEDE5E7217F1CAEBB /* Pods_PhotoTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.release.xcconfig"; sourceTree = "<group>"; };
+		189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2477C3209F79C800E2A9DA /* PhotoTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2477C6209F79C900E2A9DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA2477CB209F79C900E2A9DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,7 +47,9 @@
 		EA2477DD209F79CB00E2A9DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2477E9209F870400E2A9DA /* TimerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListViewController.swift; sourceTree = "<group>"; };
 		EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
+		EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		EA7B117720A0D49A0022040C /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4D8AC945FB3D17045468D7 /* Pods_PhotoTimer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +65,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3798C6EEDE5E7217F1CAEBB /* Pods_PhotoTimerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C474F8D7D93E2ABC6521A7E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */,
+				11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFF66FC27577AFCC32BE5E49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */,
+				17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */,
+				189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */,
+				FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EA2477BA209F79C800E2A9DA = {
 			isa = PBXGroup;
 			children = (
 				EA2477C5209F79C800E2A9DA /* PhotoTimer */,
 				EA2477DA209F79CB00E2A9DA /* PhotoTimerTests */,
 				EA2477C4209F79C800E2A9DA /* Products */,
+				DFF66FC27577AFCC32BE5E49 /* Pods */,
+				C474F8D7D93E2ABC6521A7E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +119,7 @@
 				EA2477C6209F79C900E2A9DA /* AppDelegate.swift */,
 				EA2477EB209F87E900E2A9DA /* TimerTableViewCell.swift */,
 				EA2477E9209F870400E2A9DA /* TimerListViewController.swift */,
+				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
 				EA2477D2209F79CB00E2A9DA /* Info.plist */,
 				EA2477E6209F7A9300E2A9DA /* Resourses */,
 			);
@@ -117,6 +152,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA2477E0209F79CB00E2A9DA /* Build configuration list for PBXNativeTarget "PhotoTimer" */;
 			buildPhases = (
+				2044E0E71406645ADBFD29BE /* [CP] Check Pods Manifest.lock */,
 				EA2477BF209F79C800E2A9DA /* Sources */,
 				EA2477C0209F79C800E2A9DA /* Frameworks */,
 				EA2477C1209F79C800E2A9DA /* Resources */,
@@ -134,6 +170,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA2477E3209F79CB00E2A9DA /* Build configuration list for PBXNativeTarget "PhotoTimerTests" */;
 			buildPhases = (
+				164CD434CE8B59D6F5B382E6 /* [CP] Check Pods Manifest.lock */,
 				EA2477D3209F79CB00E2A9DA /* Sources */,
 				EA2477D4209F79CB00E2A9DA /* Frameworks */,
 				EA2477D5209F79CB00E2A9DA /* Resources */,
@@ -206,6 +243,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		164CD434CE8B59D6F5B382E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoTimerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2044E0E71406645ADBFD29BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoTimer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA2477BF209F79C800E2A9DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -215,6 +291,7 @@
 				EA2477EA209F870400E2A9DA /* TimerListViewController.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA2477EC209F87E900E2A9DA /* TimerTableViewCell.swift in Sources */,
+				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +449,7 @@
 		};
 		EA2477E1209F79CB00E2A9DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -390,6 +468,7 @@
 		};
 		EA2477E2209F79CB00E2A9DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -408,6 +487,7 @@
 		};
 		EA2477E4209F79CB00E2A9DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -429,6 +509,7 @@
 		};
 		EA2477E5209F79CB00E2A9DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
