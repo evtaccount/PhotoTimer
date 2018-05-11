@@ -18,23 +18,24 @@ struct Timers {
     var dryTime: Int
 }
 
-class TimerListViewController: UIViewController {
+class TimerViewController: UIViewController {
     
     //MARK: Properties
     
     let cellIdentifier = "TimerTableViewCell"
     
-    var timeProcessCounter: Timers!
-    var startTimers: Timers!
+    var timeProcessCounter: Timers
+    var startTimers: Timers
     
     var timeCounter: Timer?
-    var counter: Int!
     var isPaused = true
     
     var timerName: String?
     
+    //Main circular progress-bar
     @IBOutlet weak var circularProgressBar: CircularProgressBar!
     
+    //Timer labels
     @IBOutlet weak var bigTimeLabel: UILabel!
     @IBOutlet weak var devTimeLabel: UILabel!
     @IBOutlet weak var stopTimeLabel: UILabel!
@@ -42,13 +43,32 @@ class TimerListViewController: UIViewController {
     @IBOutlet weak var washTimeLabel: UILabel!
     @IBOutlet weak var dryTimeLabel: UILabel!
     
+    //Linear sub-prosses's progress bars
     @IBOutlet weak var devProgressBar: UIProgressView!
     @IBOutlet weak var stopProgressBar: UIProgressView!
     @IBOutlet weak var fixProgressBar: UIProgressView!
     @IBOutlet weak var washProgressBar: UIProgressView!
     @IBOutlet weak var dryProgressBar: UIProgressView!
     
+    //"Start/Pause" button
     @IBOutlet weak var startPauseButton: UIButton!
+    
+    
+    //MARK: Initialization
+    convenience init() {
+        self.init()
+        
+        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
+        timeProcessCounter = startTimers
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
+        timeProcessCounter = startTimers
+
+        super.init(coder: aDecoder)
+    }
     
     
     override func viewDidLoad() {
@@ -74,24 +94,19 @@ class TimerListViewController: UIViewController {
     
     //MARK: Private Methods
 
-    func setupTimers() {
-        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
-        timeProcessCounter = startTimers
-        
+    private func setupTimers() {
         circularProgressBar.maxBarValue = Float(timeProcessCounter.devTime)
-//        circularProgressBar.currentValue = Float(timeProcessCounter.devTime)
         timerName = "devTime"
     }
 
-    //Функция обновляет значение таймера
+    //Функция вызывается по каждому тику таймера
     @objc func updateCountDown() {
         
         updateTimer(for: timerName)
         updateCurrentTimersView(for: timerName)
-        
-        
     }
     
+    //Фенкция выполняет декримент текущего таймера и переключает таймер на следующий когда значение текущего таймера достигает нуля
     private func updateTimer(for timer: String!) {
         
         guard let timer = timer else {
@@ -155,13 +170,12 @@ class TimerListViewController: UIViewController {
         
     }
 
+    //Обновляет UI элементы текущего таймера
     private func updateCurrentTimersView(for timer: String?) {
         
         guard let timer = timer else {
             fatalError("unknown timer's name")
         }
-        
-        
         
         switch timer {
         case "devTime":
@@ -189,6 +203,7 @@ class TimerListViewController: UIViewController {
         }
     }
     
+    //Обновляет UI элементы всех таймеров. Используется для инициализации
     private func updateAllTimersView() {
         
         bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
@@ -209,14 +224,14 @@ class TimerListViewController: UIViewController {
         progressBarUpdate(startValue: startTimers.dryTime, currentValue: timeProcessCounter.dryTime, progressBar: dryProgressBar)
     }
 
-    
+    //Конвертация секунд а минуты и секунды в заданном формате (ММ:СС). Используется для вывода понятных пользователю данных
     private func secondsToMinutesSeconds (time counter: Int) -> (String) {
-        
         let minutes = counter/60
         let seconds = counter - minutes * 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
     
+    //Фенкция обновляет UIProgressView который передается в функцию в качестве аргумента. Также принимается начальное значение таймера и его текущее состояние
     private func progressBarUpdate(startValue: Int, currentValue: Int, progressBar: UIProgressView) {
         let start = Float(startValue)
         let current = Float(currentValue)
@@ -224,6 +239,7 @@ class TimerListViewController: UIViewController {
         progressBar.setProgress(progress, animated: true)
     }
     
+    //Останавливает таймер
     private func stopTimer() {
         timeCounter?.invalidate()
         isPaused = true
@@ -231,7 +247,6 @@ class TimerListViewController: UIViewController {
     }
     
     //MARK: Actions
-    
     @IBAction func startPauseTimeAction(_ sender: UIButton) {
         
         if isPaused{
