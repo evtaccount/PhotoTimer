@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryView: UIView {
+class GuideView: UIView {
 
     //MarK: Properties
     @IBOutlet var pageControl: UIPageControl!
@@ -50,7 +50,7 @@ class GalleryView: UIView {
     }
 }
 
-extension GalleryView: UIScrollViewDelegate {
+extension GuideView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x / scrollView.frame.size.width
         let index = Int(floor(x - 0.5)) + 1

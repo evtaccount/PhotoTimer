@@ -24,8 +24,9 @@ class TimerViewController: UIViewController {
     
     let cellIdentifier = "TimerTableViewCell"
     
-    var timeProcessCounter: Timers
-    var startTimers: Timers
+    var incomingTimer: Develop?
+    var timeProcessCounter: Develop
+    var startTimers = Develop(schemeName: "", filmName: "", developerName: "", devTime: 0, stopTime: 0, fixTime: 0, washTime: 0, dryTime: 0, firstAgitationDuration: 0, periodAgitationDuration: 0, agitationPeriod: 0)
     
     var timeCounter: Timer?
     var isPaused = true
@@ -57,16 +58,12 @@ class TimerViewController: UIViewController {
     //MARK: Initialization
     convenience init() {
         self.init()
-        
-        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
-        timeProcessCounter = startTimers
     }
     
     required init?(coder aDecoder: NSCoder) {
         
-        startTimers = Timers(devTime: 10, stopTime: 10, fixTime: 10, washTime: 10, dryTime: 10)
         timeProcessCounter = startTimers
-
+        
         super.init(coder: aDecoder)
     }
     
@@ -74,6 +71,22 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let schemeName = incomingTimer?.schemeName,
+            let filmName = incomingTimer?.filmName,
+            let developerName = incomingTimer?.developerName,
+            let devTime = incomingTimer?.devTime,
+            let stopTime = incomingTimer?.stopTime,
+            let fixTime = incomingTimer?.fixTime,
+            let washTime = incomingTimer?.washTime,
+            let dryTime = incomingTimer?.washTime,
+            let firstAgitationDuration = incomingTimer?.firstAgitationDuration,
+            let periodAgitationDuration = incomingTimer?.periodAgitationDuration,
+            let agitationPeriod = incomingTimer?.agitationPeriod else {
+                return
+        }
+        startTimers = Develop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        timeProcessCounter = startTimers
+        
         setupTimers()
         updateAllTimersView()
         
@@ -90,6 +103,18 @@ class TimerViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Actions
+    @IBAction func editButtonPressedAction(_ sender: UIBarButtonItem) {
+        
+        guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorViewController") as? ConfiguratorViewController else {
+            return
+        }
+        
+        let currentTimer = timeProcessCounter
+        configuratorViewController.currentConfiguration = currentTimer
+        self.navigationController?.pushViewController(configuratorViewController, animated: true)
+    }
     
     
     //MARK: Private Methods
@@ -119,9 +144,10 @@ class TimerViewController: UIViewController {
                 timeProcessCounter.devTime -= 1
                 circularProgressBar.currentValue = Float(timeProcessCounter.devTime)
             } else {
-                stopTimer()
-                timerName = "stopTime"
                 circularProgressBar.maxBarValue = Float(timeProcessCounter.stopTime)
+                timerName = "stopTime"
+                
+                stopTimer()
             }
             
         case "stopTime":
@@ -244,12 +270,14 @@ class TimerViewController: UIViewController {
         timeCounter?.invalidate()
         isPaused = true
         startPauseButton.setTitle("Старт", for: .normal)
+        
     }
     
     //MARK: Actions
     @IBAction func startPauseTimeAction(_ sender: UIButton) {
         
         if isPaused{
+//            circularProgressBar.firstTimeIn = true
             timeCounter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
             isPaused = false
             startPauseButton.setTitle("Пауза", for: .normal)

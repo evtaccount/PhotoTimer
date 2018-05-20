@@ -1,21 +1,18 @@
 //
-//  GuideViewController.swift
+//  LibraryViewController.swift
 //  PhotoTimer
 //
-//  Created by Evgeny Evtushenko on 10/05/2018.
+//  Created by Evgeny Evtushenko on 14/05/2018.
 //  Copyright © 2018 EVT. All rights reserved.
 //
 
 import UIKit
 
-class GuideViewController: UIViewController {
+class LibraryViewController: UIViewController {
 
-    @IBOutlet var galleryView: GuideView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        galleryView.loadPages()
         // Do any additional setup after loading the view.
     }
 

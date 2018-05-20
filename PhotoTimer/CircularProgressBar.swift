@@ -35,12 +35,12 @@ import UIKit
     //MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        initProgressBar()
+
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)!
-//        initProgressBar()
+
     }
     
     //Create shape layer
@@ -49,30 +49,49 @@ import UIKit
     //Create track layer
     let trackLayer = CAShapeLayer()
     
+    //Create gradient layer. It is background of shapeLayer
+    let gradient = CAGradientLayer()
     
     
-    
-    func initProgressBar() {
+    private func initProgressBar() {
         
         let x = self.frame.width/2
         let y = self.frame.height/2
         let center = CGPoint(x: x, y: y)
         
-        let circularPath = UIBezierPath(arcCenter: center, radius: x, startAngle: -CGFloat.pi/2, endAngle: CGFloat(2)*CGFloat.pi, clockwise: true)
-        trackLayer.path = circularPath.cgPath
+        gradient.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: self.frame.width + CGFloat(barWidth),
+            height: self.frame.height + CGFloat(barWidth))
         
+        gradient.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
+        
+        let circularPath = UIBezierPath(
+            arcCenter: center,
+            radius: x - CGFloat(barWidth),
+            startAngle: -CGFloat.pi/2,
+            endAngle: CGFloat(2)*CGFloat.pi,
+            clockwise: true)
+        
+        trackLayer.frame = self.bounds
+        trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = CGFloat(barWidth+2)
         trackLayer.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(trackLayer)
         
+        self.layer.addSublayer(trackLayer)
+
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeColor = UIColor.red.cgColor
         shapeLayer.lineWidth = CGFloat(barWidth-2)
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.strokeEnd = 0
+        
+        self.layer.addSublayer(gradient)
         self.layer.addSublayer(shapeLayer)
+        gradient.mask = shapeLayer
         
         step = 0.8/maxBarValue
     }
@@ -87,7 +106,6 @@ import UIKit
         basicAnimation.toValue = CGFloat(end)
         shapeLayer.strokeEnd = CGFloat(end)
 
-        
         basicAnimation.duration = 1
         
         basicAnimation.fillMode = kCAFillModeForwards
