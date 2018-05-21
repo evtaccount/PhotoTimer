@@ -122,7 +122,7 @@ extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.timerNameLabel.text = timer.timerName
             cell.temerValueLabel.text = secondsToMinutesAndSeconds(timeInSeconds: timer.timerValue ?? 0)
-        } else {
+        } else if cameFrom == "agitation scheme"{
             let agitation = agitationScheme[indexPath.row]
             
             cell.timerNameLabel.text = agitation.timerName

@@ -423,6 +423,12 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldDidBeginEditing:" destination="Pea-re-sn1" eventType="editingDidBegin" id="AJI-n4-7D2"/>
+                                                        <action selector="textFieldDidEdited:" destination="Pea-re-sn1" eventType="editingChanged" id="l9Q-eb-tBG"/>
+                                                        <action selector="textFieldDidEndEditing:" destination="Pea-re-sn1" eventType="editingDidEnd" id="OXD-JT-kiu"/>
+                                                        <outlet property="delegate" destination="4Ow-So-G3f" id="KAe-xC-hwG"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>

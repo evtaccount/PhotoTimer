@@ -8,19 +8,17 @@
 
 import UIKit
 
-class EditNameTableViewCell: UITableViewCell {
+class EditNameTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //MARK: UITextFieldDelegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

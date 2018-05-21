@@ -19,11 +19,18 @@ class EditNameViewController: UIViewController {
     var recievedNameValue: ItemList?
     var newNameValue: ItemList?
     var textFieldValue: String?
+    var saveButtonIsEnabled = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +38,18 @@ class EditNameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func textFieldDidBeginEditing(_ sender: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
+    @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
+    @IBAction func textFieldDidEdited(_ sender: UITextField) {
+//        textField.resignFirstResponder()
+    }
+    
     
     // MARK: - Navigation
 
@@ -56,13 +74,14 @@ class EditNameViewController: UIViewController {
         
     }
     
-//    @IBAction func saveButtonAction(_ sender: UIBarButtonItem) {
-//
-//        let index = IndexPath(row: 0, section: 0)
-//        let cell = self.myTableView.cellForRow(at: index) as! EditNameTableViewCell
-//        textFieldValue = cell.nameTextField.text
-//    }
-    
+    func updateSaveButtonState() {
+        let index = IndexPath(row: 0, section: 0)
+        let cell = self.myTableView.cellForRow(at: index) as! EditNameTableViewCell
+        guard let text = cell.nameTextField.text else {
+            return
+        }
+        saveButton.isEnabled = !text.isEmpty
+    }
 }
 
 extension EditNameViewController: UITableViewDelegate, UITableViewDataSource {

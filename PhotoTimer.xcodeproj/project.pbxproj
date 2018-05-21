@@ -26,8 +26,6 @@
 		EABDE7DF20AB42C80072489A /* ConfiguratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */; };
 		EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E020AC64930072489A /* SetTimeViewController.swift */; };
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
-		EADFBD3A20A9DE6700EF1924 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADFBD3920A9DE6700EF1924 /* LibraryViewController.swift */; };
-		EADFBD3C20A9DF5B00EF1924 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADFBD3B20A9DF5B00EF1924 /* LibraryTableViewCell.swift */; };
 		F3798C6EEDE5E7217F1CAEBB /* Pods_PhotoTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +67,6 @@
 		EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7E020AC64930072489A /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
-		EADFBD3920A9DE6700EF1924 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
-		EADFBD3B20A9DF5B00EF1924 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 		FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +110,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EA1941E120B20A3700DA423F /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				EA2477E9209F870400E2A9DA /* TimerViewController.swift */,
+				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		EA1941E220B20A8800DA423F /* Guide View */ = {
+			isa = PBXGroup;
+			children = (
+				EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */,
+				EA2FB27320A4B0120058AAA2 /* GuideView.swift */,
+			);
+			path = "Guide View";
+			sourceTree = "<group>";
+		};
 		EA2477BA209F79C800E2A9DA = {
 			isa = PBXGroup;
 			children = (
@@ -139,12 +153,8 @@
 			children = (
 				EA2477C6209F79C900E2A9DA /* AppDelegate.swift */,
 				EA5F247B20A9D152002EFBDC /* Develop.swift */,
-				EA2477E9209F870400E2A9DA /* TimerViewController.swift */,
-				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
-				EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */,
-				EA2FB27320A4B0120058AAA2 /* GuideView.swift */,
-				EADFBD3920A9DE6700EF1924 /* LibraryViewController.swift */,
-				EADFBD3B20A9DF5B00EF1924 /* LibraryTableViewCell.swift */,
+				EA1941E220B20A8800DA423F /* Guide View */,
+				EA1941E120B20A3700DA423F /* Timer */,
 				EA76799920B034C9005E4F88 /* Data base */,
 				EADFBD4120AA166C00EF1924 /* Configurator */,
 				EA2477D2209F79CB00E2A9DA /* Info.plist */,
@@ -206,6 +216,7 @@
 				EA2477BF209F79C800E2A9DA /* Sources */,
 				EA2477C0209F79C800E2A9DA /* Frameworks */,
 				EA2477C1209F79C800E2A9DA /* Resources */,
+				13180BF56AC0FBFD5EF4D0F6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -294,6 +305,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13180BF56AC0FBFD5EF4D0F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		164CD434CE8B59D6F5B382E6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,8 +377,6 @@
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
 				EA5F247C20A9D152002EFBDC /* Develop.swift in Sources */,
-				EADFBD3A20A9DE6700EF1924 /* LibraryViewController.swift in Sources */,
-				EADFBD3C20A9DF5B00EF1924 /* LibraryTableViewCell.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
@@ -516,10 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -535,10 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -555,11 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -577,11 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

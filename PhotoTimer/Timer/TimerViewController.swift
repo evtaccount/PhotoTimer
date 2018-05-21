@@ -116,7 +116,6 @@ class TimerViewController: UIViewController {
         self.navigationController?.pushViewController(configuratorViewController, animated: true)
     }
     
-    
     //MARK: Private Methods
 
     private func setupTimers() {

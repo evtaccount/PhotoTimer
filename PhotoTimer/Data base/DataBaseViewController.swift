@@ -11,10 +11,15 @@ import os.log
 
 class DataBaseViewController: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var tableview: UITableView!
+    
+    //MARK: Properties
     var configurations: [Develop] = []
     let cellIdentifier = "dataBaseCell"
+    public var selectedIndexPath: IndexPath?
 
+    //MARL: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,36 +29,40 @@ class DataBaseViewController: UIViewController {
     }
 
     
-    
+    //MARK: Actions
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    
+        
+        //Проверяем, что переход был осуществлен из конфигуратора
         if let sourceViewController = sender.source as? ConfiguratorViewController, let config = sourceViewController.configToSave {
-            let newIndexPath = IndexPath(row: configurations.count, section: 0)
-            
-            if let selectedIndexPath = self.tableview.indexPathForSelectedRow {
-                // Update an existing meal.
+
+            //Если редактировался таймер из БД, обновляем этот таймер
+            if let selectedIndexPath = selectedIndexPath {
                 configurations[selectedIndexPath.row] = config
                 self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
             }
+                //Если создавался новый таймер, добавляем его в конец списка
             else {
                 // Add a new meal.
+                let newIndexPath = IndexPath(row: configurations.count, section: 0)
                 configurations.append(config)
-//                self.tableview?.reloadData()
                 self.tableview?.insertRows(at: [newIndexPath], with: .automatic)
             }
-            
-            
         }
     }
     
+    //MARK: Private functions
+    
+    //Загрузка тестовых записей
     private func loadSampleTimers() {
         
         let timer1 = Develop(schemeName: "Таймер 1", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 35, dryTime: 30, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
         
         let timer2 = Develop(schemeName: "Таймер 2", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 24, dryTime: 20, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
         
-//        let timer3 = Develop(schemeName: "Таймер 3", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 35, dryTime: 30, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
+        let timer3 = Develop(schemeName: "Таймер 3", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 35, dryTime: 30, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
         
-        configurations += [timer1, timer2]
+        configurations += [timer1, timer2, timer3]
     }
 
 }
@@ -91,17 +100,29 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            configurations.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     //MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Небольшая подготовка перед переходом к другому VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         super.prepare(for: segue, sender: sender)
         
         switch(segue.identifier ?? "") {
             
         case "addTimer":
-            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+            selectedIndexPath = nil
+            os_log("Adding a new timer.", log: OSLog.default, type: .debug)
             
         case "showTimer":
             guard let timerViewController = segue.destination as? TimerViewController else {
@@ -116,6 +137,8 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
+            selectedIndexPath = self.tableview?.indexPath(for: selectedTimerCell)
+            
             let selectedTimer = configurations[indexPath.row]
             timerViewController.incomingTimer = selectedTimer
             
@@ -123,13 +146,5 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
     }
-    
-//    //Навигация до соответствующих экранов
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let destinationViewController: UIViewController
-//
-//
-//        self.navigationController?.pushViewController(destinationViewController, animated: true)
-//    }
     
 }

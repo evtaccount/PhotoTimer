@@ -20,15 +20,18 @@ class ConfiguratorViewController: UIViewController {
     var configToSave: Develop?
     let cellIdentifier = "timerConfigCell"
     var menu: [ItemList] = []
+    var selectedIndexPath: IndexPath?
     
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let currentConfiguration = currentConfiguration {
+        if let _ = currentConfiguration {
             setup()
         } else {
             currentConfiguration = Develop(schemeName: "", filmName: "", developerName: "")
+            saveButton.isEnabled = false
+            selectedIndexPath = nil
             setup()
         }
         // Do any additional setup after loading the view.
@@ -46,6 +49,7 @@ class ConfiguratorViewController: UIViewController {
         ]
     }
 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -54,8 +58,6 @@ class ConfiguratorViewController: UIViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
-        
         
         guard let schemeName = currentConfiguration?.schemeName,
               let filmName = currentConfiguration?.filmName,
@@ -70,6 +72,7 @@ class ConfiguratorViewController: UIViewController {
               let agitationPeriod = currentConfiguration?.agitationPeriod else {
             return
         }
+        
         configToSave = Develop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
     
@@ -104,13 +107,21 @@ class ConfiguratorViewController: UIViewController {
                 currentConfiguration?.fixTime = (timers[2].timerValue)!
                 currentConfiguration?.washTime = (timers[3].timerValue)!
                 currentConfiguration?.dryTime = (timers[4].timerValue)!
-            } else {
+            } else if fromSetTimeViewController.cameFrom == "agitation scheme" {
                 let agitation = fromSetTimeViewController.agitationScheme
                 currentConfiguration?.firstAgitationDuration = agitation[0].timerValue!
                 currentConfiguration?.agitationPeriod = agitation[1].timerValue!
                 currentConfiguration?.periodAgitationDuration = agitation[2].timerValue!
+            } else {
+                fatalError("Unknown flag")
             }
             
+        }
+        
+        if let schemeName = currentConfiguration?.schemeName, let filmName = currentConfiguration?.filmName, let developerName = currentConfiguration?.developerName {
+            if !schemeName.isEmpty && !filmName.isEmpty && !developerName.isEmpty {
+                saveButton.isEnabled = true
+            }
         }
     }
     
@@ -192,7 +203,6 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             return
         }
 
-        
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
