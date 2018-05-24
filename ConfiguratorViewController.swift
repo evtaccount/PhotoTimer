@@ -16,8 +16,8 @@ class ConfiguratorViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //MARK: Properties
-    var currentConfiguration: Develop?
-    var configToSave: Develop?
+    var currentConfiguration: RealmDevelop?
+    var configToSave: RealmDevelop?
     let cellIdentifier = "timerConfigCell"
     var menu: [ItemList] = []
     var selectedIndexPath: IndexPath?
@@ -29,7 +29,7 @@ class ConfiguratorViewController: UIViewController {
         if let _ = currentConfiguration {
             setup()
         } else {
-            currentConfiguration = Develop(schemeName: "", filmName: "", developerName: "")
+            currentConfiguration = RealmDevelop(schemeName: "", filmName: "", developerName: "")
             saveButton.isEnabled = false
             selectedIndexPath = nil
             setup()
@@ -73,7 +73,7 @@ class ConfiguratorViewController: UIViewController {
             return
         }
         
-        configToSave = Develop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        configToSave = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
     
     //MARK: Actions
@@ -203,6 +203,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             return
         }
 
+        tableview.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     

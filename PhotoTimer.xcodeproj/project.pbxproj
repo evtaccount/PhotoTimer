@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF4D8AC945FB3D17045468D7 /* Pods_PhotoTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */; };
+		5A11D476F6C8D2A98898B689 /* Pods_PhotoTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094E6748A6DE9AF56172C38D /* Pods_PhotoTimer.framework */; };
+		5FC17ED9C3AB7503E2C13BCF /* Pods_PhotoTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF688023259BEDB793504D54 /* Pods_PhotoTimerTests.framework */; };
+		EA1941E420B3454400DA423F /* RealmDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1941E320B3454400DA423F /* RealmDevelop.swift */; };
 		EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477C6209F79C900E2A9DA /* AppDelegate.swift */; };
 		EA2477CC209F79C900E2A9DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CA209F79C900E2A9DA /* Main.storyboard */; };
 		EA2477CE209F79CB00E2A9DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CD209F79CB00E2A9DA /* Assets.xcassets */; };
@@ -19,14 +21,14 @@
 		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27320A4B0120058AAA2 /* GuideView.swift */; };
 		EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */; };
-		EA5F247C20A9D152002EFBDC /* Develop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F247B20A9D152002EFBDC /* Develop.swift */; };
 		EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */; };
 		EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */; };
 		EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */; };
 		EABDE7DF20AB42C80072489A /* ConfiguratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */; };
 		EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E020AC64930072489A /* SetTimeViewController.swift */; };
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
-		F3798C6EEDE5E7217F1CAEBB /* Pods_PhotoTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */; };
+		EAC3129F20B57FBA00036E3A /* Develop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3129E20B57FBA00036E3A /* Develop.swift */; };
+		EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC312A020B5802300036E3A /* RequestHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,11 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.release.xcconfig"; sourceTree = "<group>"; };
-		189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.debug.xcconfig"; sourceTree = "<group>"; };
+		094E6748A6DE9AF56172C38D /* Pods_PhotoTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2565D6F814A487B7820584C3 /* Pods-PhotoTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.release.xcconfig"; sourceTree = "<group>"; };
+		4FFEFF65F4370F5CA39DE26B /* Pods-PhotoTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2F53CEA827FAE009EA1371E /* Pods-PhotoTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.debug.xcconfig"; sourceTree = "<group>"; };
+		CF688023259BEDB793504D54 /* Pods_PhotoTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5614AD74DF93DB0D3047434 /* Pods-PhotoTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.release.xcconfig"; sourceTree = "<group>"; };
+		EA1941E320B3454400DA423F /* RealmDevelop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDevelop.swift; sourceTree = "<group>"; };
 		EA2477C3209F79C800E2A9DA /* PhotoTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2477C6209F79C900E2A9DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA2477CB209F79C900E2A9DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,14 +64,14 @@
 		EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		EA2FB27320A4B0120058AAA2 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
-		EA5F247B20A9D152002EFBDC /* Develop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Develop.swift; sourceTree = "<group>"; };
 		EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorViewController.swift; sourceTree = "<group>"; };
 		EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7E020AC64930072489A /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
-		FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimerTests/Pods-PhotoTimerTests.release.xcconfig"; sourceTree = "<group>"; };
+		EAC3129E20B57FBA00036E3A /* Develop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Develop.swift; sourceTree = "<group>"; };
+		EAC312A020B5802300036E3A /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4D8AC945FB3D17045468D7 /* Pods_PhotoTimer.framework in Frameworks */,
+				5A11D476F6C8D2A98898B689 /* Pods_PhotoTimer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,29 +87,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3798C6EEDE5E7217F1CAEBB /* Pods_PhotoTimerTests.framework in Frameworks */,
+				5FC17ED9C3AB7503E2C13BCF /* Pods_PhotoTimerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C474F8D7D93E2ABC6521A7E0 /* Frameworks */ = {
+		98D8D11315251350E32445F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C207792A0D4C369BCA1AE1D0 /* Pods_PhotoTimer.framework */,
-				11C68426EB3A2A514F68E6DF /* Pods_PhotoTimerTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DFF66FC27577AFCC32BE5E49 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */,
-				17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */,
-				189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */,
-				FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */,
+				C2F53CEA827FAE009EA1371E /* Pods-PhotoTimer.debug.xcconfig */,
+				D5614AD74DF93DB0D3047434 /* Pods-PhotoTimer.release.xcconfig */,
+				4FFEFF65F4370F5CA39DE26B /* Pods-PhotoTimerTests.debug.xcconfig */,
+				2565D6F814A487B7820584C3 /* Pods-PhotoTimerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -123,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */,
+				EAC3129E20B57FBA00036E3A /* Develop.swift */,
+				EAC312A020B5802300036E3A /* RequestHandler.swift */,
 				EA2FB27320A4B0120058AAA2 /* GuideView.swift */,
 			);
 			path = "Guide View";
@@ -134,8 +131,8 @@
 				EA2477C5209F79C800E2A9DA /* PhotoTimer */,
 				EA2477DA209F79CB00E2A9DA /* PhotoTimerTests */,
 				EA2477C4209F79C800E2A9DA /* Products */,
-				DFF66FC27577AFCC32BE5E49 /* Pods */,
-				C474F8D7D93E2ABC6521A7E0 /* Frameworks */,
+				98D8D11315251350E32445F3 /* Pods */,
+				EF8E4859187E033059A299B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2477C6209F79C900E2A9DA /* AppDelegate.swift */,
-				EA5F247B20A9D152002EFBDC /* Develop.swift */,
+				EA1941E320B3454400DA423F /* RealmDevelop.swift */,
 				EA1941E220B20A8800DA423F /* Guide View */,
 				EA1941E120B20A3700DA423F /* Timer */,
 				EA76799920B034C9005E4F88 /* Data base */,
@@ -205,6 +202,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		EF8E4859187E033059A299B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				094E6748A6DE9AF56172C38D /* Pods_PhotoTimer.framework */,
+				CF688023259BEDB793504D54 /* Pods_PhotoTimerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,11 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA2477E0209F79CB00E2A9DA /* Build configuration list for PBXNativeTarget "PhotoTimer" */;
 			buildPhases = (
-				2044E0E71406645ADBFD29BE /* [CP] Check Pods Manifest.lock */,
+				161F16A7579D0B3EE91BFB69 /* [CP] Check Pods Manifest.lock */,
 				EA2477BF209F79C800E2A9DA /* Sources */,
 				EA2477C0209F79C800E2A9DA /* Frameworks */,
 				EA2477C1209F79C800E2A9DA /* Resources */,
-				13180BF56AC0FBFD5EF4D0F6 /* [CP] Embed Pods Frameworks */,
+				7BFAED455346581F7978C2DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA2477E3209F79CB00E2A9DA /* Build configuration list for PBXNativeTarget "PhotoTimerTests" */;
 			buildPhases = (
-				164CD434CE8B59D6F5B382E6 /* [CP] Check Pods Manifest.lock */,
+				2676DEA3DB594AA55E471AA2 /* [CP] Check Pods Manifest.lock */,
 				EA2477D3209F79CB00E2A9DA /* Sources */,
 				EA2477D4209F79CB00E2A9DA /* Frameworks */,
 				EA2477D5209F79CB00E2A9DA /* Resources */,
@@ -305,45 +311,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13180BF56AC0FBFD5EF4D0F6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		164CD434CE8B59D6F5B382E6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhotoTimerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2044E0E71406645ADBFD29BE /* [CP] Check Pods Manifest.lock */ = {
+		161F16A7579D0B3EE91BFB69 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,6 +329,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2676DEA3DB594AA55E471AA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoTimerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BFAED455346581F7978C2DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -368,15 +376,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC3129F20B57FBA00036E3A /* Develop.swift in Sources */,
 				EABDE7DF20AB42C80072489A /* ConfiguratorTableViewCell.swift in Sources */,
 				EA25E05420AB299800227F17 /* EditNameViewController.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
+				EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */,
 				EA25E05620AB29C500227F17 /* EditNameTableViewCell.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
-				EA5F247C20A9D152002EFBDC /* Develop.swift in Sources */,
+				EA1941E420B3454400DA423F /* RealmDevelop.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
@@ -539,13 +549,16 @@
 		};
 		EA2477E1209F79CB00E2A9DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C51F0889BB89AA041260294E /* Pods-PhotoTimer.debug.xcconfig */;
+			baseConfigurationReference = C2F53CEA827FAE009EA1371E /* Pods-PhotoTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -555,13 +568,16 @@
 		};
 		EA2477E2209F79CB00E2A9DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17403A3252BB214354AAD999 /* Pods-PhotoTimer.release.xcconfig */;
+			baseConfigurationReference = D5614AD74DF93DB0D3047434 /* Pods-PhotoTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -571,14 +587,18 @@
 		};
 		EA2477E4209F79CB00E2A9DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 189B6A62E39036CBC3F08D6E /* Pods-PhotoTimerTests.debug.xcconfig */;
+			baseConfigurationReference = 4FFEFF65F4370F5CA39DE26B /* Pods-PhotoTimerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -589,14 +609,18 @@
 		};
 		EA2477E5209F79CB00E2A9DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC116F1BA8D6920ADCFFA8E2 /* Pods-PhotoTimerTests.release.xcconfig */;
+			baseConfigurationReference = 2565D6F814A487B7820584C3 /* Pods-PhotoTimerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

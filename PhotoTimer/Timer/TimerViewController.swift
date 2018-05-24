@@ -24,9 +24,9 @@ class TimerViewController: UIViewController {
     
     let cellIdentifier = "TimerTableViewCell"
     
-    var incomingTimer: Develop?
-    var timeProcessCounter: Develop
-    var startTimers = Develop(schemeName: "", filmName: "", developerName: "", devTime: 0, stopTime: 0, fixTime: 0, washTime: 0, dryTime: 0, firstAgitationDuration: 0, periodAgitationDuration: 0, agitationPeriod: 0)
+    var incomingTimer: RealmDevelop?
+    var timeProcessCounter: RealmDevelop
+    var startTimers = RealmDevelop(schemeName: "", filmName: "", developerName: "", devTime: 0, stopTime: 0, fixTime: 0, washTime: 0, dryTime: 0, firstAgitationDuration: 0, periodAgitationDuration: 0, agitationPeriod: 0)
     
     var timeCounter: Timer?
     var isPaused = true
@@ -44,15 +44,10 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var washTimeLabel: UILabel!
     @IBOutlet weak var dryTimeLabel: UILabel!
     
-    //Linear sub-prosses's progress bars
-    @IBOutlet weak var devProgressBar: UIProgressView!
-    @IBOutlet weak var stopProgressBar: UIProgressView!
-    @IBOutlet weak var fixProgressBar: UIProgressView!
-    @IBOutlet weak var washProgressBar: UIProgressView!
-    @IBOutlet weak var dryProgressBar: UIProgressView!
-    
     //"Start/Pause" button
     @IBOutlet weak var startPauseButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var navigationBarTimer: UINavigationItem!
     
     
     //MARK: Initialization
@@ -63,7 +58,6 @@ class TimerViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         
         timeProcessCounter = startTimers
-        
         super.init(coder: aDecoder)
     }
     
@@ -71,25 +65,11 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let schemeName = incomingTimer?.schemeName,
-            let filmName = incomingTimer?.filmName,
-            let developerName = incomingTimer?.developerName,
-            let devTime = incomingTimer?.devTime,
-            let stopTime = incomingTimer?.stopTime,
-            let fixTime = incomingTimer?.fixTime,
-            let washTime = incomingTimer?.washTime,
-            let dryTime = incomingTimer?.washTime,
-            let firstAgitationDuration = incomingTimer?.firstAgitationDuration,
-            let periodAgitationDuration = incomingTimer?.periodAgitationDuration,
-            let agitationPeriod = incomingTimer?.agitationPeriod else {
-                return
-        }
-        startTimers = Develop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
-        timeProcessCounter = startTimers
         
+        circularProgressBar.currentTimerTrackLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160))
         setupTimers()
         updateAllTimersView()
-        
+        navigationItem.title = timeProcessCounter.schemeName
         
         // Do any additional setup after loading the view.
     }
@@ -119,8 +99,30 @@ class TimerViewController: UIViewController {
     //MARK: Private Methods
 
     private func setupTimers() {
+        guard let schemeName = incomingTimer?.schemeName,
+            let filmName = incomingTimer?.filmName,
+            let developerName = incomingTimer?.developerName,
+            let devTime = incomingTimer?.devTime,
+            let stopTime = incomingTimer?.stopTime,
+            let fixTime = incomingTimer?.fixTime,
+            let washTime = incomingTimer?.washTime,
+            let dryTime = incomingTimer?.washTime,
+            let firstAgitationDuration = incomingTimer?.firstAgitationDuration,
+            let periodAgitationDuration = incomingTimer?.periodAgitationDuration,
+            let agitationPeriod = incomingTimer?.agitationPeriod else {
+                return
+        }
+        startTimers = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        
+        timeProcessCounter = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        
         circularProgressBar.maxBarValue = Float(timeProcessCounter.devTime)
+        circularProgressBar.maxSegmentValue = Float(timeProcessCounter.devTime)
         timerName = "devTime"
+        circularProgressBar.currentSegmentIsActive = timerName!
+        circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: timerName!)
+        
+        resetButton.isEnabled = false
     }
 
     //Функция вызывается по каждому тику таймера
@@ -139,60 +141,42 @@ class TimerViewController: UIViewController {
         
         switch timer {
         case "devTime":
-            if timeProcessCounter.devTime > 0 {
-                timeProcessCounter.devTime -= 1
-                circularProgressBar.currentValue = Float(timeProcessCounter.devTime)
-            } else {
-                circularProgressBar.maxBarValue = Float(timeProcessCounter.stopTime)
-                timerName = "stopTime"
-                
-                stopTimer()
-            }
+            countTimer(currentTimer: &timeProcessCounter.devTime, nextTimer: &timeProcessCounter.stopTime, nextTimerName: "stopTime")
             
         case "stopTime":
-            if timeProcessCounter.stopTime > 0 {
-                timeProcessCounter.stopTime -= 1
-                circularProgressBar.currentValue = Float(timeProcessCounter.stopTime)
-            } else {
-                stopTimer()
-                timerName = "fixTime"
-                circularProgressBar.maxBarValue = Float(timeProcessCounter.fixTime)
-            }
+            countTimer(currentTimer: &timeProcessCounter.stopTime, nextTimer: &timeProcessCounter.fixTime, nextTimerName: "fixTime")
             
         case "fixTime":
-            if timeProcessCounter.fixTime > 0 {
-                timeProcessCounter.fixTime -= 1
-                circularProgressBar.currentValue = Float(timeProcessCounter.fixTime)
-            } else {
-                stopTimer()
-                timerName = "washTime"
-                circularProgressBar.maxBarValue = Float(timeProcessCounter.washTime)
-            }
+            countTimer(currentTimer: &timeProcessCounter.fixTime, nextTimer: &timeProcessCounter.washTime, nextTimerName: "washTime")
             
         case "washTime":
-            if timeProcessCounter.washTime > 0 {
-                timeProcessCounter.washTime -= 1
-                circularProgressBar.currentValue = Float(timeProcessCounter.washTime)
-            } else {
-                stopTimer()
-                timerName = "dryTime"
-                circularProgressBar.maxBarValue = Float(timeProcessCounter.dryTime)
-            }
+            countTimer(currentTimer: &timeProcessCounter.washTime, nextTimer: &timeProcessCounter.dryTime, nextTimerName: "dryTime")
             
         case "dryTime":
-            if timeProcessCounter.dryTime > 0 {
-                timeProcessCounter.dryTime -= 1
-                circularProgressBar.currentValue = Float(timeProcessCounter.dryTime)
-            } else {
-                stopTimer()
-                timerName = "devTimer"
-                circularProgressBar.maxBarValue = Float(timeProcessCounter.devTime)
-            }
+            countTimer(currentTimer: &timeProcessCounter.dryTime, nextTimer: &timeProcessCounter.devTime, nextTimerName: "devTimer")
+           
         default:
             fatalError("Case вышел за пределы цикцла")
         }
         
         
+    }
+    
+    func countTimer(currentTimer: inout Int, nextTimer: inout Int, nextTimerName: String) {
+        if currentTimer > 0 {
+            currentTimer -= 1
+            circularProgressBar.currentValue = Float(currentTimer)
+            circularProgressBar.currentSegmentValue = Float(currentTimer)
+        } else {
+            circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: nextTimerName)
+            circularProgressBar.maxBarValue = Float(nextTimer)
+            circularProgressBar.maxSegmentValue = Float(nextTimer)
+            timerName = nextTimerName
+            
+//            circularProgressBar.currentSegmentIsActive = nextTimerName
+            
+            stopTimer()
+        }
     }
 
     //Обновляет UI элементы текущего таймера
@@ -205,23 +189,18 @@ class TimerViewController: UIViewController {
         switch timer {
         case "devTime":
             bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
-            progressBarUpdate(startValue: startTimers.devTime, currentValue: timeProcessCounter.devTime, progressBar: devProgressBar)
             
         case "stopTime":
             bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
-            progressBarUpdate(startValue: startTimers.stopTime, currentValue: timeProcessCounter.stopTime, progressBar: stopProgressBar)
             
         case "fixTime":
             bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
-            progressBarUpdate(startValue: startTimers.fixTime, currentValue: timeProcessCounter.fixTime, progressBar: fixProgressBar)
             
         case "washTime":
             bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
-            progressBarUpdate(startValue: startTimers.washTime, currentValue: timeProcessCounter.washTime, progressBar: washProgressBar)
             
         case "dryTime":
             bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
-            progressBarUpdate(startValue: startTimers.dryTime, currentValue: timeProcessCounter.dryTime, progressBar: dryProgressBar)
             
         default:
             fatalError("Вышел за пределы цикла")
@@ -232,36 +211,18 @@ class TimerViewController: UIViewController {
     private func updateAllTimersView() {
         
         bigTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
-        
         devTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
-        progressBarUpdate(startValue: startTimers.devTime, currentValue: timeProcessCounter.devTime, progressBar: devProgressBar)
-        
         stopTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
-        progressBarUpdate(startValue: startTimers.stopTime, currentValue: timeProcessCounter.stopTime, progressBar: stopProgressBar)
-        
         fixTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
-        progressBarUpdate(startValue: startTimers.fixTime, currentValue: timeProcessCounter.fixTime, progressBar: fixProgressBar)
-        
         washTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
-        progressBarUpdate(startValue: startTimers.washTime, currentValue: timeProcessCounter.washTime, progressBar: washProgressBar)
-        
         dryTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
-        progressBarUpdate(startValue: startTimers.dryTime, currentValue: timeProcessCounter.dryTime, progressBar: dryProgressBar)
     }
 
     //Конвертация секунд а минуты и секунды в заданном формате (ММ:СС). Используется для вывода понятных пользователю данных
     private func secondsToMinutesSeconds (time counter: Int) -> (String) {
-        let minutes = counter/60
-        let seconds = counter - minutes * 60
+        let minutes = counter / 60
+        let seconds = counter % 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
-    }
-    
-    //Фенкция обновляет UIProgressView который передается в функцию в качестве аргумента. Также принимается начальное значение таймера и его текущее состояние
-    private func progressBarUpdate(startValue: Int, currentValue: Int, progressBar: UIProgressView) {
-        let start = Float(startValue)
-        let current = Float(currentValue)
-        let progress = (start-current)/start
-        progressBar.setProgress(progress, animated: true)
     }
     
     //Останавливает таймер
@@ -269,6 +230,8 @@ class TimerViewController: UIViewController {
         timeCounter?.invalidate()
         isPaused = true
         startPauseButton.setTitle("Старт", for: .normal)
+        resetButton.isEnabled = true
+        navigationController?.navigationItem.leftBarButtonItem?.isEnabled = true
         
     }
     
@@ -280,6 +243,10 @@ class TimerViewController: UIViewController {
             timeCounter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
             isPaused = false
             startPauseButton.setTitle("Пауза", for: .normal)
+            resetButton.isEnabled = false
+
+            navigationController?.navigationItem.leftBarButtonItem?.isEnabled = false // Не работает
+//            navigationController?.navigationBar.tintColor = UIColor.lightGray
         } else {
             stopTimer()
         }
@@ -290,6 +257,8 @@ class TimerViewController: UIViewController {
         timeCounter?.invalidate()
         isPaused = true
         updateAllTimersView()
+        circularProgressBar.currentTimerTrackLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160))
+        circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: timerName!)
     }
     
     

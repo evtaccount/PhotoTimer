@@ -71,12 +71,10 @@ class SetTimeViewController: UIViewController {
     func secondsToMinutesAndSeconds(timeInSeconds timerValue: Int) -> String {
         let minutes = timerValue / 60
         let seconds = timerValue % 60
-        return "\(minutes):\(seconds)"
+        return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
     
     //MARK: Actions
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-    }
     
     // MARK: - Navigation
     
@@ -127,6 +125,11 @@ extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.timerNameLabel.text = agitation.timerName
             cell.temerValueLabel.text = secondsToMinutesAndSeconds(timeInSeconds: agitation.timerValue ?? 0)
+        }
+        
+        let startIndexPath = IndexPath(row: 0, section: 0)
+        if let startScrollPosition = UITableViewScrollPosition(rawValue: 0) {
+            tableView.selectRow(at: startIndexPath, animated: true, scrollPosition: startScrollPosition)
         }
         
         return cell
