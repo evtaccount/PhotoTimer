@@ -30,7 +30,7 @@ class DataBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        load()
+        load()
         realm = try! Realm()
         self.tableview?.reloadData()
         // Do any additional setup after loading the view.

@@ -170,10 +170,7 @@ extension SetTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return "\(minutesAndSeconds[row]) sec."
         default:
             return "\(minutesAndSeconds[row]) sec."
-        }
-        
-        
-        
+        } 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
