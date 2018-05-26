@@ -16,19 +16,18 @@
 		EA2477D1209F79CB00E2A9DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA2477CF209F79CB00E2A9DA /* LaunchScreen.storyboard */; };
 		EA2477DC209F79CB00E2A9DA /* PhotoTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477DB209F79CB00E2A9DA /* PhotoTimerTests.swift */; };
 		EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2477E9209F870400E2A9DA /* TimerViewController.swift */; };
-		EA25E05420AB299800227F17 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25E05320AB299800227F17 /* EditNameViewController.swift */; };
-		EA25E05620AB29C500227F17 /* EditNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA25E05520AB29C500227F17 /* EditNameTableViewCell.swift */; };
 		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27320A4B0120058AAA2 /* GuideView.swift */; };
 		EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */; };
 		EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */; };
 		EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */; };
 		EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */; };
-		EABDE7DF20AB42C80072489A /* ConfiguratorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */; };
+		EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */; };
 		EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E020AC64930072489A /* SetTimeViewController.swift */; };
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
 		EAC3129F20B57FBA00036E3A /* Develop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3129E20B57FBA00036E3A /* Develop.swift */; };
 		EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC312A020B5802300036E3A /* RequestHandler.swift */; };
+		EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,19 +58,18 @@
 		EA2477DB209F79CB00E2A9DA /* PhotoTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTimerTests.swift; sourceTree = "<group>"; };
 		EA2477DD209F79CB00E2A9DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA2477E9209F870400E2A9DA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		EA25E05320AB299800227F17 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
-		EA25E05520AB29C500227F17 /* EditNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameTableViewCell.swift; sourceTree = "<group>"; };
 		EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		EA2FB27320A4B0120058AAA2 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorViewController.swift; sourceTree = "<group>"; };
-		EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTableViewCell.swift; sourceTree = "<group>"; };
+		EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorLabelTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7E020AC64930072489A /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
 		EAC3129E20B57FBA00036E3A /* Develop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Develop.swift; sourceTree = "<group>"; };
 		EAC312A020B5802300036E3A /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTextFieldCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +117,7 @@
 			children = (
 				EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */,
 				EAC3129E20B57FBA00036E3A /* Develop.swift */,
+				EA1941E320B3454400DA423F /* RealmDevelop.swift */,
 				EAC312A020B5802300036E3A /* RequestHandler.swift */,
 				EA2FB27320A4B0120058AAA2 /* GuideView.swift */,
 			);
@@ -149,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				EA2477C6209F79C900E2A9DA /* AppDelegate.swift */,
-				EA1941E320B3454400DA423F /* RealmDevelop.swift */,
 				EA1941E220B20A8800DA423F /* Guide View */,
 				EA1941E120B20A3700DA423F /* Timer */,
 				EA76799920B034C9005E4F88 /* Data base */,
@@ -192,9 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */,
-				EABDE7DE20AB42C80072489A /* ConfiguratorTableViewCell.swift */,
-				EA25E05320AB299800227F17 /* EditNameViewController.swift */,
-				EA25E05520AB29C500227F17 /* EditNameTableViewCell.swift */,
+				EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */,
+				EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */,
 				EABDE7E020AC64930072489A /* SetTimeViewController.swift */,
 				EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */,
 			);
@@ -377,13 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC3129F20B57FBA00036E3A /* Develop.swift in Sources */,
-				EABDE7DF20AB42C80072489A /* ConfiguratorTableViewCell.swift in Sources */,
-				EA25E05420AB299800227F17 /* EditNameViewController.swift in Sources */,
+				EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
+				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
 				EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */,
-				EA25E05620AB29C500227F17 /* EditNameTableViewCell.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
 				EA1941E420B3454400DA423F /* RealmDevelop.swift in Sources */,

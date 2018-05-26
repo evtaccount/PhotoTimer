@@ -13,13 +13,13 @@ import RealmSwift
 class DataBaseViewController: UIViewController {
 
     //MARK: Outlets
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK: Properties
     var realm : Realm!
     let cellIdentifier = "dataBaseCell"
     var selectedIndexPath: IndexPath?
-    var configurations: [Develop] = []
+    var configurations: [RealmDevelop] = []
     var configurationsList: Results<RealmDevelop> {
         get {
             return realm.objects(RealmDevelop.self)
@@ -32,8 +32,11 @@ class DataBaseViewController: UIViewController {
         
         load()
         realm = try! Realm()
-        self.tableview?.reloadData()
+        self.tableView?.reloadData()
         // Do any additional setup after loading the view.
+        
+//        let longpress = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
+//        tableView.addGestureRecognizer(longpress)
     }
     
     //MARK: Actions
@@ -57,7 +60,7 @@ class DataBaseViewController: UIViewController {
                     configurationsList[selectedIndexPath.row].agitationPeriod = config.agitationPeriod
                 }
                 
-                self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
+                self.tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
                 //Если создавался новый таймер, добавляем его в конец списка
             else {
@@ -67,31 +70,109 @@ class DataBaseViewController: UIViewController {
                     self.realm.add(config)
                 }
                 
-                self.tableview?.insertRows(at: [newIndexPath], with: .automatic)
+                self.tableView?.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+    }
+//
+//    func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
+//        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+//        let state = longPress.state
+//        var locationInView = longPress.location(in: tableView)
+//        var indexPath = tableView.indexPathForRow(at: locationInView)
+//
+//        struct My {
+//            static var cellSnapshot: UIView? = nil
+//        }
+//        struct Path {
+//            static var initialIndexPath: IndexPath? = nil
+//        }
+//
+//        switch state {
+//        case UIGestureRecognizerState.began:
+//            if indexPath != nil {
+//                Path.initialIndexPath = indexPath!
+//                guard let cell = tableView.cellForRow(at: indexPath!) as UITableViewCell? else {
+//                    return
+//                }
+//                My.cellSnapshot  = snapshopOfCell(inputView: cell)
+//                var center = cell.center
+//                My.cellSnapshot?.center = center
+//                My.cellSnapshot!.alpha = 0.0
+//                tableView.addSubview(My.cellSnapshot!)
+//
+//                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+//                    center.y = locationInView.y
+//                    My.cellSnapshot!.center = center
+//                    My.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+//                    My.cellSnapshot!.alpha = 0.98
+//                    cell.alpha = 0.0
+//
+//                }, completion: { (finished) -> Void in
+//                    if finished {
+//                        cell.isHidden = true
+//                    }
+//                })
+//            }
+//
+//        case UIGestureRecognizerState.changed:
+//            var center = My.cellSnapshot!.center
+//            center.y = locationInView.y
+//            My.cellSnapshot!.center = center
+//            if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
+//                swap(&configurationsList[indexPath!.row], &configurationsList[Path.initialIndexPath!.row])
+//                tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
+//                Path.initialIndexPath = indexPath
+//            }
+//
+//        default:
+//            guard let cell = tableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell? else {
+//                return
+//            }
+//            cell.isHidden = false
+//            cell.alpha = 0.0
+//            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+//                My.cellSnapshot!.center = cell.center
+//                My.cellSnapshot!.transform = CGAffineTransform.identity
+//                My.cellSnapshot!.alpha = 0.0
+//                cell.alpha = 1.0
+//            }, completion: { (finished) -> Void in
+//                if finished {
+//                    Path.initialIndexPath = nil
+//                    My.cellSnapshot!.removeFromSuperview()
+//                    My.cellSnapshot = nil
+//                }
+//            })
+//        }
+//    }
+    
+    func snapshopOfCell(inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext() as! UIImage
+        UIGraphicsEndImageContext()
+        let cellSnapshot : UIView = UIImageView(image: image)
+        cellSnapshot.layer.masksToBounds = false
+        cellSnapshot.layer.cornerRadius = 0.0
+        cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        cellSnapshot.layer.shadowRadius = 5.0
+        cellSnapshot.layer.shadowOpacity = 0.4
+        return cellSnapshot
     }
     
     //MARK: Private functions
     func load() {
         ProductsInteractor().getProducts { configurations in
             self.configurations = configurations
+            
+//            for item in configurations {
+//                try! self.realm.write {
+//                    self.realm.add(item)
+//                }
+//            }
 //            self.tableview.reloadData()
         }
     }
-    
-    //Загрузка тестовых записей
-    private func loadSampleTimers() {
-        
-//        let timer1 = Develop(schemeName: "Таймер 1", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 35, dryTime: 30, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
-//
-//        let timer2 = Develop(schemeName: "Таймер 2", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 24, dryTime: 20, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
-//
-//        let timer3 = Develop(schemeName: "Таймер 3", filmName: "Fomapan 400", developerName: "Ilford", devTime: 10*60, stopTime: 1*60, fixTime: 1*60, washTime: 35, dryTime: 30, firstAgitationDuration: 60, periodAgitationDuration: 60, agitationPeriod: 8)
-//
-//        configurations += [timer1, timer2, timer3]
-    }
-
 }
 
 //MARK: Table view extension
@@ -187,12 +268,12 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
                 fatalError("Unexpected sender: \(sender)")
             }
             
-            guard let indexPath = self.tableview?.indexPath(for: selectedTimerCell) else {
+            guard let indexPath = self.tableView?.indexPath(for: selectedTimerCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            selectedIndexPath = self.tableview?.indexPath(for: selectedTimerCell)
-            tableview.deselectRow(at: indexPath, animated: true)
+            selectedIndexPath = self.tableView?.indexPath(for: selectedTimerCell)
+            tableView.deselectRow(at: indexPath, animated: true)
             
             let selectedTimer = configurationsList[indexPath.row]
             timerViewController.incomingTimer = selectedTimer

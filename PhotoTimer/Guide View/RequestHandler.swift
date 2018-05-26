@@ -14,7 +14,7 @@ class ProductsInteractor: NSObject {
     let host = "localhost"
     let port = 8000
     
-    func getProducts(completion: @escaping ([Develop]) -> Void) {
+    func getProducts(completion: @escaping ([RealmDevelop]) -> Void) {
         let method = "timers"
         
         let request = Alamofire.request("http://\(host):\(port)/\(method)")
@@ -40,10 +40,10 @@ class ProductsInteractor: NSObject {
                 return
             }
             
-            var configurations: [Develop] = []
+            var configurations: [RealmDevelop] = []
             
             for item in data {
-                guard let product = Develop.parse(json: item) else {
+                guard let product = RealmDevelop.parse(json: item) else {
                     continue
                 }
                 

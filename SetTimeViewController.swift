@@ -14,14 +14,13 @@ class SetTimeViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var setTimeTableView: UITableView!
     @IBOutlet weak var secondsCountDownPicker: UIPickerView!
+    @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
     //MARK: Properties
     let cellIdentifier = "setTimerCell"
-    
-    var selectedTimer: Int?
-    
+    var selectedTimer = 0
     var cameFrom: String?
     
     let minutesAndSeconds: [Int] = [
@@ -47,20 +46,19 @@ class SetTimeViewController: UIViewController {
         TimersList(timerName: "Повторять каждые", timerValue: 0)
     ]
     
-    let timersToSave: [TimersList?] = []
-    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setup()
-        // Do any additional setup after loading the view.
+        let startIndexPath = IndexPath(row: 0, section: 0)
+        if let startScrollPosition = UITableViewScrollPosition(rawValue: 0) {
+            tableview.selectRow(at: startIndexPath, animated: true, scrollPosition: startScrollPosition)
+        }
     }
 
     //MARK: Private methods
     private func setup() {
-        selectedTimer = 0
-        
         let minutes = timers[0].timerValue! / 60
         let seconds = timers[0].timerValue! % 60
         
@@ -68,13 +66,11 @@ class SetTimeViewController: UIViewController {
         secondsCountDownPicker.selectRow(seconds, inComponent: 1, animated: true)
     }
     
-    func secondsToMinutesAndSeconds(timeInSeconds timerValue: Int) -> String {
+    private func secondsToMinutesAndSeconds(timeInSeconds timerValue: Int) -> String {
         let minutes = timerValue / 60
         let seconds = timerValue % 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
-    
-    //MARK: Actions
     
     // MARK: - Navigation
     
@@ -87,12 +83,10 @@ class SetTimeViewController: UIViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
-        let timersToSave = timers
     }
-
 }
 
+//MARK: Table view
 extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let cameFrom = cameFrom else {
@@ -127,9 +121,9 @@ extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.temerValueLabel.text = secondsToMinutesAndSeconds(timeInSeconds: agitation.timerValue ?? 0)
         }
         
-        let startIndexPath = IndexPath(row: 0, section: 0)
+        let selectedIndexPath = IndexPath(row: selectedTimer, section: 0)
         if let startScrollPosition = UITableViewScrollPosition(rawValue: 0) {
-            tableView.selectRow(at: startIndexPath, animated: true, scrollPosition: startScrollPosition)
+            tableview.selectRow(at: selectedIndexPath, animated: true, scrollPosition: startScrollPosition)
         }
         
         return cell
@@ -146,18 +140,13 @@ extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARL: Picker view digits
 extension SetTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return CGFloat(50)
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         return minutesAndSeconds.count
     }
     
@@ -181,9 +170,9 @@ extension SetTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let seconds = secondsCountDownPicker.selectedRow(inComponent: 1)
         
         if cameFrom == "set timers" {
-            timers[selectedTimer!].timerValue = minutes * 60 + seconds
+            timers[selectedTimer].timerValue = minutes * 60 + seconds
         } else if cameFrom == "agitation scheme" {
-            agitationScheme[selectedTimer!].timerValue = minutes * 60 + seconds
+            agitationScheme[selectedTimer].timerValue = minutes * 60 + seconds
         }
         
         setTimeTableView.reloadData()

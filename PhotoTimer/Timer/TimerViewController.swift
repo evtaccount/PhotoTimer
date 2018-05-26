@@ -180,6 +180,19 @@ class TimerViewController: UIViewController {
             stopTimer()
         }
     }
+    
+    func hideNavigationButtons() {
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+        
+        navigationItem.setHidesBackButton(true, animated:true)
+    }
+    
+    func showNavigationButtons() {
+        navigationItem.setHidesBackButton(false, animated:true)
+        navigationItem.rightBarButtonItem?.isEnabled = true
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.08, green: 0.49, blue: 0.98, alpha: 1.0)
+    }
 
     //Обновляет UI элементы текущего таймера
     private func updateCurrentTimersView(for timer: String?) {
@@ -248,9 +261,10 @@ class TimerViewController: UIViewController {
             
             UIApplication.shared.isIdleTimerDisabled = true
 
-            navigationController?.navigationItem.isAccessibilityElement = false // Не работает
+            hideNavigationButtons()
         } else {
             stopTimer()
+            showNavigationButtons()
         }
     }
     

@@ -18,16 +18,19 @@ class ConfiguratorViewController: UIViewController {
     //MARK: Properties
     var currentConfiguration: RealmDevelop?
     var configToSave: RealmDevelop?
-    let cellIdentifier = "timerConfigCell"
+    let cellTextFieldIdentifier = "TextFieldConfig"
+    let cellSetTimerIdentifier = "SetTimerConfig"
     var menu: [ItemList] = []
     var selectedIndexPath: IndexPath?
+    var fromTimer: Bool = false
     
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let _ = currentConfiguration {
+        if currentConfiguration != nil {
             setup()
+            fromTimer = true
         } else {
             currentConfiguration = RealmDevelop(schemeName: "", filmName: "", developerName: "")
             saveButton.isEnabled = false
@@ -48,7 +51,25 @@ class ConfiguratorViewController: UIViewController {
             ItemList(itemName: "agitationScheme", imageName: "timersIcon", itemValue: "Agitation scheme")
         ]
     }
-
+    
+    func updateSaveButtonState() {
+        saveButton.isEnabled = true
+        
+        for ind in 0...2 {
+            let indexPath = IndexPath(row: ind, section: 0)
+            let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
+            
+            guard let name = cell.itemTextField.text else {
+                return
+            }
+            
+            saveButton.isEnabled = !name.isEmpty && saveButton.isEnabled
+        }
+    }
+    
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        <#code#>
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -58,6 +79,20 @@ class ConfiguratorViewController: UIViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+
+        for ind in 0...2 {
+            let indexPath = IndexPath(row: ind, section: 0)
+            let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
+            
+            guard let name = cell.itemTextField.text else {
+                return
+            }
+            menu[ind].itemValue = name
+        }
+        
+        currentConfiguration?.schemeName = menu[0].itemValue
+        currentConfiguration?.filmName = menu[1].itemValue
+        currentConfiguration?.developerName = menu[2].itemValue
         
         guard let schemeName = currentConfiguration?.schemeName,
               let filmName = currentConfiguration?.filmName,
@@ -74,32 +109,17 @@ class ConfiguratorViewController: UIViewController {
         }
         
         configToSave = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+//        if fromTimer {
+//            
+//        }
+    }
+    @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
+        print("hi")
     }
     
     //MARK: Actions
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let fromEditNameViewController = sender.source as? EditNameViewController, let item = fromEditNameViewController.newNameValue {
-            
-            switch item.itemName {
-            case "timerName":
-                menu[0].itemValue = item.itemValue
-                currentConfiguration?.schemeName = item.itemValue!
-                
-            case "filmName":
-                menu[1].itemValue = item.itemValue
-                currentConfiguration?.filmName = item.itemValue
-                
-            case "developerName":
-                menu[2].itemValue = item.itemValue
-                currentConfiguration?.developerName = item.itemValue
-                
-            default:
-                 os_log("Unknown item name", log: OSLog.default, type: .debug)
-            }
-            
-            self.tableview.reloadData()
-        } else if let fromSetTimeViewController = sender.source as? SetTimeViewController {
-            
+        if let fromSetTimeViewController = sender.source as? SetTimeViewController {
             if fromSetTimeViewController.cameFrom == "set timers" {
                 let timers = fromSetTimeViewController.timers
                 currentConfiguration?.devTime = (timers[0].timerValue)!
@@ -115,7 +135,6 @@ class ConfiguratorViewController: UIViewController {
             } else {
                 fatalError("Unknown flag")
             }
-            
         }
         
         if let schemeName = currentConfiguration?.schemeName, let filmName = currentConfiguration?.filmName, let developerName = currentConfiguration?.developerName {
@@ -126,7 +145,6 @@ class ConfiguratorViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressedAction(_ sender: UIBarButtonItem) {
-        
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
         
@@ -139,6 +157,10 @@ class ConfiguratorViewController: UIViewController {
         else {
             fatalError("The MealViewController is not inside a navigation controller.")
         }
+    }
+    
+    @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
+        updateSaveButtonState()
     }
     
 }
@@ -155,13 +177,25 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemOfMenu = menu[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ConfiguratorTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        switch indexPath.row {
+        case 0...2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
+                fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            }
+            cell.newImageView.image = UIImage(named: itemOfMenu.imageName)
+            cell.itemTextField.text = itemOfMenu.itemValue ?? ""
+    
+            return cell
+            
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSetTimerIdentifier, for: indexPath) as? ConfiguratorLabelTableViewCell else {
+                fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            }
+            cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
+            cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""
+            
+            return cell
         }
-        cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
-        cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""
-        
-        return cell
     }
     
     //Навигация до соответствующих экранов
@@ -169,15 +203,6 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         let destinationViewController: UIViewController
         
         switch indexPath.row {
-        case 0, 1, 2:
-            guard let editNameViewController = self.storyboard?.instantiateViewController(withIdentifier: "editNameViewController") as? EditNameViewController else {
-                return
-            }
-            let item = menu[indexPath.row]
-            
-            editNameViewController.recievedNameValue = item
-            destinationViewController = editNameViewController
-            
         case 3:
             guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
                 return
@@ -206,5 +231,4 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         tableview.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
-    
 }
