@@ -1,4 +1,4 @@
-//
+    //
 //  TimerTableViewController.swift
 //  PhotoTimer
 //
@@ -70,10 +70,24 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        circularProgressBar.currentTimerTrackLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160))
-        setupTimers()
+        self.circularProgressBar.alpha = 0.0
+//        let circWidth = UIScreen.main.bounds.width
+//        circularProgressBar.frame.size.width = circWidth
+//        circularProgressBar.frame.size.height = circWidth
+//        let centerView = CGPoint(x: circWidth, y: circWidth)
+//        circularProgressBar.currentTimerTrackLayerInit(center: centerView, x: circWidth/2)
+//        setupTimers()
         updateAllTimersView()
         navigationItem.title = timeProcessCounter.schemeName
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        setupTimers()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.circularProgressBar.alpha = 1.0
+        })
     }
     
     /*
@@ -121,9 +135,10 @@ class TimerViewController: UIViewController {
         
         currentTimerName = "devTime"
         nextTimerName = timerNamesCycle[currentTimerName!]
+        circularProgressBar.currentTimerTrackLayerInit()
         circularProgressBar.currentSegmentIsActive = currentTimerName!
         
-        circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: currentTimerName!)
+//        circularProgressBar.currentTimerShapeLayerInit(center: centerView, currentProgressBar: currentTimerName!)
         
         resetButton.isEnabled = false
     }
@@ -170,12 +185,12 @@ class TimerViewController: UIViewController {
             circularProgressBar.currentValue = Float(currentTimer)
             circularProgressBar.currentSegmentValue = Float(currentTimer)
         } else {
-            circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: nextTimerName!)
             circularProgressBar.maxBarValue = Float(nextTimer)
             circularProgressBar.maxSegmentValue = Float(nextTimer)
             
             currentTimerName = nextTimerName
             nextTimerName = timerNamesCycle[currentTimerName!]
+            circularProgressBar.currentSegmentIsActive = currentTimerName!
             
             stopTimer()
         }
@@ -246,6 +261,7 @@ class TimerViewController: UIViewController {
         isPaused = true
         startPauseButton.setTitle("Старт", for: .normal)
         resetButton.isEnabled = true
+        
         navigationController?.navigationItem.leftBarButtonItem?.isEnabled = true
         UIApplication.shared.isIdleTimerDisabled = false
     }
@@ -273,8 +289,7 @@ class TimerViewController: UIViewController {
         timeCounter?.invalidate()
         isPaused = true
         updateAllTimersView()
-        circularProgressBar.currentTimerTrackLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160))
-        circularProgressBar.currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: currentTimerName!)
+        circularProgressBar.resetCircles()
     }
     
     

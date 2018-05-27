@@ -113,9 +113,6 @@ class ConfiguratorViewController: UIViewController {
 //            
 //        }
     }
-    @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
-        print("hi")
-    }
     
     //MARK: Actions
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {

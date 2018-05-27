@@ -19,6 +19,7 @@
 		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27320A4B0120058AAA2 /* GuideView.swift */; };
 		EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */; };
+		EA5F9AFC20B9D76B001B9743 /* DevelopTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F9AFB20B9D76B001B9743 /* DevelopTimer.swift */; };
 		EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */; };
 		EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */; };
 		EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */; };
@@ -61,6 +62,7 @@
 		EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		EA2FB27320A4B0120058AAA2 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		EA5F9AFB20B9D76B001B9743 /* DevelopTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopTimer.swift; sourceTree = "<group>"; };
 		EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */,
 				EAC3129E20B57FBA00036E3A /* Develop.swift */,
+				EA5F9AFB20B9D76B001B9743 /* DevelopTimer.swift */,
 				EA1941E320B3454400DA423F /* RealmDevelop.swift */,
 				EAC312A020B5802300036E3A /* RequestHandler.swift */,
 				EA2FB27320A4B0120058AAA2 /* GuideView.swift */,
@@ -380,6 +383,7 @@
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
 				EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */,
+				EA5F9AFC20B9D76B001B9743 /* DevelopTimer.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
 				EA1941E420B3454400DA423F /* RealmDevelop.swift in Sources */,

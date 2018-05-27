@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import Foundation
 import RealmSwift
 
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UserDefaults, UIApplicationDelegate {
 
     var window: UIWindow?
     let admin = "admin"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setDefaultRealmForUser(username: admin)
+        if !UserDefaults.standard.bool(forKey: "db_install") {
+            self.loadDatabase()
+        }
+        
+        
         return true
     }
     
@@ -53,6 +59,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func loadDatabase() {
+        let firstTimer = RealmDevelop(
+            schemeName: "Таймер 1",
+            filmName: "Fomapan 400",
+            developerName: "Ilford D-11",
+            devTime: 10,
+            stopTime: 6,
+            fixTime: 10,
+            washTime: 12,
+            dryTime: 15,
+            firstAgitationDuration: 60,
+            periodAgitationDuration: 60,
+            agitationPeriod: 10
+        )
+        
+        let secondTimer = RealmDevelop(
+            schemeName: "Таймер 2",
+            filmName: "Fomapan 100",
+            developerName: "Ilford D-11",
+            devTime: 10,
+            stopTime: 6,
+            fixTime: 10,
+            washTime: 12,
+            dryTime: 15,
+            firstAgitationDuration: 60,
+            periodAgitationDuration: 60,
+            agitationPeriod: 10
+        )
+        
+        let thirdTimer = RealmDevelop(
+            schemeName: "Таймер 3",
+            filmName: "Ilford XP-2",
+            developerName: "Ilford D-11",
+            devTime: 10,
+            stopTime: 6,
+            fixTime: 10,
+            washTime: 12,
+            dryTime: 15,
+            firstAgitationDuration: 60,
+            periodAgitationDuration: 60,
+            agitationPeriod: 10
+        )
+        
+        let configurations = [firstTimer, secondTimer, thirdTimer]
+        
+        let realm = try! Realm()
+        try! realm.write {
+            for config in configurations {
+                realm.add(config)
+            }
+        }
+        
+        UserDefaults.standard.set(
+            true, forKey: "db_install"
+        )
+    }
 }
 

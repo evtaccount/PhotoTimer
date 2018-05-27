@@ -1,4 +1,4 @@
-
+ 
 
 //
 //  CircularProgressBar.swift
@@ -18,9 +18,19 @@ import UIKit
     var segmentStep: Float = 0.0
     let startAnglesForCurrentTimers = ["devTime": -87, "stopTime": -15, "fixTime": 57, "washTime": 129, "dryTime": 201]
     
+    let k: CGFloat = 0.85
+    
+    var radiusCircle: CGFloat {
+        return (self.frame.size.width * k) / 2
+    }
+    
+    var centerView: CGPoint {
+        return CGPoint(x: self.frame.size.width/2, y: self.frame.size.width/2)
+    }
+    
     var currentSegmentIsActive = "" {
         didSet {
-//            currentTimerShapeLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160), currentProgressBar: currentSegmentIsActive)
+            currentTimerShapeLayerInit(currentProgressBar: currentSegmentIsActive)
         }
     }
     
@@ -36,6 +46,7 @@ import UIKit
         didSet {
             
 //            currentSegmentValue = maxSegmentValue
+            
             segmentStep = 1/maxSegmentValue
         }
     }
@@ -84,21 +95,21 @@ import UIKit
     
     private func initProgressBar() {
         
-        let x = self.frame.width/2
-        let y = self.frame.height/2
-        let center = CGPoint(x: x, y: y)
+//        let x = self.frame.width/2
+//        let y = self.frame.height/2
+//        let center = CGPoint(x: x, y: y)
         
         gradient.frame = CGRect(
             x: 0,
             y: 0,
-            width: self.frame.width + CGFloat(barWidth),
-            height: self.frame.height + CGFloat(barWidth))
+            width: self.frame.width,
+            height: self.frame.height)
         
         gradient.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
         
         let mainTimerCircularPath = UIBezierPath(
-            arcCenter: center,
-            radius: x - 20 - CGFloat(barWidth),
+            arcCenter: centerView,
+            radius: radiusCircle - 20 - CGFloat(barWidth),
             startAngle: -CGFloat.pi/2,
             endAngle: CGFloat(2)*CGFloat.pi,
             clockwise: true)
@@ -122,10 +133,10 @@ import UIKit
         self.layer.addSublayer(mainTimerShapeLayer)
         gradient.mask = mainTimerShapeLayer
         
-//        currentTimerTrackLayerInit(center: CGPoint(x: 160, y: 160), x: CGFloat(160))
+//        currentTimerTrackLayerInit(center: centerView, x: radiusCircle)
     }
     
-    public func currentTimerTrackLayerInit(center: CGPoint, x: CGFloat) {
+    public func currentTimerTrackLayerInit() {
 //        let barColors = [UIColor.green, UIColor.blue, UIColor.red, UIColor.yellow, UIColor.cyan]
         
         for ind in 0...4 {
@@ -136,8 +147,8 @@ import UIKit
             let endAngle = startAngle + 66
             
             let circularPath = UIBezierPath(
-                arcCenter: center,
-                radius: x - CGFloat(barWidth),
+                arcCenter: centerView,
+                radius: radiusCircle - CGFloat(barWidth),
                 startAngle: degreesToRadians(degree: startAngle),
                 endAngle: degreesToRadians(degree: endAngle),
                 clockwise: true)
@@ -154,14 +165,19 @@ import UIKit
         
     }
     
-    func currentTimerShapeLayerInit(center: CGPoint, x: CGFloat, currentProgressBar: String) {
+    func resetCircles() {
+        currentTimerTrackLayerInit()
+        currentTimerShapeLayerInit(currentProgressBar: "devTime")
+    }
+    
+    func currentTimerShapeLayerInit(currentProgressBar: String) {
         guard let startAngle = startAnglesForCurrentTimers[currentProgressBar] else {
             return
         }
         let endAngle = startAngle + 66
         let currentTimerCircularPath = UIBezierPath(
-            arcCenter: center,
-            radius: x - CGFloat(barWidth),
+            arcCenter: centerView,
+            radius: radiusCircle - CGFloat(barWidth),
             startAngle: degreesToRadians(degree: startAngle),
             endAngle: degreesToRadians(degree: endAngle),
             clockwise: true)
