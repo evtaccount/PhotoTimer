@@ -106,7 +106,7 @@ extension SetTimeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SetTimeTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of SetTimeTableViewCell.")
         }
         
         if cameFrom == "set timers" {
