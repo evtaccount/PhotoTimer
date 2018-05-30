@@ -52,7 +52,7 @@ class ConfiguratorViewController: UIViewController {
         ]
     }
     
-    func updateSaveButtonState() {
+    private func updateSaveButtonState() {
         saveButton.isEnabled = true
         
         for ind in 0...2 {
@@ -67,10 +67,7 @@ class ConfiguratorViewController: UIViewController {
         }
     }
     
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        <#code#>
-//    }
-    
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -109,13 +106,10 @@ class ConfiguratorViewController: UIViewController {
         }
         
         configToSave = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
-//        if fromTimer {
-//            
-//        }
     }
     
     //MARK: Actions
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToConfigurator(sender: UIStoryboardSegue) {
         if let fromSetTimeViewController = sender.source as? SetTimeViewController {
             if fromSetTimeViewController.cameFrom == "set timers" {
                 let timers = fromSetTimeViewController.timers
@@ -130,7 +124,7 @@ class ConfiguratorViewController: UIViewController {
                 currentConfiguration?.agitationPeriod = agitation[1].timerValue!
                 currentConfiguration?.periodAgitationDuration = agitation[2].timerValue!
             } else {
-                fatalError("Unknown flag")
+                fatalError("UnwindToConfiguratorViewController. Unknown flag")
             }
         }
         
@@ -143,16 +137,16 @@ class ConfiguratorViewController: UIViewController {
     
     @IBAction func cancelButtonPressedAction(_ sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        let isPresentingInAddTimerMode = presentingViewController is UINavigationController
         
-        if isPresentingInAddMealMode {
+        if isPresentingInAddTimerMode {
             dismiss(animated: true, completion: nil)
         }
         else if let owningNavigationController = navigationController{
             owningNavigationController.popViewController(animated: true)
         }
         else {
-            fatalError("The MealViewController is not inside a navigation controller.")
+            fatalError("The ConfiguratorViewController is not inside a navigation controller.")
         }
     }
     
@@ -177,7 +171,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         switch indexPath.row {
         case 0...2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
-                fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+                fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.newImageView.image = UIImage(named: itemOfMenu.imageName)
             cell.itemTextField.text = itemOfMenu.itemValue ?? ""
@@ -186,7 +180,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSetTimerIdentifier, for: indexPath) as? ConfiguratorLabelTableViewCell else {
-                fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+                fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
             cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""

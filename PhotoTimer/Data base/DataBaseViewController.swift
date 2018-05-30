@@ -19,16 +19,16 @@ class DataBaseViewController: UIViewController {
     var realm: Realm!
     let cellIdentifier = "dataBaseCell"
     var selectedIndexPath: IndexPath?
-//    var configurations: [RealmDevelop] = []
-    var configurationsList: [RealmDevelop] = [] 
+    var configurations: [RealmDevelop] = []
+    var configurationsList: [RealmDevelop] = []
     
 
     //MARL: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadUsersData()
-        load()
+//        loadSamplesFromNetworkToDB()
+        loadSamplesFromDB()
         realm = try! Realm()
         self.tableview?.reloadData()
         // Do any additional setup after loading the view.
@@ -38,7 +38,7 @@ class DataBaseViewController: UIViewController {
     }
     
     //MARK: Actions
-    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToDataBase(sender: UIStoryboardSegue) {
         //Проверяем, что переход был осуществлен из конфигуратора
         if let sourceViewController = sender.source as? ConfiguratorViewController, let config = sourceViewController.configToSave {
 
@@ -61,9 +61,8 @@ class DataBaseViewController: UIViewController {
                 
                 self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
             }
-                //Если создавался новый таймер, добавляем его в конец списка
             else {
-                // Add a new meal.
+                // Add a new timer
                 let newIndexPath = IndexPath(row: configurationsList.count, section: 0)
                 try! self.realm.write {
                     self.realm.add(config)
@@ -78,7 +77,7 @@ class DataBaseViewController: UIViewController {
     @objc func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
-        var locationInView = longPress.location(in: tableview)
+        let locationInView = longPress.location(in: tableview)//
         var indexPath = tableview.indexPathForRow(at: locationInView)
 
         struct My {
@@ -95,7 +94,7 @@ class DataBaseViewController: UIViewController {
                 guard let cell = tableview.cellForRow(at: indexPath!) as UITableViewCell? else {
                     return
                 }
-                My.cellSnapshot  = snapshopOfCell(inputView: cell)
+                My.cellSnapshot  = snapshotOfCell(inputView: cell)
                 var center = cell.center
                 My.cellSnapshot?.center = center
                 My.cellSnapshot!.alpha = 0.0
@@ -122,7 +121,6 @@ class DataBaseViewController: UIViewController {
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
                 let temp = configurationsList.remove(at: (Path.initialIndexPath?.row)!)
                 configurationsList.insert(temp, at: (indexPath?.row)!)
-//                swap(&configurationsList[indexPath!.row], &configurationsList[Path.initialIndexPath!.row])
                 tableview.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                 Path.initialIndexPath = indexPath
             }
@@ -148,7 +146,7 @@ class DataBaseViewController: UIViewController {
         }
     }
     
-    func snapshopOfCell(inputView: UIView) -> UIView {
+    func snapshotOfCell(inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
         inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext() as! UIImage
@@ -163,20 +161,21 @@ class DataBaseViewController: UIViewController {
     }
     
     //MARK: Private functions
-    func load() {
+    func loadSamplesFromNetworkToDB() {
         ProductsInteractor().getProducts { configurations in
-//            self.configurations = configurations
+            self.configurations = configurations
             
-//            for item in configurations {
-//                try! self.realm.write {
-//                    self.realm.add(item)
-//                }
-//            }
-//            self.tableview.reloadData()
+            for item in configurations {
+                try! self.realm.write {
+                    self.realm.add(item)
+                }
+            }
         }
+//        loadSampleTimers()
+//        self.tableview.reloadData()
     }
     
-    private func loadUsersData() {
+    private func loadSamplesFromDB() {
         let realm = try! Realm()
         var configurations = [RealmDevelop]()
         for config in realm.objects(RealmDevelop.self) {
@@ -209,30 +208,15 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         let configuration = configurationsList[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DataBaseTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
         }
         guard let timerName = configuration.schemeName else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("Timer name is nil in row with index \(indexPath.row)")
         }
         cell.timerNameTextLabel?.text = timerName
         
         return cell
     }
-    
-//    // Override to support editing the table view.
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            let item = configurationsList[indexPath.row]
-//            try! self.realm .write {
-//                self.realm.delete(item)
-//            }
-//
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deletAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Delete") { (deletAction, indexPath) in
@@ -277,7 +261,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             guard let selectedTimerCell = sender as? DataBaseTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let indexPath = self.tableview?.indexPath(for: selectedTimerCell) else {
@@ -291,7 +275,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             timerViewController.incomingTimer = selectedTimer
             
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
     

@@ -15,15 +15,12 @@ import RealmSwift
 class AppDelegate: UserDefaults, UIApplicationDelegate {
 
     var window: UIWindow?
-    let admin = "admin"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if !UserDefaults.standard.bool(forKey: "db_install") {
-            self.loadDatabase()
+            self.loadSampleTimers()
         }
-        
-        
         return true
     }
     
@@ -59,9 +56,9 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func loadDatabase() {
+    func loadSampleTimers() {
         let firstTimer = RealmDevelop(
-            schemeName: "Таймер 1",
+            schemeName: "Fomapan 400 + Ilford",
             filmName: "Fomapan 400",
             developerName: "Ilford D-11",
             devTime: 10,
@@ -75,7 +72,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         )
         
         let secondTimer = RealmDevelop(
-            schemeName: "Таймер 2",
+            schemeName: "Fomapan 100 + Ilford",
             filmName: "Fomapan 100",
             developerName: "Ilford D-11",
             devTime: 10,
@@ -89,7 +86,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         )
         
         let thirdTimer = RealmDevelop(
-            schemeName: "Таймер 3",
+            schemeName: "Ilford + Ilford",
             filmName: "Ilford XP-2",
             developerName: "Ilford D-11",
             devTime: 10,
@@ -111,9 +108,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             }
         }
         
-        UserDefaults.standard.set(
-            true, forKey: "db_install"
-        )
+        UserDefaults.standard.set(true, forKey: "db_install")
     }
 }
 
