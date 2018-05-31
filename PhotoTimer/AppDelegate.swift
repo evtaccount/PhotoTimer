@@ -15,11 +15,13 @@ import RealmSwift
 class AppDelegate: UserDefaults, UIApplicationDelegate {
 
     var window: UIWindow?
+    var realm: Realm!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if !UserDefaults.standard.bool(forKey: "db_install") {
-            self.loadSampleTimers()
+//            self.loadSampleTimers()
+            self.loadSamplesFromNetworkToDB()
         }
         return true
     }
@@ -108,6 +110,22 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             }
         }
         
+        UserDefaults.standard.set(true, forKey: "db_install")
+    }
+    
+    func loadSamplesFromNetworkToDB() {
+        var configurationsList: [RealmDevelop] = []
+        realm = try! Realm()
+        
+        ProductsInteractor().getProducts { configurations in
+            configurationsList = configurations
+            
+            for item in configurationsList {
+                try! self.realm.write {
+                    self.realm.add(item)
+                }
+            }
+        }
         UserDefaults.standard.set(true, forKey: "db_install")
     }
 }

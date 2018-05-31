@@ -11,6 +11,7 @@ import UIKit
 class DataBaseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timerNameTextLabel: UILabel!
+    @IBOutlet weak var infoTextLabel: UILabel!
     
 
 }
