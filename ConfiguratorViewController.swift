@@ -20,9 +20,10 @@ class ConfiguratorViewController: UIViewController {
     var configToSave: RealmDevelop?
     let cellTextFieldIdentifier = "TextFieldConfig"
     let cellSetTimerIdentifier = "SetTimerConfig"
-    var menu: [ItemList] = []
+    var menuNames: [[ItemList]] = []
     var selectedIndexPath: IndexPath?
     var fromTimer: Bool = false
+    let placeholders = ["Название таймера", "Навание пленки", "Название проявителя"]
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -32,23 +33,27 @@ class ConfiguratorViewController: UIViewController {
             setup()
             fromTimer = true
         } else {
-            currentConfiguration = RealmDevelop(schemeName: "", filmName: "", developerName: "")
+            currentConfiguration = RealmDevelop(schemeName: nil, filmName: nil, developerName: nil)
             saveButton.isEnabled = false
             selectedIndexPath = nil
             setup()
         }
+        
+//        tableview.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
     }
 
     //MARK: Pritate methods
     private func setup() {
         
-        menu = [
+        menuNames = [[
             ItemList(itemName: "timerName", imageName: "configIcon", itemValue: currentConfiguration?.schemeName),
             ItemList(itemName: "filmName", imageName: "filmIcon", itemValue: currentConfiguration?.filmName),
-            ItemList(itemName: "developerName", imageName: "developerIcon", itemValue: currentConfiguration?.developerName),
-            ItemList(itemName: "timers", imageName: "timersIcon", itemValue: "Timers"),
-            ItemList(itemName: "agitationScheme", imageName: "timersIcon", itemValue: "Agitation scheme")
+            ItemList(itemName: "developerName", imageName: "developerIcon", itemValue: currentConfiguration?.developerName)
+        ],[
+            ItemList(itemName: "timers", imageName: "timersIcon", itemValue: "Настроить таймеры"),
+            ItemList(itemName: "agitationScheme", imageName: "timersIcon", itemValue: "Настроить перемешивание")
+            ]
         ]
     }
     
@@ -84,12 +89,12 @@ class ConfiguratorViewController: UIViewController {
             guard let name = cell.itemTextField.text else {
                 return
             }
-            menu[ind].itemValue = name
+            menuNames[0][ind].itemValue = name
         }
         
-        currentConfiguration?.schemeName = menu[0].itemValue
-        currentConfiguration?.filmName = menu[1].itemValue
-        currentConfiguration?.developerName = menu[2].itemValue
+        currentConfiguration?.schemeName = menuNames[0][0].itemValue
+        currentConfiguration?.filmName = menuNames[0][1].itemValue
+        currentConfiguration?.developerName = menuNames[0][2].itemValue
         
         guard let schemeName = currentConfiguration?.schemeName,
               let filmName = currentConfiguration?.filmName,
@@ -158,68 +163,114 @@ class ConfiguratorViewController: UIViewController {
 
 //MARK: Table view extension
 extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return " "
+        
+    }
     
     //Количество ячеек в таблице
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menu.count
+        var numberOfRows: Int = 0
+        switch section {
+        case 0:
+            return menuNames[section].count
+        case 1:
+            return menuNames[section].count
+        default:
+            fatalError()
+        }
+        return numberOfRows
     }
     
     //Определяем содержимое ячеек
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemOfMenu = menu[indexPath.row]
+        let itemOfMenu = menuNames[indexPath.section][indexPath.row]
         
-        switch indexPath.row {
-        case 0...2:
+        if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
                 fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.newImageView.image = UIImage(named: itemOfMenu.imageName)
-            cell.itemTextField.text = itemOfMenu.itemValue ?? ""
-    
-            return cell
+            if let text = itemOfMenu.itemValue {
+                cell.itemTextField.text = text
+            } else {
+                cell.itemTextField.placeholder = placeholders[indexPath.row]
+            }
             
-        default:
+            return cell
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSetTimerIdentifier, for: indexPath) as? ConfiguratorLabelTableViewCell else {
                 fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
             cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""
             
+            cell.accessoryType = .disclosureIndicator
+            
             return cell
         }
+        
+//        switch indexPath.row {
+//        case 0...2:
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
+//                fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
+//            }
+//            cell.newImageView.image = UIImage(named: itemOfMenu.imageName)
+//            cell.itemTextField.text = itemOfMenu.itemValue ?? ""
+//
+//            return cell
+//
+//        default:
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSetTimerIdentifier, for: indexPath) as? ConfiguratorLabelTableViewCell else {
+//                fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
+//            }
+//            cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
+//            cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""
+//
+//            return cell
+//        }
     }
     
     //Навигация до соответствующих экранов
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableview.deselectRow(at: indexPath, animated: true)
+        
         let destinationViewController: UIViewController
         
-        switch indexPath.row {
-        case 3:
-            guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
+        if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0:
+                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
+                    return
+                }
+                setTimersViewController.timers[0].timerValue = currentConfiguration?.devTime
+                setTimersViewController.timers[1].timerValue = currentConfiguration?.stopTime
+                setTimersViewController.timers[2].timerValue = currentConfiguration?.fixTime
+                setTimersViewController.timers[3].timerValue = currentConfiguration?.washTime
+                setTimersViewController.timers[4].timerValue = currentConfiguration?.dryTime
+                setTimersViewController.cameFrom = "set timers"
+                destinationViewController = setTimersViewController
+                self.navigationController?.pushViewController(destinationViewController, animated: true)
+                
+            case 1:
+                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
+                    return
+                }
+                setTimersViewController.agitationScheme[0].timerValue = currentConfiguration?.firstAgitationDuration
+                setTimersViewController.agitationScheme[1].timerValue = currentConfiguration?.agitationPeriod
+                setTimersViewController.agitationScheme[2].timerValue = currentConfiguration?.periodAgitationDuration
+                setTimersViewController.cameFrom = "agitation scheme"
+                destinationViewController = setTimersViewController
+                self.navigationController?.pushViewController(destinationViewController, animated: true)
+                
+            default:
                 return
             }
-            setTimersViewController.timers[0].timerValue = currentConfiguration?.devTime
-            setTimersViewController.timers[1].timerValue = currentConfiguration?.stopTime
-            setTimersViewController.timers[2].timerValue = currentConfiguration?.fixTime
-            setTimersViewController.timers[3].timerValue = currentConfiguration?.washTime
-            setTimersViewController.timers[4].timerValue = currentConfiguration?.dryTime
-            setTimersViewController.cameFrom = "set timers"
-            destinationViewController = setTimersViewController
-            
-        case 4:
-            guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
-                return
-            }
-            setTimersViewController.agitationScheme[0].timerValue = currentConfiguration?.firstAgitationDuration
-            setTimersViewController.agitationScheme[1].timerValue = currentConfiguration?.agitationPeriod
-            setTimersViewController.agitationScheme[2].timerValue = currentConfiguration?.periodAgitationDuration
-            setTimersViewController.cameFrom = "agitation scheme"
-            destinationViewController = setTimersViewController
-        default:
-            return
         }
-
-        tableview.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

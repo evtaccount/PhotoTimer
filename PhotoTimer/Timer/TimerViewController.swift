@@ -216,7 +216,7 @@ class TimerViewController: UIViewController {
     }
     
     //Конвертация секунд а минуты и секунды в заданном формате (ММ:СС). Используется для вывода понятных пользователю данных
-    private func secondsToMinutesSeconds (time counter: Int) -> (String) {
+    public func secondsToMinutesSeconds (time counter: Int) -> (String) {
         let minutes = counter / 60
         let seconds = counter % 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)

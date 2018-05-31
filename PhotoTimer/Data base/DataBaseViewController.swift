@@ -176,7 +176,7 @@ class DataBaseViewController: UIViewController {
         return cellSnapshot
     }
     
-    //MARK: Private functions
+    //MARK: Private method
     private func loadSamplesFromDB() {
         let realm = try! Realm()
         var configurations = [RealmDevelop]()
@@ -184,6 +184,12 @@ class DataBaseViewController: UIViewController {
             configurations.append(config)
         }
         self.configurationsList = configurations
+    }
+    
+    private func secondsToMinutesSeconds (time counter: Int) -> (String) {
+        let minutes = counter / 60
+        let seconds = counter % 60
+        return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
 }
 
@@ -241,9 +247,9 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.contentView.backgroundColor = UIColor.clear
         cell.timerNameTextLabel?.text = timerName
-        cell.infoTextLabel?.text = "Проявка \(configuration.devTime), стоп-раствор \(configuration.stopTime), фикс \(configuration.fixTime), промывка \(configuration.washTime), сумка \(configuration.dryTime)"
+        cell.infoTextLabel?.text = "Проявка \(secondsToMinutesSeconds(time: configuration.devTime)), стоп-раствор \(secondsToMinutesSeconds(time: configuration.stopTime)), фикс \(secondsToMinutesSeconds(time: configuration.fixTime)), промывка \(secondsToMinutesSeconds(time: configuration.washTime)), сумка \(secondsToMinutesSeconds(time: configuration.dryTime))"
         
-        let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width-38, height: 65)) 
+        let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
         cellShadowLayer.layer.backgroundColor = UIColor.white.cgColor
         cellShadowLayer.layer.masksToBounds = false
         cellShadowLayer.layer.cornerRadius = 10.0
@@ -253,6 +259,8 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.addSubview(cellShadowLayer)
         cell.sendSubview(toBack: cellShadowLayer)
+        
+//        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
