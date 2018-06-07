@@ -59,6 +59,23 @@ class RealmDevelop: Object {
         self.developerName = developerName
     }
     
+    convenience init(filmName: String, developerName: String, devTime: Int, firstAgitationDuration: Int, agitationPeriod: Int, periodAgitationDuration: Int) {
+        self.init()
+        
+        self.filmName = filmName
+        self.developerName = developerName
+        
+        self.devTime = devTime
+        self.stopTime = 60
+        self.fixTime = 300
+        self.washTime = 600
+        self.dryTime = 1200
+        
+        self.firstAgitationDuration = firstAgitationDuration
+        self.agitationPeriod = agitationPeriod
+        self.periodAgitationDuration = periodAgitationDuration
+    }
+    
     convenience init(schemeName: String, filmName: String, developerName: String, devTime: Int, stopTime: Int, fixTime: Int, washTime: Int, dryTime: Int, firstAgitationDuration: Int, periodAgitationDuration: Int, agitationPeriod: Int) {
         self.init()
         

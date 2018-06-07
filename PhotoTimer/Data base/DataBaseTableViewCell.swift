@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class DataBaseTableViewCell: UITableViewCell {
+class DataBaseTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var timerNameTextLabel: UILabel!
     @IBOutlet weak var infoTextLabel: UILabel!
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(10, 10, 10, 10))
+    }
     
 //    override var frame: CGRect {
 //        get {
@@ -34,6 +35,7 @@ class DataBaseTableViewCell: UITableViewCell {
 //            self.contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
 //            self.contentView.layer.shadowRadius = 7
 //            self.contentView.layer.shadowOpacity = 0.4
+////            self.accessoryType = .disclosureIndicator
 //
 //            super.frame = frame
 //        }

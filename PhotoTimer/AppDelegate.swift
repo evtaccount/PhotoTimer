@@ -22,6 +22,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: "db_install") {
 //            self.loadSampleTimers()
             self.loadSamplesFromNetworkToDB()
+            self.loadSampleTimers()
         }
         return true
     }
@@ -128,5 +129,12 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         }
         UserDefaults.standard.set(true, forKey: "db_install")
     }
+    
+//    func loadFilms() {
+//        var films = Film()
+//        realm = try! Realm()
+//        
+//        
+//    }
 }
 

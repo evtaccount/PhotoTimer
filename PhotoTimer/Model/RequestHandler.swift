@@ -24,7 +24,8 @@ class ProductsInteractor: NSObject {
                 completion([])
                 return
             }
-            
+
+            print(json)
             guard let success = json["success"] as? Bool else {
                 completion([])
                 return
@@ -35,7 +36,7 @@ class ProductsInteractor: NSObject {
                 return
             }
             
-            guard let data = json["data"] as? [[String: Any]] else {
+            guard let data = json["data"] as? [[String:Any]] else {
                 completion([])
                 return
             }

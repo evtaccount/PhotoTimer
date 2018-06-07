@@ -18,7 +18,11 @@ class CircularProgressBar: UIView {
     let startAnglesForCurrentTimers = ["devTime": -90, "stopTime": -18, "fixTime": 54, "washTime": 126, "dryTime": 198]
     
     //Coefficien for width of circular progress-bar relatively width of screen
-    let k: CGFloat = 1
+    var k: CGFloat = UIScreen.main.bounds.width/375.0 {
+        didSet {
+//            self.frame.size = CGSize(width: 285 * k, height: 285 * k)
+        }
+    }
     
     //Main circular progress-bar radius
     var radiusCircle: CGFloat {
@@ -57,15 +61,15 @@ class CircularProgressBar: UIView {
         }
     }
     
-    //The width of shape circular bars
-    var barWidth: Float = 10
-    
     //This is the current value of main progress-bar. Calls animation for update its value
     var currentValue: Float = 0.0 {
         didSet {
             mainProgressBarAnimation()
         }
     }
+    
+    //The width of shape circular bars
+    var barWidth: Float = 10
     
     //This is the current value of current segment progress-bar. Calls animation for update its value
     var currentSegmentValue: Float = 0.0 {
@@ -74,7 +78,6 @@ class CircularProgressBar: UIView {
         }
     }
     
-    //MARK: Properties
     //Main progress-bar track and shape layers
     let mainTimerTrackLayer = CAShapeLayer()
     let mainTimerShapeLayer = CAShapeLayer()
@@ -224,6 +227,22 @@ class CircularProgressBar: UIView {
         let blueFloat = CGFloat(Float(blue)/255.0)
         
         return UIColor(red: redFloat, green: greenFloat, blue: blueFloat, alpha: CGFloat(alpha))
+    }
+    
+    public func clearSegmentLayers() {
+        let clearLayer = CAShapeLayer()
+        let clearCircularPath = UIBezierPath(
+            arcCenter: centerView,
+            radius: radiusSegmentsCircle - CGFloat(10),
+            startAngle: 0,
+            endAngle: 2 * CGFloat.pi,
+            clockwise: true)
+        clearLayer.frame = self.bounds
+        clearLayer.path = clearCircularPath.cgPath
+        clearLayer.strokeColor = UIColor.white.cgColor
+        clearLayer.lineWidth = CGFloat(10)
+        clearLayer.fillColor = UIColor.clear.cgColor
+        self.layer.addSublayer(clearLayer)
     }
     
     //MARK: Public methods

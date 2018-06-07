@@ -92,13 +92,13 @@ class ConfiguratorViewController: UIViewController {
             menuNames[0][ind].itemValue = name
         }
         
-        currentConfiguration?.schemeName = menuNames[0][0].itemValue
-        currentConfiguration?.filmName = menuNames[0][1].itemValue
-        currentConfiguration?.developerName = menuNames[0][2].itemValue
+//        currentConfiguration?.schemeName = menuNames[0][0].itemValue
+//        currentConfiguration?.filmName = menuNames[0][1].itemValue
+//        currentConfiguration?.developerName = menuNames[0][2].itemValue
         
-        guard let schemeName = currentConfiguration?.schemeName,
-              let filmName = currentConfiguration?.filmName,
-              let developerName = currentConfiguration?.developerName,
+        guard let schemeName = menuNames[0][0].itemValue,
+              let filmName = menuNames[0][1].itemValue,
+              let developerName = menuNames[0][2].itemValue,
               let devTime = currentConfiguration?.devTime,
               let stopTime = currentConfiguration?.stopTime,
               let fixTime = currentConfiguration?.fixTime,

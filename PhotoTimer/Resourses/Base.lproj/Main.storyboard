@@ -32,7 +32,7 @@
                                 <rect key="frame" x="19.5" y="536.5" width="336" height="53"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="2UX-Gl-obK"/>
+                                    <constraint firstAttribute="width" secondItem="AGL-8K-71G" secondAttribute="height" multiplier="336:53" id="fD5-rx-ZiZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <state key="normal" title="Старт">
@@ -58,11 +58,7 @@
                                 <rect key="frame" x="45" y="72" width="285" height="285"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZM-BX-4oI">
-                                        <rect key="frame" x="57.5" y="122" width="170" height="41"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="UGL-mh-kge"/>
-                                            <constraint firstAttribute="height" constant="41" id="jhg-BN-DCu"/>
-                                        </constraints>
+                                        <rect key="frame" x="60.5" y="109" width="164" height="66"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="55"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -196,14 +192,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AGL-8K-71G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19.5" id="1Hg-pg-nFC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cmB-Cn-foh" secondAttribute="bottom" constant="310" id="7ZR-Q2-zZq"/>
                             <constraint firstItem="cmB-Cn-foh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B2b-IF-V6C"/>
                             <constraint firstItem="cmB-Cn-foh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="CYN-RV-9ur"/>
                             <constraint firstItem="AGL-8K-71G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DXd-9X-8dq"/>
+                            <constraint firstItem="AGL-8K-71G" firstAttribute="top" secondItem="i7x-iA-ydi" secondAttribute="bottom" constant="14.5" id="Wuc-mz-99B"/>
                             <constraint firstItem="pkO-Cx-eKZ" firstAttribute="width" secondItem="AGL-8K-71G" secondAttribute="width" id="apq-X4-90A"/>
                             <constraint firstItem="pkO-Cx-eKZ" firstAttribute="top" secondItem="AGL-8K-71G" secondAttribute="bottom" constant="5" id="ba0-r6-bXd"/>
+                            <constraint firstItem="cmB-Cn-foh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="dVM-h6-yhP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pkO-Cx-eKZ" secondAttribute="bottom" constant="19.5" id="did-Ko-gip"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i7x-iA-ydi" secondAttribute="bottom" constant="145" id="kLC-Ku-31V"/>
                             <constraint firstItem="pkO-Cx-eKZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t4T-hj-ZV8"/>
                             <constraint firstItem="i7x-iA-ydi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vzG-ps-VnR"/>
                             <constraint firstItem="pkO-Cx-eKZ" firstAttribute="height" secondItem="AGL-8K-71G" secondAttribute="height" id="yfK-yd-Q7d"/>
@@ -258,16 +254,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-0n-Rr5">
-                                                    <rect key="frame" x="29" y="10.5" width="317" height="50"/>
+                                                    <rect key="frame" x="19" y="10.5" width="337" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-KJ-2Pq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="317" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="30"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihO-bl-IaT">
-                                                            <rect key="frame" x="0.0" y="30" width="317" height="20"/>
+                                                            <rect key="frame" x="0.0" y="30" width="337" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="neA-xI-boR"/>
                                                             </constraints>
@@ -283,8 +279,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Te9-0n-Rr5" firstAttribute="centerY" secondItem="uw9-Cu-bqS" secondAttribute="centerY" id="0bh-44-Tef"/>
-                                                <constraint firstItem="Te9-0n-Rr5" firstAttribute="leading" secondItem="uw9-Cu-bqS" secondAttribute="leading" constant="29" id="77m-QA-dtg"/>
-                                                <constraint firstAttribute="trailing" secondItem="Te9-0n-Rr5" secondAttribute="trailing" constant="29" id="D8c-DD-sCQ"/>
+                                                <constraint firstItem="Te9-0n-Rr5" firstAttribute="leading" secondItem="uw9-Cu-bqS" secondAttribute="leading" constant="19" id="77m-QA-dtg"/>
+                                                <constraint firstAttribute="trailing" secondItem="Te9-0n-Rr5" secondAttribute="trailing" constant="19" id="D8c-DD-sCQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

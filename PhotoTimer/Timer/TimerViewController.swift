@@ -90,20 +90,6 @@ class TimerViewController: UIViewController {
         resetButton.layer.cornerRadius = 10
         resetButton.layer.borderWidth = 1.0   // толщина обводки
         resetButton.layer.borderColor = UIColor.black.cgColor
-        
-        
-        
-//        let devColor = rgbToCGFloat(red: 95, green: 224, blue: 167, alpha: 0.5)
-//        let stopColor = rgbToCGFloat(red: 225, green: 161, blue: 89, alpha: 0.5)
-//        let fixColor = rgbToCGFloat(red: 211, green: 110, blue: 248, alpha: 0.5)
-//        let washColor = rgbToCGFloat(red: 225, green: 223, blue: 80, alpha: 0.5)
-//        let dryColor = rgbToCGFloat(red: 254, green: 98, blue: 125, alpha: 0.5)
-        
-//        pinBackground(backgroundView(color: devColor), to: devStackView)
-//        pinBackground(backgroundView(color: stopColor), to: stopStackView)
-//        pinBackground(backgroundView(color: fixColor), to: fixStackView)
-//        pinBackground(backgroundView(color: washColor), to: washStackView)
-//        pinBackground(backgroundView(color: dryColor), to: dryStackView)
     }
     
     //Теперь, когда загрузился интерфейс, инициируем круговой прогресс-бар
@@ -158,6 +144,7 @@ class TimerViewController: UIViewController {
         guard let timerName = currentTimerName else {
             return
         }
+        circularProgressBar.clearSegmentLayers()
         circularProgressBar.initTrackLayerSegment()
         initCircularProgressBars(maxValue: timeProcessCounter.devTime, segmentName: timerName)
     }
@@ -290,6 +277,8 @@ class TimerViewController: UIViewController {
         setupCircularProgressBar()
         circularProgressBar.resetCircles()
         setupFirstTimerValue()
+        
+        resetButton.isEnabled = false
         
         timeCounter?.invalidate()
         isPaused = true

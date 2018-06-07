@@ -9,6 +9,7 @@
 import UIKit
 import os.log
 import RealmSwift
+import SwipeCellKit
 
 class DataBaseViewController: UIViewController {
 
@@ -191,6 +192,8 @@ class DataBaseViewController: UIViewController {
         let seconds = counter % 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
+    
+    
 }
 
 //MARK: Table view extension
@@ -244,10 +247,12 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         guard let timerName = configuration.schemeName else {
             fatalError("Timer name is nil in row with index \(indexPath.row)")
         }
+        cell.delegate = self
+        
         
         cell.contentView.backgroundColor = UIColor.clear
         cell.timerNameTextLabel?.text = timerName
-        cell.infoTextLabel?.text = "Проявка \(secondsToMinutesSeconds(time: configuration.devTime)), стоп-раствор \(secondsToMinutesSeconds(time: configuration.stopTime)), фикс \(secondsToMinutesSeconds(time: configuration.fixTime)), промывка \(secondsToMinutesSeconds(time: configuration.washTime)), сумка \(secondsToMinutesSeconds(time: configuration.dryTime))"
+        cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
         
         let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
         cellShadowLayer.layer.backgroundColor = UIColor.white.cgColor
@@ -265,30 +270,39 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deletAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Delete") { (deletAction, indexPath) in
-            // Delete the row from the data source
-            let item = self.configurationsList[indexPath.row]
-            try! self.realm.write {
-                self.realm.delete(item)
-            }
-            self.configurationsList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit") { (editAction, indexPath) in
-            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorViewController") as? ConfiguratorViewController else {
-                return
-            }
-            
-            self.selectedIndexPath = indexPath
-            let listToBeUpdated = self.configurationsList[indexPath.row]
-            destinationViewController.currentConfiguration = listToBeUpdated
-            self.navigationController?.pushViewController(destinationViewController, animated: true)
-            
-        }
-        
-        return [deletAction, editAction]
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let deleteAction = UIContextualAction(style: .normal, title: nil, handler: {(ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            let item = self.configurationsList[indexPath.row]
+//            try! self.realm.write {
+//                self.realm.delete(item)
+//            }
+//            self.configurationsList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            success(true)
+//        })
+//        deleteAction.image = UIImage(named: "deleteAction")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//        deleteAction.backgroundColor = UIColor.lightGray
+//
+//        let editAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorViewController") as? ConfiguratorViewController else {
+//                return
+//            }
+//
+//            self.selectedIndexPath = indexPath
+//            let listToBeUpdated = self.configurationsList[indexPath.row]
+//            destinationViewController.currentConfiguration = listToBeUpdated
+//            self.navigationController?.pushViewController(destinationViewController, animated: true)
+//            success(true)
+//        })
+//        editAction.image = UIImage(named: "editAction")
+//        editAction.backgroundColor = UIColor.lightGray
+//
+//        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+//
+//        return swipeConfig
+//
+//    }
+    
     
     //MARK: - Navigation
     
@@ -325,5 +339,48 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
+}
+
+extension DataBaseViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+
+        let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorViewController") as? ConfiguratorViewController else {
+                    return
+                }
+
+                self.selectedIndexPath = indexPath
+                let listToBeUpdated = self.configurationsList[indexPath.row]
+                destinationViewController.currentConfiguration = listToBeUpdated
+                self.navigationController?.pushViewController(destinationViewController, animated: true)
+        }
+        editAction.image = UIImage(named: "editAction")
+        editAction.backgroundColor = UIColor.white
+
+
+        let deleteAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+             //Delete the row from the data source
+            let item = self.configurationsList[indexPath.row]
+            try! self.realm.write {
+                self.realm.delete(item)
+            }
+            self.configurationsList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteAction.image = UIImage(named: "deleteAction")
+        deleteAction.backgroundColor = UIColor.white
+
+        if orientation == .right {
+            return [editAction, deleteAction]
+        }
+        return  nil
+    }
+
+    func visibleRect(for tableView: UITableView) -> CGRect? {
+        return CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+    }
     
+//    func loadDB() {
+//        
+//    }
 }
