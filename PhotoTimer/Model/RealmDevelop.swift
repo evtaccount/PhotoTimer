@@ -94,6 +94,24 @@ class RealmDevelop: Object {
         self.agitationPeriod = agitationPeriod
     }
     
+    convenience init(schemeName: String, filmName: String, developerName: String, devTime: Int, firstAgitationDuration: Int, periodAgitationDuration: Int, agitationPeriod: Int) {
+        self.init()
+        
+        self.schemeName = schemeName
+        self.filmName = filmName
+        self.developerName = developerName
+        
+        self.devTime = devTime
+        self.stopTime = 60
+        self.fixTime = 300
+        self.washTime = 600
+        self.dryTime = 1200
+        
+        self.firstAgitationDuration = firstAgitationDuration
+        self.periodAgitationDuration = periodAgitationDuration
+        self.agitationPeriod = agitationPeriod
+    }
+    
     static func parse(json: Dictionary<String, Any>) -> RealmDevelop? {
         guard let schemeName = json["schemeName"] as? String,
               let filmName = json["filmName"] as? String,
@@ -111,4 +129,5 @@ class RealmDevelop: Object {
         
         return RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
+    
 }

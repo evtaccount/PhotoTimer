@@ -15,27 +15,29 @@ import RealmSwift
 class AppDelegate: UserDefaults, UIApplicationDelegate {
 
     var window: UIWindow?
-    var realm: Realm!
+    let timersURL = Realm.Configuration().fileURL!.deletingLastPathComponent().appendingPathComponent("Timers.realm")
+    let filmsURL = Realm.Configuration().fileURL!.deletingLastPathComponent().appendingPathComponent("Films.realm")
+//    var realmForTimers = Realm(configuration: configTimers)
+//    var realmForFilms = Realm(configuration: configFilms)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if !UserDefaults.standard.bool(forKey: "db_install") {
 //            self.loadSampleTimers()
-            self.loadSamplesFromNetworkToDB()
+//            self.loadSamplesFromNetworkToDB()
+            self.loadFilms()
             self.loadSampleTimers()
         }
         return true
     }
     
-    func setDefaultRealmForUser(username: String) {
-        var config = Realm.Configuration()
-
-        // Use the default directory, but replace the filename with the username
-        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(username).realm")
-
-        // Set this as the configuration used for the default Realm
-        Realm.Configuration.defaultConfiguration = config
-    }
+//    func setDefaultRealmForUser(username: String) {
+//        let config = Realm.Configuration(fileURL: Bundle.main.url(forResource: "FilmsDB", withExtension: "realm"))
+//        
+//        let realm = try! Realm(configuration: config)
+//
+//        
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -116,25 +118,35 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
     
     func loadSamplesFromNetworkToDB() {
         var configurationsList: [RealmDevelop] = []
-        realm = try! Realm()
+        let configTimers = Realm.Configuration(fileURL: timersURL)
+        let realmForTimers = try! Realm(configuration: configTimers)
         
         ProductsInteractor().getProducts { configurations in
             configurationsList = configurations
             
             for item in configurationsList {
-                try! self.realm.write {
-                    self.realm.add(item)
+                try! realmForTimers.write {
+                    realmForTimers.add(item)
                 }
             }
         }
         UserDefaults.standard.set(true, forKey: "db_install")
     }
     
-//    func loadFilms() {
-//        var films = Film()
-//        realm = try! Realm()
-//        
-//        
-//    }
+    func loadFilms() {
+        var films: [Film] = []
+        let configFilms = Realm.Configuration(fileURL: filmsURL)
+        let realmForFilms = try! Realm(configuration: configFilms)
+        
+        ProductsInteractor().getFilms { filmsToDB in
+            films = filmsToDB
+            
+            for item in films {
+                try! realmForFilms.write {
+                    realmForFilms.add(item)
+                }
+            }
+        }
+    }
 }
 

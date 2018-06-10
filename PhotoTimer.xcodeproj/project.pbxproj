@@ -57,6 +57,14 @@
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
 		EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC312A020B5802300036E3A /* RequestHandler.swift */; };
 		EAEF931420C932F600741DF2 /* FilmsAndDevsModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931320C932F600741DF2 /* FilmsAndDevsModelDB.swift */; };
+		EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */; };
+		EAEF931D20CC294800741DF2 /* ChooseFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */; };
+		EAEF931F20CC29C000741DF2 /* ChooseFilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */; };
+		EAEF932120CD01A400741DF2 /* ChooseDeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */; };
+		EAEF932320CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */; };
+		EAEF932520CD0E9F00741DF2 /* ChooseISOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */; };
+		EAEF932720CD0EB500741DF2 /* ChooseISOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */; };
+		EAEF932920CDBB0900741DF2 /* Films.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932820CDBB0900741DF2 /* Films.swift */; };
 		EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +137,14 @@
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
 		EAC312A020B5802300036E3A /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		EAEF931320C932F600741DF2 /* FilmsAndDevsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsAndDevsModelDB.swift; sourceTree = "<group>"; };
+		EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseConstructorCell.swift; sourceTree = "<group>"; };
+		EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFilmViewController.swift; sourceTree = "<group>"; };
+		EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFilmTableViewCell.swift; sourceTree = "<group>"; };
+		EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDeveloperViewController.swift; sourceTree = "<group>"; };
+		EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDeveloperTableViewCell.swift; sourceTree = "<group>"; };
+		EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseISOViewController.swift; sourceTree = "<group>"; };
+		EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseISOTableViewCell.swift; sourceTree = "<group>"; };
+		EAEF932820CDBB0900741DF2 /* Films.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Films.swift; sourceTree = "<group>"; };
 		EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTextFieldCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +224,7 @@
 				EA7B679920BAFF4200848617 /* Model */,
 				EA1941E120B20A3700DA423F /* Timer */,
 				EA76799920B034C9005E4F88 /* Data base */,
+				EAEF931720CC23F500741DF2 /* Constructor */,
 				EADFBD4120AA166C00EF1924 /* Configurator */,
 				EA2477D2209F79CB00E2A9DA /* Info.plist */,
 				EA2477E6209F7A9300E2A9DA /* Resourses */,
@@ -277,6 +294,7 @@
 			children = (
 				EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */,
 				EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */,
+				EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */,
 			);
 			path = "Data base";
 			sourceTree = "<group>";
@@ -287,6 +305,7 @@
 				EA1941E320B3454400DA423F /* RealmDevelop.swift */,
 				EAEF931320C932F600741DF2 /* FilmsAndDevsModelDB.swift */,
 				EAC312A020B5802300036E3A /* RequestHandler.swift */,
+				EAEF932820CDBB0900741DF2 /* Films.swift */,
 				EA1941E220B20A8800DA423F /* Guide View */,
 			);
 			path = Model;
@@ -303,6 +322,19 @@
 			);
 			name = Configurator;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		EAEF931720CC23F500741DF2 /* Constructor */ = {
+			isa = PBXGroup;
+			children = (
+				EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */,
+				EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */,
+				EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */,
+				EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */,
+				EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */,
+				EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */,
+			);
+			path = Constructor;
 			sourceTree = "<group>";
 		};
 		EF8E4859187E033059A299B1 /* Frameworks */ = {
@@ -511,10 +543,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEF931F20CC29C000741DF2 /* ChooseFilmTableViewCell.swift in Sources */,
 				EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
+				EAEF932120CD01A400741DF2 /* ChooseDeveloperViewController.swift in Sources */,
+				EAEF931D20CC294800741DF2 /* ChooseFilmViewController.swift in Sources */,
+				EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */,
 				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
+				EAEF932920CDBB0900741DF2 /* Films.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
+				EAEF932520CD0E9F00741DF2 /* ChooseISOViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
 				EAC312A120B5802300036E3A /* RequestHandler.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
@@ -522,7 +560,9 @@
 				EA1941E420B3454400DA423F /* RealmDevelop.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
+				EAEF932320CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
+				EAEF932720CD0EB500741DF2 /* ChooseISOTableViewCell.swift in Sources */,
 				EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */,
 				EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */,
 				EAEF931420C932F600741DF2 /* FilmsAndDevsModelDB.swift in Sources */,

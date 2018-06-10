@@ -19,6 +19,7 @@ class DataBaseViewController: UIViewController {
     //MARK: Properties
     var realm: Realm!
     let cellIdentifier = "dataBaseCell"
+    let cellIdentifierConstruct = "constructorCell"
     var selectedIndexPath: IndexPath?
     var configurations: [RealmDevelop] = []
     var configurationsList: [RealmDevelop] = []
@@ -229,7 +230,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Количество ячеек в таблице
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return configurationsList.count
+        return configurationsList.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -238,36 +239,69 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Определяем содержимое ячеек
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let configuration = configurationsList[indexPath.row]
+        if indexPath.row < (configurationsList.count) {
+            let configuration = configurationsList[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DataBaseTableViewCell else {
-            fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DataBaseTableViewCell else {
+                fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
+            }
+        
+            guard let timerName = configuration.schemeName else {
+                fatalError("Timer name is nil in row with index \(indexPath.row)")
+            }
+            cell.delegate = self
+        
+        
+            cell.contentView.backgroundColor = UIColor.clear
+            cell.timerNameTextLabel?.text = timerName
+            cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
+        
+            let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
+            cellShadowLayer.layer.backgroundColor = UIColor.white.cgColor
+            cellShadowLayer.layer.masksToBounds = false
+            cellShadowLayer.layer.cornerRadius = 10.0
+            cellShadowLayer.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            cellShadowLayer.layer.shadowRadius = 7
+            cellShadowLayer.layer.shadowOpacity = 0.4
+        
+            cell.addSubview(cellShadowLayer)
+            cell.sendSubview(toBack: cellShadowLayer)
+        
+    //        cell.accessoryType = .disclosureIndicator
+        
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierConstruct, for: indexPath) as? DataBaseConstructorCell else {
+                fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
+            }
+            
+            cell.titleTextLabel.text = "Конструктор таймера"
+            cell.titleTextLabel.textColor = UIColor.white
+            
+            let backgroundGradient = CAGradientLayer()
+            backgroundGradient.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: cell.frame.size.width - 38,
+                height: 65)
+            
+            let startColor = UIColor(red: CGFloat(254.0/255.0), green: CGFloat(181.0/255.0), blue: CGFloat(90.0/255.0), alpha: 1)
+            let endColor = UIColor(red: CGFloat(254.0/255.0), green: CGFloat(141.0/255.0), blue: CGFloat(97.0/255.0), alpha: 1)
+            backgroundGradient.colors = [startColor.cgColor, endColor.cgColor]
+            backgroundGradient.cornerRadius = 10
+            backgroundGradient.masksToBounds = false
+            backgroundGradient.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            backgroundGradient.shadowRadius = 7
+            backgroundGradient.shadowOpacity = 0.4
+            
+            let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
+            cellShadowLayer.layer.addSublayer(backgroundGradient)
+
+            cell.addSubview(cellShadowLayer)
+            cell.sendSubview(toBack: cellShadowLayer)
+            
+            return cell
         }
-        
-        guard let timerName = configuration.schemeName else {
-            fatalError("Timer name is nil in row with index \(indexPath.row)")
-        }
-        cell.delegate = self
-        
-        
-        cell.contentView.backgroundColor = UIColor.clear
-        cell.timerNameTextLabel?.text = timerName
-        cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
-        
-        let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
-        cellShadowLayer.layer.backgroundColor = UIColor.white.cgColor
-        cellShadowLayer.layer.masksToBounds = false
-        cellShadowLayer.layer.cornerRadius = 10.0
-        cellShadowLayer.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        cellShadowLayer.layer.shadowRadius = 7
-        cellShadowLayer.layer.shadowOpacity = 0.4
-        
-        cell.addSubview(cellShadowLayer)
-        cell.sendSubview(toBack: cellShadowLayer)
-        
-//        cell.accessoryType = .disclosureIndicator
-        
-        return cell
     }
     
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -334,6 +368,16 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             let selectedTimer = configurationsList[indexPath.row]
             timerViewController.incomingTimer = selectedTimer
+            
+        case "constructTimer":
+            guard let constructorCell = sender as? DataBaseConstructorCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = self.tableview?.indexPath(for: constructorCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            tableview.deselectRow(at: indexPath, animated: true)
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
