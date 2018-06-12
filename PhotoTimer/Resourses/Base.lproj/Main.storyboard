@@ -447,7 +447,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPd-9M-lo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dLy-gb-EsU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6426" y="158"/>
+            <point key="canvasLocation" x="6335" y="158"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="6lm-Ef-Bep">
@@ -613,7 +613,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxO-VH-wkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sQH-Cc-ohE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="157.87106446776613"/>
+            <point key="canvasLocation" x="4574" y="158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iQA-Kp-fMM">
@@ -631,7 +631,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlG-P3-Oyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768.8000000000002" y="157.87106446776613"/>
+            <point key="canvasLocation" x="3769" y="158"/>
         </scene>
         <!--Choose Film View Controller-->
         <scene sceneID="dvv-mT-gBT">
@@ -836,7 +836,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqe-6z-HKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="899"/>
+            <point key="canvasLocation" x="4574" y="899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bkq-ID-Mh8">
@@ -854,7 +854,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJW-2Y-bGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5484" y="158"/>
+            <point key="canvasLocation" x="5394" y="158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="70B-Sf-U6h">
@@ -876,6 +876,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="X1Z-UW-arp"/>
+        <segue reference="Eiq-ZO-1NJ"/>
     </inferredMetricsTieBreakers>
 </document>

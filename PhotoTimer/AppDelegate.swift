@@ -25,7 +25,8 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: "db_install") {
 //            self.loadSampleTimers()
 //            self.loadSamplesFromNetworkToDB()
-            self.loadFilms()
+//            self.loadFilms()
+            Films().loadFilmsDataBase()
             self.loadSampleTimers()
         }
         return true
@@ -138,9 +139,10 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         let configFilms = Realm.Configuration(fileURL: filmsURL)
         let realmForFilms = try! Realm(configuration: configFilms)
         
+        
         ProductsInteractor().getFilms { filmsToDB in
             films = filmsToDB
-            
+
             for item in films {
                 try! realmForFilms.write {
                     realmForFilms.add(item)
