@@ -18,8 +18,6 @@ class DataBaseViewController: UIViewController {
     
     //MARK: Properties
     var realm: Realm!
-    let cellIdentifier = "dataBaseCell"
-    let cellIdentifierConstruct = "constructorCell"
     var selectedIndexPath: IndexPath?
     var configurations: [TimerConfig] = []
     var configurationsList: [TimerConfig] = []
@@ -223,7 +221,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row < (configurationsList.count) {
             let configuration = configurationsList[indexPath.row]
         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DataBaseTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConfigCell, for: indexPath) as? DataBaseTableViewCell else {
                 fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
             }
         
@@ -251,7 +249,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierConstruct, for: indexPath) as? DataBaseConstructorCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConstructCell, for: indexPath) as? DataBaseConstructorCell else {
                 fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
             }
             

@@ -17,7 +17,6 @@ class ChooseISOViewController: UIViewController {
     var developerName: String?
     var choosenDeveloper: Developers?
     var devProperties = List<DevProperties>()
-    let cellIdentifier = "isoCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +73,7 @@ extension ChooseISOViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let propertySet = devProperties[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChooseISOTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructISOCell, for: indexPath) as? ChooseISOTableViewCell else {
             fatalError("The dequeued cell is not an instance of ChooseISOTableViewCell.")
         }
         

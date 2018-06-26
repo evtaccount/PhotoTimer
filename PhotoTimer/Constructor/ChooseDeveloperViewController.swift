@@ -16,7 +16,6 @@ class ChooseDeveloperViewController: UIViewController {
     var choosenFilm: Film?
     var filmName: String?
     var developers = List<Developers>()
-    let cellIdentifier = "developerCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +68,7 @@ extension ChooseDeveloperViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let developer = developers[indexPath.row]
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChooseDeveloperTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructDevCell, for: indexPath) as? ChooseDeveloperTableViewCell else {
             fatalError("The dequeued cell is not an instance of ChooseDeveloperTableViewCell.")
         }
 

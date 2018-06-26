@@ -13,7 +13,6 @@ class ChooseFilmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let cellIdentifier = "constructFilmCell"
     var filmsList: [Film] = []
 
     override func viewDidLoad() {
@@ -56,7 +55,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let film = filmsList[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChooseFilmTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ChooseFilmTableViewCell else {
             fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
         }
         

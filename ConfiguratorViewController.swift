@@ -18,8 +18,6 @@ class ConfiguratorViewController: UIViewController {
     //MARK: Properties
     var currentConfiguration: TimerConfig?
     var configToSave: TimerConfig?
-    let cellTextFieldIdentifier = "TextFieldConfig"
-    let cellSetTimerIdentifier = "SetTimerConfig"
     var menuNames: [[ItemList]] = []
     var selectedIndexPath: IndexPath?
     var fromTimer: Bool = false
@@ -192,7 +190,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         let itemOfMenu = menuNames[indexPath.section][indexPath.row]
         
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.configTextField, for: indexPath) as? ConfiguratorTextFieldCell else {
                 fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.newImageView.image = UIImage(named: itemOfMenu.imageName)
@@ -204,7 +202,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellSetTimerIdentifier, for: indexPath) as? ConfiguratorLabelTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.configSetTimer, for: indexPath) as? ConfiguratorLabelTableViewCell else {
                 fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
             }
             cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
