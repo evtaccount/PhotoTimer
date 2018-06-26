@@ -21,8 +21,8 @@ class DataBaseViewController: UIViewController {
     let cellIdentifier = "dataBaseCell"
     let cellIdentifierConstruct = "constructorCell"
     var selectedIndexPath: IndexPath?
-    var configurations: [RealmDevelop] = []
-    var configurationsList: [RealmDevelop] = []
+    var configurations: [TimerConfig] = []
+    var configurationsList: [TimerConfig] = []
     
     private lazy var backgroundView: UIView = {
         let view = UIView()
@@ -40,8 +40,7 @@ class DataBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSamplesFromDB()
-        realm = try! Realm()
+        configurationsList = PTRealmDatabase.loadConfigurationsFromDB()
         self.tableview?.reloadData()
         // Do any additional setup after loading the view.
         
@@ -63,31 +62,22 @@ class DataBaseViewController: UIViewController {
             //Если редактировался таймер из БД, обновляем этот таймер
             if let selectedIndexPath = selectedIndexPath {
                 
-                try! self.realm.write {
-                    configurationsList[selectedIndexPath.row].schemeName = config.schemeName
-                    configurationsList[selectedIndexPath.row].filmName = config.filmName
-                    configurationsList[selectedIndexPath.row].developerName = config.developerName
-                    configurationsList[selectedIndexPath.row].devTime = config.devTime
-                    configurationsList[selectedIndexPath.row].stopTime = config.stopTime
-                    configurationsList[selectedIndexPath.row].fixTime = config.fixTime
-                    configurationsList[selectedIndexPath.row].washTime = config.washTime
-                    configurationsList[selectedIndexPath.row].dryTime = config.dryTime
-                    configurationsList[selectedIndexPath.row].firstAgitationDuration = config.firstAgitationDuration
-                    configurationsList[selectedIndexPath.row].periodAgitationDuration = config.periodAgitationDuration
-                    configurationsList[selectedIndexPath.row].agitationPeriod = config.agitationPeriod
+                if PTRealmDatabase.updateConfiguration(newConfig: config) {
+                    configurationsList[selectedIndexPath.row] = config
+                    self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
+                } else {
+                    fatalError("Save updated configuration is fail")
                 }
-                
-                self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new timer
                 let newIndexPath = IndexPath(row: configurationsList.count, section: 0)
-                try! self.realm.write {
-                    self.realm.add(config)
+                if PTRealmDatabase.saveNewConfiguration(forConfiguration: config) {
+                    configurationsList.append(config)
+                    self.tableview.insertRows(at: [newIndexPath], with: .none)
+                } else {
+                    fatalError("Save new configuration is fail")
                 }
-                
-                configurationsList.append(config)
-                self.tableview.insertRows(at: [newIndexPath], with: .none)
             }
         }
     }
@@ -179,15 +169,6 @@ class DataBaseViewController: UIViewController {
     }
     
     //MARK: Private method
-    private func loadSamplesFromDB() {
-        let realm = try! Realm()
-        var configurations = [RealmDevelop]()
-        for config in realm.objects(RealmDevelop.self) {
-            configurations.append(config)
-        }
-        self.configurationsList = configurations
-    }
-    
     private func secondsToMinutesSeconds (time counter: Int) -> (String) {
         let minutes = counter / 60
         let seconds = counter % 60
@@ -251,7 +232,6 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.delegate = self
         
-        
             cell.contentView.backgroundColor = UIColor.clear
             cell.timerNameTextLabel?.text = timerName
             cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
@@ -307,12 +287,12 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //        let deleteAction = UIContextualAction(style: .normal, title: nil, handler: {(ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
 //            let item = self.configurationsList[indexPath.row]
-//            try! self.realm.write {
-//                self.realm.delete(item)
+//            if PTRealmDatabase.deleteConfiguration(forConfig: item) {
+//                self.configurationsList.remove(at: indexPath.row)
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//                
+//                success(true)
 //            }
-//            self.configurationsList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            success(true)
 //        })
 //        deleteAction.image = UIImage(named: "deleteAction")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
 //        deleteAction.backgroundColor = UIColor.lightGray
@@ -334,7 +314,6 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
 //        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
 //
 //        return swipeConfig
-//
 //    }
     
     
@@ -405,11 +384,12 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
         let deleteAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
              //Delete the row from the data source
             let item = self.configurationsList[indexPath.row]
-            try! self.realm.write {
-                self.realm.delete(item)
+            if PTRealmDatabase.deleteConfiguration(forConfig: item) {
+                self.configurationsList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                fatalError("Delete is fail")
             }
-            self.configurationsList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteAction.image = UIImage(named: "deleteAction")
         deleteAction.backgroundColor = UIColor.white

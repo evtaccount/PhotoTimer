@@ -152,14 +152,8 @@ extension SetTimeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        switch component {
-        case 0:
-            return "\(minutesAndSeconds[row]) min."
-        case 1:
-            return "\(minutesAndSeconds[row]) sec."
-        default:
-            return "\(minutesAndSeconds[row]) sec."
-        } 
+        return "\(minutesAndSeconds[row]) \(component == 0 ? "min." : "sec.")"
+
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

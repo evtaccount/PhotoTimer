@@ -1,5 +1,5 @@
 //
-//  RealmDevelop.swift
+//  TimerConfig.swift
 //  PhotoTimer
 //
 //  Created by Evgeny Evtushenko on 21/05/2018.
@@ -31,9 +31,9 @@ struct ItemList {
     }
 }
 
-class RealmDevelop: Object {
+class TimerConfig: Object {
     
-    //MARK: Properties
+    //MARK: - Properties
     //Names
     @objc dynamic var schemeName: String?
     @objc dynamic var filmName: String?
@@ -51,6 +51,7 @@ class RealmDevelop: Object {
     @objc dynamic var agitationPeriod: Int = 0
     @objc dynamic var periodAgitationDuration: Int = 0
     
+    //MARK: - Initialization
     convenience init(schemeName: String?, filmName: String?, developerName: String?) {
         self.init()
         
@@ -112,22 +113,22 @@ class RealmDevelop: Object {
         self.agitationPeriod = agitationPeriod
     }
     
-    static func parse(json: Dictionary<String, Any>) -> RealmDevelop? {
-        guard let schemeName = json["schemeName"] as? String,
-              let filmName = json["filmName"] as? String,
-              let developerName = json["developerName"] as? String,
-              let devTime = json["devTime"] as? Int,
-              let stopTime = json["stopTime"] as? Int,
-              let fixTime = json["fixTime"] as? Int,
-              let washTime = json["washTime"] as? Int,
-              let dryTime = json["dryTime"] as? Int,
-              let firstAgitationDuration = json["firstAgitationDuration"] as? Int,
-              let periodAgitationDuration = json["periodAgitationDuration"] as? Int,
-              let agitationPeriod = json["agitationPeriod"] as? Int else {
-            return nil
-        }
-        
-        return RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
-    }
+//    static func parse(json: Dictionary<String, Any>) -> TimerConfig? {
+//        guard let schemeName = json["schemeName"] as? String,
+//              let filmName = json["filmName"] as? String,
+//              let developerName = json["developerName"] as? String,
+//              let devTime = json["devTime"] as? Int,
+//              let stopTime = json["stopTime"] as? Int,
+//              let fixTime = json["fixTime"] as? Int,
+//              let washTime = json["washTime"] as? Int,
+//              let dryTime = json["dryTime"] as? Int,
+//              let firstAgitationDuration = json["firstAgitationDuration"] as? Int,
+//              let periodAgitationDuration = json["periodAgitationDuration"] as? Int,
+//              let agitationPeriod = json["agitationPeriod"] as? Int else {
+//            return nil
+//        }
+//        
+//        return TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+//    }
 
 }

@@ -15,10 +15,6 @@ import RealmSwift
 class AppDelegate: UserDefaults, UIApplicationDelegate {
 
     var window: UIWindow?
-    let timersURL = Realm.Configuration().fileURL!.deletingLastPathComponent().appendingPathComponent("Timers.realm")
-    let filmsURL = Realm.Configuration().fileURL!.deletingLastPathComponent().appendingPathComponent("Films.realm")
-//    var realmForTimers = Realm(configuration: configTimers)
-//    var realmForFilms = Realm(configuration: configFilms)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,19 +22,11 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
 //            self.loadSampleTimers()
 //            self.loadSamplesFromNetworkToDB()
 //            self.loadFilms()
-            Films().loadFilmsDataBase()
+            PTLoadFilmsToDB.loadFilms()
             self.loadSampleTimers()
         }
         return true
     }
-    
-//    func setDefaultRealmForUser(username: String) {
-//        let config = Realm.Configuration(fileURL: Bundle.main.url(forResource: "FilmsDB", withExtension: "realm"))
-//        
-//        let realm = try! Realm(configuration: config)
-//
-//        
-//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,7 +51,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
     }
 
     func loadSampleTimers() {
-        let firstTimer = RealmDevelop(
+        let firstTimer = TimerConfig(
             schemeName: "Fomapan 400 + Ilford",
             filmName: "Fomapan 400",
             developerName: "Ilford D-11",
@@ -77,7 +65,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             agitationPeriod: 10
         )
         
-        let secondTimer = RealmDevelop(
+        let secondTimer = TimerConfig(
             schemeName: "Fomapan 100 + Ilford",
             filmName: "Fomapan 100",
             developerName: "Ilford D-11",
@@ -91,7 +79,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             agitationPeriod: 10
         )
         
-        let thirdTimer = RealmDevelop(
+        let thirdTimer = TimerConfig(
             schemeName: "Ilford + Ilford",
             filmName: "Ilford XP-2",
             developerName: "Ilford D-11",
@@ -107,48 +95,46 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
         
         let configurations = [firstTimer, secondTimer, thirdTimer]
         
-        let realm = try! Realm()
-        try! realm.write {
+        let realm = try? Realm()
+        try? realm?.write {
             for config in configurations {
-                realm.add(config)
+                realm?.add(config)
             }
         }
         
         UserDefaults.standard.set(true, forKey: "db_install")
     }
     
-    func loadSamplesFromNetworkToDB() {
-        var configurationsList: [RealmDevelop] = []
-        let configTimers = Realm.Configuration(fileURL: timersURL)
-        let realmForTimers = try! Realm(configuration: configTimers)
-        
-        ProductsInteractor().getProducts { configurations in
-            configurationsList = configurations
-            
-            for item in configurationsList {
-                try! realmForTimers.write {
-                    realmForTimers.add(item)
-                }
-            }
-        }
-        UserDefaults.standard.set(true, forKey: "db_install")
-    }
+//    func loadSamplesFromNetworkToDB() {
+//        var configurationsList: [TimerConfig] = []
+//        let realmForTimers = try! Realm()
+//
+//        ProductsInteractor().getProducts { configurations in
+//            configurationsList = configurations
+//
+//            for item in configurationsList {
+//                try! realmForTimers.write {
+//                    realmForTimers.add(item)
+//                }
+//            }
+//        }
+//        UserDefaults.standard.set(true, forKey: "db_install")
+//    }
     
-    func loadFilms() {
-        var films: [Film] = []
-        let configFilms = Realm.Configuration(fileURL: filmsURL)
-        let realmForFilms = try! Realm(configuration: configFilms)
-        
-        
-        ProductsInteractor().getFilms { filmsToDB in
-            films = filmsToDB
-
-            for item in films {
-                try! realmForFilms.write {
-                    realmForFilms.add(item)
-                }
-            }
-        }
-    }
+//    func loadFilms() {
+//        var films: [Film] = []
+//        let realmForFilms = try! Realm()
+//        
+//        
+//        ProductsInteractor().getFilms { filmsToDB in
+//            films = filmsToDB
+//
+//            for item in films {
+//                try! realmForFilms.write {
+//                    realmForFilms.add(item)
+//                }
+//            }
+//        }
+//    }
 }
 

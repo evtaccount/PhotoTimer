@@ -16,8 +16,8 @@ class ConfiguratorViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //MARK: Properties
-    var currentConfiguration: RealmDevelop?
-    var configToSave: RealmDevelop?
+    var currentConfiguration: TimerConfig?
+    var configToSave: TimerConfig?
     let cellTextFieldIdentifier = "TextFieldConfig"
     let cellSetTimerIdentifier = "SetTimerConfig"
     var menuNames: [[ItemList]] = []
@@ -33,7 +33,7 @@ class ConfiguratorViewController: UIViewController {
             setup()
             fromTimer = true
         } else {
-            currentConfiguration = RealmDevelop(schemeName: nil, filmName: nil, developerName: nil)
+            currentConfiguration = TimerConfig(schemeName: nil, filmName: nil, developerName: nil)
             saveButton.isEnabled = false
             selectedIndexPath = nil
             setup()
@@ -110,7 +110,7 @@ class ConfiguratorViewController: UIViewController {
             return
         }
         
-        configToSave = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        configToSave = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
     
     //MARK: Actions

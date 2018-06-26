@@ -19,7 +19,7 @@ class ChooseFilmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadFilms()
+        filmsList = PTRealmDatabase.loadFilmsFormDB()
         // Do any additional setup after loading the view.
     }
 
@@ -45,19 +45,6 @@ class ChooseFilmViewController: UIViewController {
         
         let film = filmsList[indexPath.row]
         chooseDeveloperViewController.choosenFilm = film
-    }
- 
-    
-    func loadFilms() {
-        var realmConfig = Realm.Configuration()
-        realmConfig.fileURL = realmConfig.fileURL!.deletingLastPathComponent().appendingPathComponent("Films.realm")
-        
-        let realmFilms = try! Realm(configuration: realmConfig)
-        var films = [Film]()
-        for film in realmFilms.objects(Film.self) {
-            films.append(film)
-        }
-        self.filmsList = films
     }
 }
 

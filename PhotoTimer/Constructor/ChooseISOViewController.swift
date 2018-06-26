@@ -57,7 +57,7 @@ class ChooseISOViewController: UIViewController {
         let periodAgitationDuration = propertySet.periodAgitationDuration
         let agitationPeriod = propertySet.agitationPeriod
         
-        let timer = RealmDevelop(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        let timer = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
         timerViewController.currentConfiguration = timer
     }
 
