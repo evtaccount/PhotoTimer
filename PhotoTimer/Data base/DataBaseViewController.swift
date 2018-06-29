@@ -38,6 +38,10 @@ class DataBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
+                                                            target: self,
+                                                            action: #selector(addNewTimer))
+        
         configurationsList = PTRealmDatabase.loadConfigurationsFromDB()
         self.tableview?.reloadData()
         // Do any additional setup after loading the view.
@@ -155,7 +159,7 @@ class DataBaseViewController: UIViewController {
     func snapshotOfCell(inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
         inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext() as! UIImage
+        let image = UIGraphicsGetImageFromCurrentImageContext() as? UIImage
         UIGraphicsEndImageContext()
         let cellSnapshot : UIView = UIImageView(image: image)
         cellSnapshot.layer.masksToBounds = false
@@ -282,6 +286,30 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableview.deselectRow(at: indexPath, animated: false)
+        
+        if indexPath.row < (configurationsList.count) {
+            guard let timerVC = storyboard?.instantiateViewController(withIdentifier: "timerItself") as? TimerViewController else { return }
+            let selectedTimer = configurationsList[indexPath.row]
+            
+            selectedIndexPath = indexPath
+            timerVC.incomingTimer = selectedTimer
+            navigationController?.pushViewController(timerVC, animated: true)
+        } else {
+            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") else { return }
+            navigationController?.pushViewController(constructorVC, animated: true)
+        }
+    }
+    
+    @objc func addNewTimer() {
+        guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "configuratorVC") else { return }
+        let vcWithNavBar = UINavigationController(rootViewController: constructorVC)
+        present(vcWithNavBar, animated: true, completion: nil)
+//        navigationController?.pushViewController(constructorVC, animated: true)
+        selectedIndexPath = nil
+    }
+    
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //        let deleteAction = UIContextualAction(style: .normal, title: nil, handler: {(ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
 //            let item = self.configurationsList[indexPath.row]
@@ -316,49 +344,8 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     //MARK: - Navigation
-    
-    //Небольшая подготовка перед переходом к другому VC
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
+    func goToNavigationController(viewController: UIViewController, animated: Bool) {
         
-        switch(segue.identifier ?? "") {
-            
-        case "addTimer":
-            selectedIndexPath = nil
-            os_log("Adding a new timer.", log: OSLog.default, type: .debug)
-            
-        case "showTimer":
-            guard let timerViewController = segue.destination as? TimerViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            guard let selectedTimerCell = sender as? DataBaseTableViewCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let indexPath = self.tableview?.indexPath(for: selectedTimerCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            
-            selectedIndexPath = self.tableview?.indexPath(for: selectedTimerCell)
-            tableview.deselectRow(at: indexPath, animated: true)
-            
-            let selectedTimer = configurationsList[indexPath.row]
-            timerViewController.incomingTimer = selectedTimer
-            
-        case "constructTimer":
-            guard let constructorCell = sender as? DataBaseConstructorCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let indexPath = self.tableview?.indexPath(for: constructorCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            tableview.deselectRow(at: indexPath, animated: true)
-            
-        default:
-            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
-        }
     }
 }
 
@@ -366,7 +353,7 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 
         let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
-            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorViewController") as? ConfiguratorViewController else {
+            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorVC") as? ConfiguratorViewController else {
                     return
                 }
 

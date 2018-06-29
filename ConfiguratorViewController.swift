@@ -26,6 +26,8 @@ class ConfiguratorViewController: UIViewController {
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = false
 
         if currentConfiguration != nil {
             setup()

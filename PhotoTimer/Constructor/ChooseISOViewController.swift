@@ -83,12 +83,19 @@ extension ChooseISOViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let film = filmsList[indexPath.row]
-    //        let developers = film.developers
-    //
-    //
-    //    }
-    //
-    //
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            guard let timerViewController = storyboard?.instantiateViewController(withIdentifier: "configuratorVC") as? ConfiguratorViewController else { return }
+            guard let filmName = filmName, let developerName = choosenDeveloper?.devName else { return }
+            
+            let propertySet = devProperties[indexPath.row]
+            let schemeName = filmName + "+" + developerName
+            let devTime = propertySet.developingTime
+            let firstAgitationDuration = propertySet.firstAgitationDuration
+            let periodAgitationDuration = propertySet.periodAgitationDuration
+            let agitationPeriod = propertySet.agitationPeriod
+            
+            let timer = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+            timerViewController.currentConfiguration = timer
+            navigationController?.pushViewController(timerViewController, animated: true)
+        }
 }

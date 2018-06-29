@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmB-Cn-foh" customClass="CircularProgressBar" customModule="PhotoTimer" customModuleProvider="target">
-                                <rect key="frame" x="45" y="72" width="285" height="285"/>
+                                <rect key="frame" x="45" y="28" width="285" height="285"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZM-BX-4oI">
                                         <rect key="frame" x="60.5" y="109" width="164" height="66"/>
@@ -232,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768.8000000000002" y="-537.48125937031489"/>
+            <point key="canvasLocation" x="3769" y="-561"/>
         </scene>
         <!--Data Base View Controller-->
         <scene sceneID="uod-5k-KvQ">
@@ -286,7 +286,6 @@
                                         <connections>
                                             <outlet property="infoTextLabel" destination="ihO-bl-IaT" id="1o1-ze-ToF"/>
                                             <outlet property="timerNameTextLabel" destination="EKE-KJ-2Pq" id="eUQ-89-nTS"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showTimer" id="xMg-Wm-FjZ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="constructorCell" rowHeight="70" id="cpO-qn-a7U" customClass="DataBaseConstructorCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -319,7 +318,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleTextLabel" destination="JVU-mP-bcy" id="tYt-jd-0bC"/>
-                                            <segue destination="y09-uQ-syh" kind="show" identifier="constructTimer" id="88p-X1-JMN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -339,11 +337,7 @@
                         <viewLayoutGuide key="safeArea" id="Dwc-bs-ums"/>
                     </view>
                     <navigationItem key="navigationItem" id="AFY-NT-ntK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2If-3U-iCP">
-                            <connections>
-                                <segue destination="vex-63-N7w" kind="presentation" identifier="addTimer" id="2IA-Z3-UQB"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2If-3U-iCP"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="sF6-jP-1VI" id="xMz-F3-yBz"/>
@@ -362,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4K8-ON-nhZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="343"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="setTimerCell" id="xOW-cr-Vlm" customClass="SetTimeTableViewCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -447,7 +441,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPd-9M-lo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dLy-gb-EsU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6335" y="158"/>
+            <point key="canvasLocation" x="4577" y="158"/>
         </scene>
         <!--Guide View Controller-->
         <scene sceneID="6lm-Ef-Bep">
@@ -495,13 +489,13 @@
         <!--Configurator View Controller-->
         <scene sceneID="gcd-1f-H6h">
             <objects>
-                <viewController storyboardIdentifier="configuratorViewController" id="L9U-9W-ojw" customClass="ConfiguratorViewController" customModule="PhotoTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="configuratorVC" id="L9U-9W-ojw" customClass="ConfiguratorViewController" customModule="PhotoTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yhV-ff-c20">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cvp-bY-o29">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="configTextField" id="t15-7z-dab" customClass="ConfiguratorTextFieldCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -613,36 +607,18 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxO-VH-wkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sQH-Cc-ohE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4574" y="158"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="iQA-Kp-fMM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vex-63-N7w" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UE3-Sw-nCm">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="L9U-9W-ojw" kind="relationship" relationship="rootViewController" id="Eiq-ZO-1NJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vlG-P3-Oyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
             <point key="canvasLocation" x="3769" y="158"/>
         </scene>
         <!--Choose Film View Controller-->
         <scene sceneID="dvv-mT-gBT">
             <objects>
-                <viewController id="y09-uQ-syh" customClass="ChooseFilmViewController" customModule="PhotoTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="constructorVC" id="y09-uQ-syh" customClass="ChooseFilmViewController" customModule="PhotoTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ikL-me-hmy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-RU-E21">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="constructFilmCell" id="Ker-kE-yqC" customClass="ChooseFilmTableViewCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -691,7 +667,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBC-dg-qJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2961" y="900"/>
+            <point key="canvasLocation" x="3769" y="891"/>
         </scene>
         <!--Choose Developer View Controller-->
         <scene sceneID="3qh-le-vtQ">
@@ -702,7 +678,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eDw-IS-hhn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="constructDevCell" id="0I4-xZ-ZCi" customClass="ChooseDeveloperTableViewCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -751,7 +727,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hr-Np-jfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3769" y="899"/>
+            <point key="canvasLocation" x="4577" y="890"/>
         </scene>
         <!--ChooseISO View Controller-->
         <scene sceneID="EKM-7K-xGN">
@@ -762,7 +738,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lXW-5C-FxX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="constructISOCell" id="gj4-kr-23e" customClass="ChooseISOTableViewCell" customModule="PhotoTimer" customModuleProvider="target">
@@ -811,7 +787,6 @@
                                         <connections>
                                             <outlet property="dilutionTextLabel" destination="SJm-jj-2MM" id="Qzg-9c-bzw"/>
                                             <outlet property="isoTextLabel" destination="fkO-hB-GKn" id="2YH-bt-5af"/>
-                                            <segue destination="L9U-9W-ojw" kind="show" id="X1Z-UW-arp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -836,25 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqe-6z-HKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4574" y="899"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bkq-ID-Mh8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wB5-yb-2zN" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eEC-DP-Ds5">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PQR-d2-sAL" kind="relationship" relationship="rootViewController" id="ThC-cD-mtV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sJW-2Y-bGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5394" y="158"/>
+            <point key="canvasLocation" x="5382" y="890"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="70B-Sf-U6h">
@@ -875,7 +832,4 @@
             <point key="canvasLocation" x="1965.5999999999999" y="157.87106446776613"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="X1Z-UW-arp"/>
-    </inferredMetricsTieBreakers>
 </document>
