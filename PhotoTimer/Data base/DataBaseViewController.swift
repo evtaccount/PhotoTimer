@@ -95,6 +95,9 @@ class DataBaseViewController: UIViewController {
         let state = longPress.state
         let locationInView = longPress.location(in: tableview)//
         var indexPath = tableview.indexPathForRow(at: locationInView)
+        if indexPath?.row == configurationsList.count {
+            return
+        }
 
         struct My {
             static var cellSnapshot: UIView? = nil
@@ -134,7 +137,7 @@ class DataBaseViewController: UIViewController {
             var center = My.cellSnapshot!.center
             center.y = locationInView.y
             My.cellSnapshot!.center = center
-            if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
+            if ((indexPath != nil) && (indexPath != Path.initialIndexPath) && (indexPath?.row != configurationsList.count)) {
                 let temp = configurationsList.remove(at: (Path.initialIndexPath?.row)!)
                 configurationsList.insert(temp, at: (indexPath?.row)!)
                 tableview.moveRow(at: Path.initialIndexPath!, to: indexPath!)
