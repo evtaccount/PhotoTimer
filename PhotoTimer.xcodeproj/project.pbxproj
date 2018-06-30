@@ -19,6 +19,7 @@
 		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27320A4B0120058AAA2 /* GuideView.swift */; };
 		EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */; };
+		EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E8F6A20E787DA009C4ADE /* PTNavigationController.swift */; };
 		EA62045F20BDC30B00874123 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62044120BDC30B00874123 /* SF-Pro-Display-Thin.otf */; };
 		EA62046020BDC30B00874123 /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62044220BDC30B00874123 /* SF-Pro-Display-SemiboldItalic.otf */; };
 		EA62046120BDC30B00874123 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62044320BDC30B00874123 /* SF-Pro-Text-Heavy.otf */; };
@@ -104,6 +105,7 @@
 		EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		EA2FB27320A4B0120058AAA2 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		EA4E8F6A20E787DA009C4ADE /* PTNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTNavigationController.swift; sourceTree = "<group>"; };
 		EA62044120BDC30B00874123 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		EA62044220BDC30B00874123 /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		EA62044320BDC30B00874123 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				EA2477E6209F7A9300E2A9DA /* Resourses */,
 				EA876F9420D40ED100097EDD /* DBNavigationViewController.swift */,
 				EA8A713620E21585005BF40E /* Extensions.swift */,
+				EA4E8F6A20E787DA009C4ADE /* PTNavigationController.swift */,
 			);
 			path = PhotoTimer;
 			sourceTree = "<group>";
@@ -360,10 +363,10 @@
 			children = (
 				EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */,
 				EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */,
+				EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */,
 				EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */,
 				EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */,
 				EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */,
-				EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */,
 			);
 			path = Constructor;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
 				EA1941E420B3454400DA423F /* TimerConfig.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
+				EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
 				EAEF932320CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,

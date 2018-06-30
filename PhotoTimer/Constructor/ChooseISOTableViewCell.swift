@@ -13,5 +13,4 @@ class ChooseISOTableViewCell: UITableViewCell {
     @IBOutlet weak var isoTextLabel: UILabel!
     @IBOutlet weak var dilutionTextLabel: UILabel!
     
-
 }

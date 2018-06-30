@@ -297,7 +297,9 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             timerVC.incomingTimer = selectedTimer
             navigationController?.pushViewController(timerVC, animated: true)
         } else {
-            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") else { return }
+            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ChooseFilmViewController else { return }
+            
+            constructorVC.stepID = "film"
             navigationController?.pushViewController(constructorVC, animated: true)
         }
     }

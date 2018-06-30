@@ -11,6 +11,5 @@ import UIKit
 class ChooseFilmTableViewCell: UITableViewCell {
 
     @IBOutlet weak var filmNameTextLabel: UILabel!
-    
 
 }
