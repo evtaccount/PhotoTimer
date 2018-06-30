@@ -75,7 +75,7 @@ class ConfiguratorViewController: UIViewController {
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
@@ -85,18 +85,19 @@ class ConfiguratorViewController: UIViewController {
         for ind in 0...2 {
             let indexPath = IndexPath(row: ind, section: 0)
             let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
-            
+
             guard let name = cell.itemTextField.text else {
                 return
             }
             menuNames[0][ind].itemValue = name
         }
-        
+
 //        currentConfiguration?.schemeName = menuNames[0][0].itemValue
 //        currentConfiguration?.filmName = menuNames[0][1].itemValue
 //        currentConfiguration?.developerName = menuNames[0][2].itemValue
-        
-        guard let schemeName = menuNames[0][0].itemValue,
+
+        guard let id = currentConfiguration?.id,
+              let schemeName = menuNames[0][0].itemValue,
               let filmName = menuNames[0][1].itemValue,
               let developerName = menuNames[0][2].itemValue,
               let devTime = currentConfiguration?.devTime,
@@ -109,6 +110,8 @@ class ConfiguratorViewController: UIViewController {
               let agitationPeriod = currentConfiguration?.agitationPeriod else {
             return
         }
+
+//        configToSave?.id = id
         
         configToSave = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
@@ -138,6 +141,62 @@ class ConfiguratorViewController: UIViewController {
                 saveButton.isEnabled = true
             }
         }
+    }
+    
+    @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
+        guard let dataBaseVC = storyboard?.instantiateViewController(withIdentifier: "dataBaseVC") else { return }
+        
+        for ind in 0...2 {
+            let indexPath = IndexPath(row: ind, section: 0)
+            let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
+            
+            guard let name = cell.itemTextField.text else {
+                return
+            }
+            menuNames[0][ind].itemValue = name
+        }
+        
+        let idd = currentConfiguration?.id
+        guard let id = currentConfiguration?.id,
+              let schemeName = menuNames[0][0].itemValue,
+              let filmName = menuNames[0][1].itemValue,
+              let developerName = menuNames[0][2].itemValue,
+              let devTime = currentConfiguration?.devTime,
+              let stopTime = currentConfiguration?.stopTime,
+              let fixTime = currentConfiguration?.fixTime,
+              let washTime = currentConfiguration?.washTime,
+              let dryTime = currentConfiguration?.washTime,
+              let firstAgitationDuration = currentConfiguration?.firstAgitationDuration,
+              let periodAgitationDuration = currentConfiguration?.periodAgitationDuration,
+              let agitationPeriod = currentConfiguration?.agitationPeriod else {
+                  return
+        }
+        
+        let configToSave = TimerConfig.init()
+        configToSave.id = id
+        configToSave.schemeName = schemeName
+        configToSave.filmName = filmName
+        configToSave.developerName = developerName
+        configToSave.devTime = devTime
+        configToSave.stopTime = stopTime
+        configToSave.fixTime = fixTime
+        configToSave.washTime = washTime
+        configToSave.dryTime = dryTime
+        configToSave.firstAgitationDuration = firstAgitationDuration
+        configToSave.periodAgitationDuration = periodAgitationDuration
+        configToSave.agitationPeriod = agitationPeriod
+        
+//        let configToSave = TimerConfig(id: id, schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        
+        if fromTimer {
+            let result = PTRealmDatabase.updateConfiguration(newConfig: configToSave)
+            print(result)
+        } else {
+            let result = PTRealmDatabase.saveNewConfiguration(forConfiguration: configToSave)
+            print(result)
+        }
+        
+        navigationController?.pushViewController(dataBaseVC, animated: true)
     }
     
     @IBAction func cancelButtonPressedAction(_ sender: UIBarButtonItem) {

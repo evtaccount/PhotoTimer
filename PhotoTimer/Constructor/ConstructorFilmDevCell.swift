@@ -1,5 +1,5 @@
 //
-//  ConstructorTableViewCell.swift
+//  ConstructorFilmDevCell.swift
 //  PhotoTimer
 //
 //  Created by Evgeny Evtushenko on 09/06/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseFilmTableViewCell: UITableViewCell {
+class ConstructorFilmDevCell: UITableViewCell {
 
     @IBOutlet weak var filmNameTextLabel: UILabel!
 

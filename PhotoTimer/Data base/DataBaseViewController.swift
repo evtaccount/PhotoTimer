@@ -56,6 +56,12 @@ class DataBaseViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableview.reloadData()
+    }
+    
     //MARK: Actions
     @IBAction func unwindToDataBase(sender: UIStoryboardSegue) {
         //Проверяем, что переход был осуществлен из конфигуратора
@@ -297,7 +303,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             timerVC.incomingTimer = selectedTimer
             navigationController?.pushViewController(timerVC, animated: true)
         } else {
-            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ChooseFilmViewController else { return }
+            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
             
             constructorVC.stepID = "film"
             navigationController?.pushViewController(constructorVC, animated: true)
@@ -360,8 +366,8 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
                 }
 
                 self.selectedIndexPath = indexPath
-                let listToBeUpdated = self.configurationsList[indexPath.row]
-                destinationViewController.currentConfiguration = listToBeUpdated
+                let configToBeUpdated = self.configurationsList[indexPath.row]
+                destinationViewController.currentConfiguration = configToBeUpdated
                 self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
         editAction.image = UIImage(named: "editAction")

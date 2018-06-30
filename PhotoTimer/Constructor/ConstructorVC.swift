@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ChooseFilmViewController: UIViewController {
+class ConstructorVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -60,27 +60,10 @@ class ChooseFilmViewController: UIViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let chooseDeveloperViewController = segue.destination as? ChooseDeveloperViewController else {
-            fatalError("Unexpected destination: \(segue.destination)")
-        }
-        
-        guard let selectedFilmCell = sender as? ChooseFilmTableViewCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-        
-        guard let indexPath = self.tableView?.indexPath(for: selectedFilmCell) else {
-            fatalError("The selected cell is not being displayed by the table")
-        }
-        
-        let film = filmsList[indexPath.row]
-        chooseDeveloperViewController.choosenFilm = film
-    }
+
 }
 
-extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
+extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemsList.count
     }
@@ -91,7 +74,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
         if let stepID = stepID {
             switch stepID {
             case "film":
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ChooseFilmTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ConstructorFilmDevCell else {
                     fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
                 }
                 guard let film = itemsList[indexPath.row] as? Film else { return cell }
@@ -99,7 +82,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
                 
             case "developer":
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ChooseFilmTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ConstructorFilmDevCell else {
                     fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
                 }
                 guard let developer = itemsList[indexPath.row] as? Developers else { return cell }
@@ -107,7 +90,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
                 
             case "iso":
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructISOCell, for: indexPath) as? ChooseISOTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructISOCell, for: indexPath) as? ConstructorISOCell else {
                     fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
                 }
                 guard let propertySet = itemsList[indexPath.row] as? DevProperties else { return cell }
@@ -131,7 +114,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch stepID {
         case "film":
-            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ChooseFilmViewController else { return }
+            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
             let film = itemsList[indexPath.row] as? Film
             filmDevVC.choosenFilm = film
             filmDevVC.stepID = "developer"
@@ -139,7 +122,7 @@ extension ChooseFilmViewController: UITableViewDelegate, UITableViewDataSource {
             vc = filmDevVC
             
         case "developer":
-            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ChooseFilmViewController else { return }
+            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
             let developer = itemsList[indexPath.row] as? Developers
             filmDevVC.choosenDeveloper = developer
             filmDevVC.filmName = filmName

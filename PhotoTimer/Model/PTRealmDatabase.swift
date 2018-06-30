@@ -70,22 +70,24 @@ class PTRealmDatabase {
         let timerConfig = TimerConfig()
         var result = false
         
+        timerConfig.id = newConfig.id
+        timerConfig.schemeName = newConfig.schemeName
+        timerConfig.filmName = newConfig.filmName
+        timerConfig.developerName = newConfig.developerName
+        timerConfig.devTime = newConfig.devTime
+        timerConfig.stopTime = newConfig.stopTime
+        timerConfig.fixTime = newConfig.fixTime
+        timerConfig.washTime = newConfig.washTime
+        timerConfig.dryTime = newConfig.dryTime
+        timerConfig.firstAgitationDuration = newConfig.firstAgitationDuration
+        timerConfig.periodAgitationDuration = newConfig.periodAgitationDuration
+        timerConfig.agitationPeriod = newConfig.agitationPeriod
+        
         try! realm.write {
-            timerConfig.schemeName = newConfig.schemeName
-            timerConfig.filmName = newConfig.filmName
-            timerConfig.developerName = newConfig.developerName
-            timerConfig.devTime = newConfig.devTime
-            timerConfig.stopTime = newConfig.stopTime
-            timerConfig.fixTime = newConfig.fixTime
-            timerConfig.washTime = newConfig.washTime
-            timerConfig.dryTime = newConfig.dryTime
-            timerConfig.firstAgitationDuration = newConfig.firstAgitationDuration
-            timerConfig.periodAgitationDuration = newConfig.periodAgitationDuration
-            timerConfig.agitationPeriod = newConfig.agitationPeriod
-            
-            result = true
+            realm.add(timerConfig, update: true)
         }
         
+        result = true
         return result
     }
 }

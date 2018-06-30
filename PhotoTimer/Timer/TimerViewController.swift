@@ -130,11 +130,11 @@ class TimerViewController: UIViewController {
     }
     
     func setTimerSegmentLabels() {
-        devTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.devTime)
-        stopTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.stopTime)
-        fixTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.fixTime)
-        washTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.washTime)
-        dryTimeLabel.text = secondsToMinutesSeconds(time: timeProcessCounter.dryTime)
+        devTimeLabel.text = timeProcessCounter.devTime.secondsToMinutesSeconds()
+        stopTimeLabel.text = timeProcessCounter.stopTime.secondsToMinutesSeconds()
+        fixTimeLabel.text = timeProcessCounter.fixTime.secondsToMinutesSeconds()
+        washTimeLabel.text = timeProcessCounter.washTime.secondsToMinutesSeconds()
+        dryTimeLabel.text = timeProcessCounter.dryTime.secondsToMinutesSeconds()
     }
     
     //Костыль, который скрывает кнопки на navigationItem
@@ -153,7 +153,7 @@ class TimerViewController: UIViewController {
     }
     
     func updateMainTimerLabel(forTimerValue timerValue: Int) {
-        bigTimeLabel.text = secondsToMinutesSeconds(time: timerValue)
+        bigTimeLabel.text = timerValue.secondsToMinutesSeconds()
     }
     
     //Инициация кругового прогресс-бара
@@ -189,7 +189,8 @@ class TimerViewController: UIViewController {
     
     //Инициация конфигурации выбранного из БД таймера
     func setupCurrentTimer() {
-        guard let schemeName = incomingTimer?.schemeName,
+        guard let id = incomingTimer?.id,
+            let schemeName = incomingTimer?.schemeName,
             let filmName = incomingTimer?.filmName,
             let developerName = incomingTimer?.developerName,
             let devTime = incomingTimer?.devTime,
@@ -204,6 +205,7 @@ class TimerViewController: UIViewController {
         }
         
         timeProcessCounter = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+        timeProcessCounter.id = id
         
         timerValues = ["devTime": timeProcessCounter.devTime, "stopTime": timeProcessCounter.stopTime, "fixTime": timeProcessCounter.fixTime, "washTime": timeProcessCounter.washTime, "dryTime": timeProcessCounter.dryTime]
     }
@@ -231,14 +233,6 @@ class TimerViewController: UIViewController {
             
             stopTimer()
         }
-    }
-    
-    //Конвертация секунд а минуты и секунды в заданном формате (ММ:СС). Используется для вывода понятных пользователю данных
-    public func secondsToMinutesSeconds (time counter: Int) -> (String) {
-        let minutes = counter / 60
-        let seconds = counter % 60
-        
-        return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
     
     func rgbToCGFloat(red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {

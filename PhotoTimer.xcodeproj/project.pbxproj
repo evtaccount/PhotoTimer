@@ -65,12 +65,9 @@
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
 		EAD24A7820D4E2D200EB6452 /* filmsDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */; };
 		EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */; };
-		EAEF931D20CC294800741DF2 /* ChooseFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */; };
-		EAEF931F20CC29C000741DF2 /* ChooseFilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */; };
-		EAEF932120CD01A400741DF2 /* ChooseDeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */; };
-		EAEF932320CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */; };
-		EAEF932520CD0E9F00741DF2 /* ChooseISOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */; };
-		EAEF932720CD0EB500741DF2 /* ChooseISOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */; };
+		EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931C20CC294800741DF2 /* ConstructorVC.swift */; };
+		EAEF931F20CC29C000741DF2 /* ConstructorFilmDevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */; };
+		EAEF932720CD0EB500741DF2 /* ConstructorISOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932620CD0EB500741DF2 /* ConstructorISOCell.swift */; };
 		EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,12 +148,9 @@
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
 		EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filmsDatabase.json; sourceTree = "<group>"; };
 		EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseConstructorCell.swift; sourceTree = "<group>"; };
-		EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFilmViewController.swift; sourceTree = "<group>"; };
-		EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFilmTableViewCell.swift; sourceTree = "<group>"; };
-		EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDeveloperViewController.swift; sourceTree = "<group>"; };
-		EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDeveloperTableViewCell.swift; sourceTree = "<group>"; };
-		EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseISOViewController.swift; sourceTree = "<group>"; };
-		EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseISOTableViewCell.swift; sourceTree = "<group>"; };
+		EAEF931C20CC294800741DF2 /* ConstructorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorVC.swift; sourceTree = "<group>"; };
+		EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorFilmDevCell.swift; sourceTree = "<group>"; };
+		EAEF932620CD0EB500741DF2 /* ConstructorISOCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorISOCell.swift; sourceTree = "<group>"; };
 		EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorTextFieldCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +262,25 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
+		EA4E8F6C20E78AF6009C4ADE /* configurator */ = {
+			isa = PBXGroup;
+			children = (
+				EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */,
+				EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */,
+				EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */,
+			);
+			path = configurator;
+			sourceTree = "<group>";
+		};
+		EA4E8F6D20E78B0A009C4ADE /* setTime */ = {
+			isa = PBXGroup;
+			children = (
+				EABDE7E020AC64930072489A /* SetTimeViewController.swift */,
+				EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */,
+			);
+			path = setTime;
+			sourceTree = "<group>";
+		};
 		EA62044020BDC30B00874123 /* SF Pro */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,11 +361,8 @@
 		EADFBD4120AA166C00EF1924 /* Configurator */ = {
 			isa = PBXGroup;
 			children = (
-				EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */,
-				EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */,
-				EAFE7F9E20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift */,
-				EABDE7E020AC64930072489A /* SetTimeViewController.swift */,
-				EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */,
+				EA4E8F6C20E78AF6009C4ADE /* configurator */,
+				EA4E8F6D20E78B0A009C4ADE /* setTime */,
 			);
 			name = Configurator;
 			path = ..;
@@ -361,12 +371,9 @@
 		EAEF931720CC23F500741DF2 /* Constructor */ = {
 			isa = PBXGroup;
 			children = (
-				EAEF931C20CC294800741DF2 /* ChooseFilmViewController.swift */,
-				EAEF931E20CC29C000741DF2 /* ChooseFilmTableViewCell.swift */,
-				EAEF932620CD0EB500741DF2 /* ChooseISOTableViewCell.swift */,
-				EAEF932020CD01A400741DF2 /* ChooseDeveloperViewController.swift */,
-				EAEF932220CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift */,
-				EAEF932420CD0E9F00741DF2 /* ChooseISOViewController.swift */,
+				EAEF931C20CC294800741DF2 /* ConstructorVC.swift */,
+				EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */,
+				EAEF932620CD0EB500741DF2 /* ConstructorISOCell.swift */,
 			);
 			path = Constructor;
 			sourceTree = "<group>";
@@ -578,18 +585,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAEF931F20CC29C000741DF2 /* ChooseFilmTableViewCell.swift in Sources */,
+				EAEF931F20CC29C000741DF2 /* ConstructorFilmDevCell.swift in Sources */,
 				EA8A713720E21585005BF40E /* Extensions.swift in Sources */,
 				EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
 				EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */,
 				EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */,
-				EAEF932120CD01A400741DF2 /* ChooseDeveloperViewController.swift in Sources */,
-				EAEF931D20CC294800741DF2 /* ChooseFilmViewController.swift in Sources */,
+				EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */,
 				EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */,
 				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
-				EAEF932520CD0E9F00741DF2 /* ChooseISOViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
 				EABBA71720D68DE700AFB6F9 /* Developers.swift in Sources */,
 				EABBA71920D68E1400AFB6F9 /* DevProperties.swift in Sources */,
@@ -599,10 +604,9 @@
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
-				EAEF932320CD01C300741DF2 /* ChooseDeveloperTableViewCell.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
 				EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */,
-				EAEF932720CD0EB500741DF2 /* ChooseISOTableViewCell.swift in Sources */,
+				EAEF932720CD0EB500741DF2 /* ConstructorISOCell.swift in Sources */,
 				EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */,
 				EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */,
 				EA876F9520D40ED100097EDD /* DBNavigationViewController.swift in Sources */,

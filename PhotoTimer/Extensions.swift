@@ -17,3 +17,13 @@ struct CellNames {
     static let configTextField = "configTextField"
     static let configSetTimer = "configSetTimer"
 }
+
+extension Int {
+    func secondsToMinutesSeconds () -> String {
+        let minutes = self / 60
+        let seconds = self % 60
+        
+        return String(format: "%0.2d:%0.2d", minutes, seconds)
+    }
+}
+
