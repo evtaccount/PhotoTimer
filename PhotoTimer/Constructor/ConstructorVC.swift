@@ -114,7 +114,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
         
         switch stepID {
         case "film":
-            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
+            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) as? ConstructorVC else { return }
             let film = itemsList[indexPath.row] as? Film
             filmDevVC.choosenFilm = film
             filmDevVC.stepID = "developer"
@@ -122,7 +122,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
             vc = filmDevVC
             
         case "developer":
-            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
+            guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) as? ConstructorVC else { return }
             let developer = itemsList[indexPath.row] as? Developers
             filmDevVC.choosenDeveloper = developer
             filmDevVC.filmName = filmName
@@ -131,7 +131,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
             vc = filmDevVC
             
         case "iso":
-            guard let configVC = storyboard?.instantiateViewController(withIdentifier: "configuratorVC") as? ConfiguratorViewController else { return }
+            guard let configVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) as? ConfiguratorViewController else { return }
             guard let filmName = filmName, let developerName = choosenDeveloper?.devName else { return }
             guard let propertySet = itemsList[indexPath.row] as? DevProperties else { return }
             

@@ -293,7 +293,7 @@ class TimerViewController: UIViewController {
 extension TimerViewController {
     //Отправляем текущий таймер в конфигуратор для редактирования
     @IBAction func editButtonPressedAction(_ sender: UIBarButtonItem) {
-        guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorVC") as? ConfiguratorViewController else {
+        guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) as? ConfiguratorViewController else {
             return
         }
         

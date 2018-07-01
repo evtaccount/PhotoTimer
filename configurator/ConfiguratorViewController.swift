@@ -144,7 +144,7 @@ class ConfiguratorViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
-        guard let dataBaseVC = storyboard?.instantiateViewController(withIdentifier: "dataBaseVC") else { return }
+        guard let dataBaseVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.dataBaseVC) else { return }
         
         for ind in 0...2 {
             let indexPath = IndexPath(row: ind, section: 0)
@@ -304,7 +304,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.section == 1 {
             switch indexPath.row {
             case 0:
-                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
+                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.setTimerVC) as? SetTimeViewController else {
                     return
                 }
                 setTimersViewController.timers[0].timerValue = currentConfiguration?.devTime
@@ -317,7 +317,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
                 self.navigationController?.pushViewController(destinationViewController, animated: true)
                 
             case 1:
-                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: "setTimerViewController") as? SetTimeViewController else {
+                guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.setTimerVC) as? SetTimeViewController else {
                     return
                 }
                 setTimersViewController.agitationScheme[0].timerValue = currentConfiguration?.firstAgitationDuration

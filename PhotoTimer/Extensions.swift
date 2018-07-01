@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct CellNames {
-    static let dbConfigCell = "dataBaseCell"
-    static let dbConstructCell = "constructorCell"
-    static let constructFilmCell = "constructFilmCell"
-    static let constructDevCell = "constructDevCell"
-    static let constructISOCell = "constructISOCell"
-    static let configTextField = "configTextField"
-    static let configSetTimer = "configSetTimer"
-}
-
 extension Int {
     func secondsToMinutesSeconds () -> String {
         let minutes = self / 60

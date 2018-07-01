@@ -299,14 +299,14 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         tableview.deselectRow(at: indexPath, animated: false)
         
         if indexPath.row < (configurationsList.count) {
-            guard let timerVC = storyboard?.instantiateViewController(withIdentifier: "timerItself") as? TimerViewController else { return }
+            guard let timerVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.timerVC) as? TimerViewController else { return }
             let selectedTimer = configurationsList[indexPath.row]
             
             selectedIndexPath = indexPath
             timerVC.incomingTimer = selectedTimer
             navigationController?.pushViewController(timerVC, animated: true)
         } else {
-            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "constructorVC") as? ConstructorVC else { return }
+            guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) as? ConstructorVC else { return }
             
             constructorVC.stepID = "film"
             navigationController?.pushViewController(constructorVC, animated: true)
@@ -314,7 +314,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func addNewTimer() {
-        guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: "configuratorVC") else { return }
+        guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) else { return }
         let vcWithNavBar = UINavigationController(rootViewController: constructorVC)
         present(vcWithNavBar, animated: true, completion: nil)
 //        navigationController?.pushViewController(constructorVC, animated: true)
@@ -364,7 +364,7 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 
         let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
-            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "configuratorVC") as? ConfiguratorViewController else {
+            guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) as? ConfiguratorViewController else {
                     return
                 }
 
@@ -399,8 +399,4 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
     func visibleRect(for tableView: UITableView) -> CGRect? {
         return CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
-    
-//    func loadDB() {
-//        
-//    }
 }
