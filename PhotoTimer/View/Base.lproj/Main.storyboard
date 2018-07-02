@@ -58,7 +58,7 @@
                                 <rect key="frame" x="45" y="28" width="285" height="285"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZM-BX-4oI">
-                                        <rect key="frame" x="60.5" y="109" width="164" height="66"/>
+                                        <rect key="frame" x="60.5" y="109.5" width="164" height="66"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="55"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -337,7 +337,11 @@
                         <viewLayoutGuide key="safeArea" id="Dwc-bs-ums"/>
                     </view>
                     <navigationItem key="navigationItem" id="AFY-NT-ntK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2If-3U-iCP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rI2-FU-K3k">
+                            <connections>
+                                <action selector="addButtonPressedAction:" destination="20s-b9-e3o" id="g7t-Rl-Yss"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="sF6-jP-1VI" id="xMz-F3-yBz"/>
@@ -717,7 +721,7 @@
         <!--Navigation Controller-->
         <scene sceneID="70B-Sf-U6h">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8aD-I7-YNR" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8aD-I7-YNR" customClass="PTNavigationController" customModule="PhotoTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="43g-mP-28G">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

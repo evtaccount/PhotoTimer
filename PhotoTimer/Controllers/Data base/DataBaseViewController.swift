@@ -38,17 +38,9 @@ class DataBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
-                                                            target: self,
-                                                            action: #selector(addNewTimer))
-        
-        configurationsList = PTRealmDatabase.loadConfigurationsFromDB()
-        self.tableview?.reloadData()
-        // Do any additional setup after loading the view.
-        
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized))
-        tableview.addGestureRecognizer(longpress)
         
+        tableview.addGestureRecognizer(longpress)
         tableview.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -59,10 +51,18 @@ class DataBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableview.reloadData()
+        configurationsList = PTRealmDatabase.loadConfigurationsFromDB()
+        self.tableview?.reloadData()
     }
     
-    //MARK: Actions
+    //MARK: - Actions
+    @IBAction func addButtonPressedAction(_ sender: UIBarButtonItem) {
+        guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) else {
+            return
+        }
+        self.navigationController?.pushViewController(configuratorViewController, animated: true)
+    }
+    
     @IBAction func unwindToDataBase(sender: UIStoryboardSegue) {
         //Проверяем, что переход был осуществлен из конфигуратора
         if let sourceViewController = sender.source as? ConfiguratorViewController, let config = sourceViewController.configToSave {
@@ -95,6 +95,7 @@ class DataBaseViewController: UIViewController {
         let state = longPress.state
         let locationInView = longPress.location(in: tableview)//
         var indexPath = tableview.indexPathForRow(at: locationInView)
+        
         if indexPath?.row == configurationsList.count {
             return
         }
@@ -134,6 +135,7 @@ class DataBaseViewController: UIViewController {
             }
 
         case UIGestureRecognizerState.changed:
+            guard let _ = My.cellSnapshot else { return }
             var center = My.cellSnapshot!.center
             center.y = locationInView.y
             My.cellSnapshot!.center = center
@@ -145,6 +147,7 @@ class DataBaseViewController: UIViewController {
             }
 
         default:
+            guard let _ = My.cellSnapshot else { return }
             guard let cell = tableview.cellForRow(at: Path.initialIndexPath!) as UITableViewCell? else {
                 return
             }
@@ -247,16 +250,11 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             cell.timerNameTextLabel?.text = timerName
             cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
         
-            let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
-            cellShadowLayer.layer.backgroundColor = UIColor.white.cgColor
-            cellShadowLayer.layer.masksToBounds = false
-            cellShadowLayer.layer.cornerRadius = 10.0
-            cellShadowLayer.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            cellShadowLayer.layer.shadowRadius = 7
-            cellShadowLayer.layer.shadowOpacity = 0.4
+            let cellBackgroundLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
+            cellBackgroundLayer.setShadowStyle()
         
-            cell.addSubview(cellShadowLayer)
-            cell.sendSubview(toBack: cellShadowLayer)
+            cell.addSubview(cellBackgroundLayer)
+            cell.sendSubview(toBack: cellBackgroundLayer)
         
     //        cell.accessoryType = .disclosureIndicator
         

@@ -143,6 +143,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
             
             let timer = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
             configVC.currentConfiguration = timer
+            configVC.fromConstructor = true
             
             vc = configVC
             

@@ -25,3 +25,11 @@ struct ViewControllers {
     static var coonfiguratorVC = "configuratorVC"
     static var setTimerVC = "setTimerViewController"
 }
+
+struct CircularPB {
+    static let startAnglesForCurrentTimers = ["devTime": -90, "stopTime": -18, "fixTime": 54, "washTime": 126, "dryTime": 198]
+}
+
+struct TimerConst {
+    static let timerNamesCycle = ["devTime":"stopTime", "stopTime":"fixTime", "fixTime":"washTime", "washTime":"dryTime", "dryTime":"devTime"]
+}

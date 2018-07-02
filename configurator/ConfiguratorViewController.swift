@@ -20,8 +20,9 @@ class ConfiguratorViewController: UIViewController {
     var configToSave: TimerConfig?
     var menuNames: [[ItemList]] = []
     var selectedIndexPath: IndexPath?
-    var fromTimer: Bool = false
     let placeholders = ["Название таймера", "Навание пленки", "Название проявителя"]
+    var fromTimer: Bool = false
+    var fromConstructor: Bool = false
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -31,7 +32,7 @@ class ConfiguratorViewController: UIViewController {
 
         if currentConfiguration != nil {
             setup()
-            fromTimer = true
+//            fromTimer = true
         } else {
             currentConfiguration = TimerConfig(schemeName: nil, filmName: nil, developerName: nil)
             saveButton.isEnabled = false
@@ -144,7 +145,6 @@ class ConfiguratorViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
-        guard let dataBaseVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.dataBaseVC) else { return }
         
         for ind in 0...2 {
             let indexPath = IndexPath(row: ind, section: 0)
@@ -190,13 +190,24 @@ class ConfiguratorViewController: UIViewController {
         
         if fromTimer {
             let result = PTRealmDatabase.updateConfiguration(newConfig: configToSave)
-            print(result)
-        } else {
+            navigationController?.popViewController(animated: true)
+        } else if fromConstructor {
             let result = PTRealmDatabase.saveNewConfiguration(forConfiguration: configToSave)
-            print(result)
+            navigationController?.viewControllers.forEach({ (vc) in
+                if vc.isKind(of: DataBaseViewController.self) {
+                    navigationController?.popToViewController(vc, animated: true)
+                }
+            })
+        } else {
+            let result = PTRealmDatabase.updateConfiguration(newConfig: configToSave)
+            navigationController?.viewControllers.forEach({ (vc) in
+                if vc.isKind(of: DataBaseViewController.self) {
+                    navigationController?.popToViewController(vc, animated: true)
+                }
+            })
+//            guard let dataBaseVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.dataBaseVC) else { return }
+//            navigationController?.pushViewController(dataBaseVC, animated: true)
         }
-        
-        navigationController?.pushViewController(dataBaseVC, animated: true)
     }
     
     @IBAction func cancelButtonPressedAction(_ sender: UIBarButtonItem) {

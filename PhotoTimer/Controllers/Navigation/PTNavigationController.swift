@@ -25,4 +25,13 @@ class PTNavigationController: UINavigationController {
         
     }
 
+    func popToDataBaseViewController(animated: Bool) {
+        self.viewControllers.forEach { (vc) in
+            if vc.isKind(of: DataBaseViewController.self) {
+                self.popToViewController(vc, animated: animated)
+                return
+            }
+        }
+        super.popToRootViewController(animated: animated)
+    }
 }

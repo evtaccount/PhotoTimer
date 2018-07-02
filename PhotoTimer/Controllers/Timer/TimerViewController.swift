@@ -51,7 +51,7 @@ class TimerViewController: UIViewController {
     var nextTimerName: String?
     
     //Словарь используется для переключения на следующий таймер ключу эквивалентному по имени текущего
-    let timerNamesCycle = ["devTime":"stopTime", "stopTime":"fixTime", "fixTime":"washTime", "washTime":"dryTime", "dryTime":"devTime"]
+//    let timerNamesCycle = ["devTime":"stopTime", "stopTime":"fixTime", "fixTime":"washTime", "washTime":"dryTime", "dryTime":"devTime"]
     var timerValues = [String: Int]()
     
     
@@ -86,10 +86,8 @@ class TimerViewController: UIViewController {
     //MARK: - Methods
     //MARK: View-methods
     func setButtonsStyle() {
-        startPauseButton.layer.cornerRadius = 10
-        resetButton.layer.cornerRadius = 10
-        resetButton.layer.borderWidth = 1.0   // толщина обводки
-        resetButton.layer.borderColor = UIColor.black.cgColor
+        startPauseButton.startStyle()
+        resetButton.resetStyle()
     }
     
     func setNavigationBarStyle() {
@@ -182,7 +180,7 @@ class TimerViewController: UIViewController {
     func setupFirstTimerValue() {
         counter = timeProcessCounter.devTime
         currentTimerName = "devTime"
-        nextTimerName = timerNamesCycle[currentTimerName!]
+        nextTimerName = TimerConst.timerNamesCycle[currentTimerName!]
     }
     
     //Инициация конфигурации выбранного из БД таймера
@@ -227,7 +225,7 @@ class TimerViewController: UIViewController {
             counter = timerValue
             
             currentTimerName = timerName
-            nextTimerName = timerNamesCycle[timerName]
+            nextTimerName = TimerConst.timerNamesCycle[timerName]
             
             stopTimer()
         }
@@ -299,6 +297,7 @@ extension TimerViewController {
         
         let currentTimer = timeProcessCounter
         configuratorViewController.currentConfiguration = currentTimer
+        configuratorViewController.fromTimer = true
         self.navigationController?.pushViewController(configuratorViewController, animated: true)
     }
     

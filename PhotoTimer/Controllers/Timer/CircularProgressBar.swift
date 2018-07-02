@@ -15,14 +15,13 @@ class CircularProgressBar: UIView {
     //Mark: Properties
     var step: Float = 0.0
     var segmentStep: Float = 0.0
-    let startAnglesForCurrentTimers = ["devTime": -90, "stopTime": -18, "fixTime": 54, "washTime": 126, "dryTime": 198]
     
     //Coefficien for width of circular progress-bar relatively width of screen
-    var k: CGFloat = UIScreen.main.bounds.width/375.0 {
-        didSet {
-//            self.frame.size = CGSize(width: 285 * k, height: 285 * k)
-        }
-    }
+//    var k: CGFloat = UIScreen.main.bounds.width/375.0 {
+//        didSet {
+////            self.frame.size = CGSize(width: 285 * k, height: 285 * k)
+//        }
+//    }
     
     //Main circular progress-bar radius
     var radiusCircle: CGFloat {
@@ -134,7 +133,7 @@ class CircularProgressBar: UIView {
     
     //Initialize current segment shape-layer
     private func currentTimerShapeLayerInit(currentProgressBar: String) {
-        guard let startAngle = startAnglesForCurrentTimers[currentProgressBar] else {
+        guard let startAngle = CircularPB.startAnglesForCurrentTimers[currentProgressBar] else {
             return
         }
         
