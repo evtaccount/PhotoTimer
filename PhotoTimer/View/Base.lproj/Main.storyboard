@@ -246,7 +246,7 @@
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataBaseCell" rowHeight="70" id="1NZ-P5-6Uf" customClass="DataBaseTableViewCell" customModule="PhotoTimer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataBaseCell" rowHeight="70" id="1NZ-P5-6Uf" customClass="DataBaseTimerCell" customModule="PhotoTimer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1NZ-P5-6Uf" id="uw9-Cu-bqS">
@@ -288,7 +288,7 @@
                                             <outlet property="timerNameTextLabel" destination="EKE-KJ-2Pq" id="eUQ-89-nTS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="constructorCell" rowHeight="70" id="cpO-qn-a7U" customClass="DataBaseConstructorCell" customModule="PhotoTimer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="constructorCell" rowHeight="70" id="cpO-qn-a7U" customClass="DataBaseButtonCell" customModule="PhotoTimer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="125.5" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cpO-qn-a7U" id="Kq4-6v-Vyg">

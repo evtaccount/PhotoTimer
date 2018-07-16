@@ -56,6 +56,7 @@
 		EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */; };
 		EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */; };
 		EA8A713720E21585005BF40E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A713620E21585005BF40E /* Extensions.swift */; };
+		EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */; };
 		EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71420D68D9A00AFB6F9 /* Film.swift */; };
 		EABBA71720D68DE700AFB6F9 /* Developers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71620D68DE700AFB6F9 /* Developers.swift */; };
 		EABBA71920D68E1400AFB6F9 /* DevProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71820D68E1400AFB6F9 /* DevProperties.swift */; };
@@ -64,7 +65,6 @@
 		EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E020AC64930072489A /* SetTimeViewController.swift */; };
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
 		EAD24A7820D4E2D200EB6452 /* filmsDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */; };
-		EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */; };
 		EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931C20CC294800741DF2 /* ConstructorVC.swift */; };
 		EAEF931F20CC29C000741DF2 /* ConstructorFilmDevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */; };
 		EAEF932720CD0EB500741DF2 /* ConstructorISOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF932620CD0EB500741DF2 /* ConstructorISOCell.swift */; };
@@ -139,6 +139,7 @@
 		EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTLoadFilmsToDB.swift; sourceTree = "<group>"; };
 		EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTRealmDatabase.swift; sourceTree = "<group>"; };
 		EA8A713620E21585005BF40E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethods.swift; sourceTree = "<group>"; };
 		EABBA71420D68D9A00AFB6F9 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		EABBA71620D68DE700AFB6F9 /* Developers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developers.swift; sourceTree = "<group>"; };
 		EABBA71820D68E1400AFB6F9 /* DevProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevProperties.swift; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 		EABDE7E020AC64930072489A /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
 		EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filmsDatabase.json; sourceTree = "<group>"; };
-		EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseConstructorCell.swift; sourceTree = "<group>"; };
 		EAEF931C20CC294800741DF2 /* ConstructorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorVC.swift; sourceTree = "<group>"; };
 		EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorFilmDevCell.swift; sourceTree = "<group>"; };
 		EAEF932620CD0EB500741DF2 /* ConstructorISOCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorISOCell.swift; sourceTree = "<group>"; };
@@ -318,7 +318,6 @@
 			children = (
 				EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */,
 				EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */,
-				EAEF931520CAFC4300741DF2 /* DataBaseConstructorCell.swift */,
 			);
 			path = "Data base";
 			sourceTree = "<group>";
@@ -337,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				EA8A713620E21585005BF40E /* Extensions.swift */,
+				EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 				EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */,
 				EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */,
 				EA4E8F6F20E849C3009C4ADE /* Constants.swift in Sources */,
-				EAEF931620CAFC4300741DF2 /* DataBaseConstructorCell.swift in Sources */,
+				EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */,
 				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
@@ -812,7 +812,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -831,7 +831,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.EVT.PhotoTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

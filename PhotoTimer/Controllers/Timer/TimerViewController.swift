@@ -36,7 +36,7 @@ class TimerViewController: UIViewController {
     
     //MARK: - Properties
     var incomingTimer: TimerConfig?
-    var timeProcessCounter = TimerConfig(schemeName: "", filmName: "", developerName: "", devTime: 0, stopTime: 0, fixTime: 0, washTime: 0, dryTime: 0, firstAgitationDuration: 0, periodAgitationDuration: 0, agitationPeriod: 0)
+    var timeProcessCounter = TimerConfig()
     
     //Переменная таймера
     var timeCounter: Timer?
@@ -229,14 +229,6 @@ class TimerViewController: UIViewController {
             
             stopTimer()
         }
-    }
-    
-    func rgbToCGFloat(red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {
-        let redFloat = CGFloat(Float(red)/255.0)
-        let greenFloat = CGFloat(Float(green)/255.0)
-        let blueFloat = CGFloat(Float(blue)/255.0)
-        
-        return UIColor(red: redFloat, green: greenFloat, blue: blueFloat, alpha: CGFloat(alpha))
     }
     
     //Останавливает таймер, включает автоблокировку экрана

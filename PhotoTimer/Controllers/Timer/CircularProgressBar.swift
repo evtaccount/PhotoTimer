@@ -15,6 +15,7 @@ class CircularProgressBar: UIView {
     //Mark: Properties
     var step: Float = 0.0
     var segmentStep: Float = 0.0
+    var numberOfSegments: Int? = 4
     
     //Coefficien for width of circular progress-bar relatively width of screen
 //    var k: CGFloat = UIScreen.main.bounds.width/375.0 {
@@ -87,6 +88,16 @@ class CircularProgressBar: UIView {
     //Background of shapeLayer of main circular bar
     let gradient = CAGradientLayer()
     
+    var startAngles: (Int) -> [Int] = { numberOfSections in
+        let offset = -90
+        var startAngles: [Int] = []
+        for idx in 0...numberOfSections {
+            let step = 360 / numberOfSections
+            startAngles.append(offset + step * idx)
+        }
+            return startAngles
+    }
+    
     //MARK: Private methods
     //Initialize track and shape layers of main progress-bar. Main progress-bar is gradiented, so it uses the gradient mask
     private func initProgressBar() {
@@ -137,20 +148,12 @@ class CircularProgressBar: UIView {
             return
         }
         
-        let shapeLayerColors = [
-            "devTime": rgbToCGFloat(red: 95, green: 224, blue: 167, alpha: 1),
-            "stopTime": rgbToCGFloat(red: 225, green: 161, blue: 89, alpha: 1),
-            "fixTime": rgbToCGFloat(red: 211, green: 110, blue: 248, alpha: 1),
-            "washTime": rgbToCGFloat(red: 225, green: 223, blue: 80, alpha: 1),
-            "dryTime": rgbToCGFloat(red: 254, green: 98, blue: 125, alpha: 1)
-        ]
-        
         let endAngle = startAngle + 72
         let currentTimerCircularPath = UIBezierPath(
             arcCenter: centerView,
             radius: radiusSegmentsCircle - CGFloat(10),
-            startAngle: degreesToRadians(degree: startAngle),
-            endAngle: degreesToRadians(degree: endAngle),
+            startAngle: startAngle.degreesToRadians(),
+            endAngle: endAngle.degreesToRadians(),
             clockwise: true)
         
         switch currentSegmentIsActive {
@@ -174,10 +177,9 @@ class CircularProgressBar: UIView {
         }
         
         currentTimerShapeLayer.path = currentTimerCircularPath.cgPath
-        currentTimerShapeLayer.strokeColor = shapeLayerColors[currentSegmentIsActive]?.cgColor
+        currentTimerShapeLayer.strokeColor = TimerColors.shapeLayerColors[currentSegmentIsActive]
         currentTimerShapeLayer.lineWidth = CGFloat(10)
         currentTimerShapeLayer.fillColor = UIColor.clear.cgColor
-//        currentTimerShapeLayer.lineCap = kCALineCapRound
         currentTimerShapeLayer.strokeEnd = 0
         
         self.layer.addSublayer(currentTimerShapeLayer)
@@ -214,19 +216,19 @@ class CircularProgressBar: UIView {
     }
     
     //Convert degrees to radians for drawing circles
-    private func degreesToRadians(degree: Int) -> CGFloat {
-        let degreeFloat = Float(degree)
-        let radian = CGFloat.pi * CGFloat(degreeFloat/180)
-        return radian
-    }
+//    private func degreesToRadians(degree: Int) -> CGFloat {
+//        let degreeFloat = Float(degree)
+//        let radian = CGFloat.pi * CGFloat(degreeFloat/180)
+//        return radian
+//    }
     
-    private func rgbToCGFloat(red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {
-        let redFloat = CGFloat(Float(red)/255.0)
-        let greenFloat = CGFloat(Float(green)/255.0)
-        let blueFloat = CGFloat(Float(blue)/255.0)
-        
-        return UIColor(red: redFloat, green: greenFloat, blue: blueFloat, alpha: CGFloat(alpha))
-    }
+//    private func rgbToCGFloat(red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {
+//        let redFloat = CGFloat(Float(red)/255.0)
+//        let greenFloat = CGFloat(Float(green)/255.0)
+//        let blueFloat = CGFloat(Float(blue)/255.0)
+//
+//        return UIColor(red: redFloat, green: greenFloat, blue: blueFloat, alpha: CGFloat(alpha))
+//    }
     
     public func clearSegmentLayers() {
         let clearLayer = CAShapeLayer()
@@ -247,33 +249,24 @@ class CircularProgressBar: UIView {
     //MARK: Public methods
     //Initialize of all five track-layer segments for sub-timers
     public func initTrackLayerSegment() {
-        let trackLayerColors = [
-            rgbToCGFloat(red: 95, green: 224, blue: 167, alpha: 0.3),
-            rgbToCGFloat(red: 225, green: 161, blue: 89, alpha: 0.3),
-            rgbToCGFloat(red: 211, green: 110, blue: 248, alpha: 0.3),
-            rgbToCGFloat(red: 225, green: 223, blue: 80, alpha: 0.3),
-            rgbToCGFloat(red: 254, green: 98, blue: 125, alpha: 0.3)
-        ]
-        
-        for ind in 0...4 {
-            //Create shape layer
+        guard let numberOfSegments = numberOfSegments else { return }
+        for idx in 0...numberOfSegments {
             let currentTimerTrackLayer = CAShapeLayer()
             
-            let startAngle = -90 + 72 * ind
+            let startAngle = -90 + 72 * idx
             let endAngle = startAngle + 72
             
             let circularPath = UIBezierPath(
                 arcCenter: centerView,
                 radius: radiusSegmentsCircle - CGFloat(10),
-                startAngle: degreesToRadians(degree: startAngle),
-                endAngle: degreesToRadians(degree: endAngle),
+                startAngle: startAngle.degreesToRadians(),
+                endAngle: endAngle.degreesToRadians(),
                 clockwise: true)
             
             currentTimerTrackLayer.frame = self.bounds
             currentTimerTrackLayer.path = circularPath.cgPath
-            currentTimerTrackLayer.strokeColor = trackLayerColors[ind].cgColor
+            currentTimerTrackLayer.strokeColor = TimerColors.trackLayerColors[idx]
             currentTimerTrackLayer.lineWidth = CGFloat(10)
-//            currentTimerTrackLayer.lineCap = kCALineCapRound
             currentTimerTrackLayer.fillColor = UIColor.clear.cgColor
             
             self.layer.addSublayer(currentTimerTrackLayer)

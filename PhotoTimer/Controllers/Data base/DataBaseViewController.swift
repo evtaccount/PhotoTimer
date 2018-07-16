@@ -42,9 +42,7 @@ class DataBaseViewController: UIViewController {
         
         tableview.addGestureRecognizer(longpress)
         tableview.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.makeNavigationBarTransparent()
         
     }
     
@@ -153,12 +151,12 @@ class DataBaseViewController: UIViewController {
             }
             cell.isHidden = false
             cell.alpha = 0.0
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+            UIView.animate(withDuration: 0.25, animations: {
                 My.cellSnapshot!.center = cell.center
                 My.cellSnapshot!.transform = CGAffineTransform.identity
                 My.cellSnapshot!.alpha = 0.0
                 cell.alpha = 1.0
-            }, completion: { (finished) -> Void in
+            }, completion: { finished in
                 if finished {
                     Path.initialIndexPath = nil
                     My.cellSnapshot!.removeFromSuperview()
@@ -237,7 +235,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row < (configurationsList.count) {
             let configuration = configurationsList[indexPath.row]
         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConfigCell, for: indexPath) as? DataBaseTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConfigCell, for: indexPath) as? DataBaseTimerCell else {
                 fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
             }
         
@@ -246,49 +244,19 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.delegate = self
         
-            cell.contentView.backgroundColor = UIColor.clear
             cell.timerNameTextLabel?.text = timerName
             cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
-        
-            let cellBackgroundLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
-            cellBackgroundLayer.setShadowStyle()
-        
-            cell.addSubview(cellBackgroundLayer)
-            cell.sendSubview(toBack: cellBackgroundLayer)
-        
-    //        cell.accessoryType = .disclosureIndicator
-        
+    
+            cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConstructCell, for: indexPath) as? DataBaseConstructorCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConstructCell, for: indexPath) as? DataBaseButtonCell else {
                 fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
             }
             
             cell.titleTextLabel.text = "Конструктор таймера"
             cell.titleTextLabel.textColor = UIColor.white
-            
-            let backgroundGradient = CAGradientLayer()
-            backgroundGradient.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: cell.frame.size.width - 38,
-                height: 65)
-            
-            let startColor = UIColor(red: CGFloat(254.0/255.0), green: CGFloat(181.0/255.0), blue: CGFloat(90.0/255.0), alpha: 1)
-            let endColor = UIColor(red: CGFloat(254.0/255.0), green: CGFloat(141.0/255.0), blue: CGFloat(97.0/255.0), alpha: 1)
-            backgroundGradient.colors = [startColor.cgColor, endColor.cgColor]
-            backgroundGradient.cornerRadius = 10
-            backgroundGradient.masksToBounds = false
-            backgroundGradient.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            backgroundGradient.shadowRadius = 7
-            backgroundGradient.shadowOpacity = 0.4
-            
-            let cellShadowLayer : UIView = UIView(frame: CGRect(x: 19, y: 10, width: self.view.frame.size.width - 38, height: 65))
-            cellShadowLayer.layer.addSublayer(backgroundGradient)
-
-            cell.addSubview(cellShadowLayer)
-            cell.sendSubview(toBack: cellShadowLayer)
-            
+          
             return cell
         }
     }
