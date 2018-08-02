@@ -10,7 +10,6 @@ import UIKit
 import Foundation
 import RealmSwift
 
-
 @UIApplicationMain
 class AppDelegate: UserDefaults, UIApplicationDelegate {
 
@@ -64,7 +63,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             periodAgitationDuration: 60,
             agitationPeriod: 10
         )
-        
+
         let secondTimer = TimerConfig(
             schemeName: "Fomapan 100 + Ilford",
             filmName: "Fomapan 100",
@@ -78,7 +77,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             periodAgitationDuration: 60,
             agitationPeriod: 10
         )
-        
+
         let thirdTimer = TimerConfig(
             schemeName: "Ilford + Ilford",
             filmName: "Ilford XP-2",
@@ -92,19 +91,19 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
             periodAgitationDuration: 60,
             agitationPeriod: 10
         )
-        
+
         let configurations = [firstTimer, secondTimer, thirdTimer]
-        
+
         let realm = try? Realm()
         try? realm?.write {
             for config in configurations {
                 realm?.add(config)
             }
         }
-        
+
         UserDefaults.standard.set(true, forKey: "db_install")
     }
-    
+
 //    func loadSamplesFromNetworkToDB() {
 //        var configurationsList: [TimerConfig] = []
 //        let realmForTimers = try! Realm()
@@ -120,7 +119,7 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
 //        }
 //        UserDefaults.standard.set(true, forKey: "db_install")
 //    }
-    
+
 //    func loadFilms() {
 //        var films: [Film] = []
 //        let realmForFilms = try! Realm()
@@ -137,4 +136,3 @@ class AppDelegate: UserDefaults, UIApplicationDelegate {
 //        }
 //    }
 }
-

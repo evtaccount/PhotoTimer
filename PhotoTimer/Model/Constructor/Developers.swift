@@ -12,10 +12,10 @@ import RealmSwift
 class Developers: Object {
     @objc dynamic var devName: String?
     let devPreferences = List<DevProperties>()
-    
+
     convenience init(devName: String, devPreferences: List<DevProperties>) {
         self.init()
-        
+
         self.devName = devName
         for item in devPreferences {
             self.devPreferences.append(item)

@@ -11,7 +11,7 @@ import UIKit
 class GuideViewController: UIViewController {
 
     @IBOutlet var galleryView: GuideView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +23,6 @@ class GuideViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

@@ -19,6 +19,7 @@
 		EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */; };
 		EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27320A4B0120058AAA2 /* GuideView.swift */; };
 		EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2FB27520A4C84E0058AAA2 /* GuideViewController.swift */; };
+		EA4478DF2108FD6C009A0A9D /* PTProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA16B0D2210658950031F0FB /* PTProgressBar.swift */; };
 		EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E8F6A20E787DA009C4ADE /* PTNavigationController.swift */; };
 		EA4E8F6F20E849C3009C4ADE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E8F6E20E849C3009C4ADE /* Constants.swift */; };
 		EA62045F20BDC30B00874123 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62044120BDC30B00874123 /* SF-Pro-Display-Thin.otf */; };
@@ -55,6 +56,8 @@
 		EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */; };
 		EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */; };
 		EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */; };
+		EA7DFCDA20FD1765009C6B6B /* TimerVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFCD920FD1765009C6B6B /* TimerVCViewController.swift */; };
+		EA84FBB92100FF58001CF204 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FBB82100FF58001CF204 /* CircularButton.swift */; };
 		EA8A713720E21585005BF40E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A713620E21585005BF40E /* Extensions.swift */; };
 		EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */; };
 		EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71420D68D9A00AFB6F9 /* Film.swift */; };
@@ -64,6 +67,9 @@
 		EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */; };
 		EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E020AC64930072489A /* SetTimeViewController.swift */; };
 		EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */; };
+		EAC77FC620FE5C5A00FEBF43 /* SubTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC77FC520FE5C5A00FEBF43 /* SubTimerView.swift */; };
+		EAC77FC820FE635300FEBF43 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC77FC720FE635300FEBF43 /* SeparatedStackView.swift */; };
+		EAC77FCC20FF905C00FEBF43 /* SubtimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC77FCB20FF905C00FEBF43 /* SubtimersView.swift */; };
 		EAD24A7820D4E2D200EB6452 /* filmsDatabase.json in Resources */ = {isa = PBXBuildFile; fileRef = EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */; };
 		EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931C20CC294800741DF2 /* ConstructorVC.swift */; };
 		EAEF931F20CC29C000741DF2 /* ConstructorFilmDevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */; };
@@ -88,6 +94,7 @@
 		9DC8BDA351DC560E759C00CF /* Pods_PhotoTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F53CEA827FAE009EA1371E /* Pods-PhotoTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		D5614AD74DF93DB0D3047434 /* Pods-PhotoTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTimer/Pods-PhotoTimer.release.xcconfig"; sourceTree = "<group>"; };
+		EA16B0D2210658950031F0FB /* PTProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTProgressBar.swift; sourceTree = "<group>"; };
 		EA1941E320B3454400DA423F /* TimerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfig.swift; sourceTree = "<group>"; };
 		EA2477C3209F79C800E2A9DA /* PhotoTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2477C6209F79C900E2A9DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +145,8 @@
 		EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTLoadFilmsToDB.swift; sourceTree = "<group>"; };
 		EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTRealmDatabase.swift; sourceTree = "<group>"; };
+		EA7DFCD920FD1765009C6B6B /* TimerVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVCViewController.swift; sourceTree = "<group>"; };
+		EA84FBB82100FF58001CF204 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		EA8A713620E21585005BF40E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethods.swift; sourceTree = "<group>"; };
 		EABBA71420D68D9A00AFB6F9 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
@@ -147,6 +156,9 @@
 		EABDE7DE20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorLabelTableViewCell.swift; sourceTree = "<group>"; };
 		EABDE7E020AC64930072489A /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		EABDE7E220ACCD0F0072489A /* SetTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeTableViewCell.swift; sourceTree = "<group>"; };
+		EAC77FC520FE5C5A00FEBF43 /* SubTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTimerView.swift; sourceTree = "<group>"; };
+		EAC77FC720FE635300FEBF43 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
+		EAC77FCB20FF905C00FEBF43 /* SubtimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtimersView.swift; sourceTree = "<group>"; };
 		EAD24A7720D4E2D200EB6452 /* filmsDatabase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filmsDatabase.json; sourceTree = "<group>"; };
 		EAEF931C20CC294800741DF2 /* ConstructorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorVC.swift; sourceTree = "<group>"; };
 		EAEF931E20CC29C000741DF2 /* ConstructorFilmDevCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorFilmDevCell.swift; sourceTree = "<group>"; };
@@ -188,8 +200,13 @@
 		EA1941E120B20A3700DA423F /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				EA2477E9209F870400E2A9DA /* TimerViewController.swift */,
-				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
+				EA837942210F94080073CD3D /* Old */,
+				EAC77FC520FE5C5A00FEBF43 /* SubTimerView.swift */,
+				EA16B0D2210658950031F0FB /* PTProgressBar.swift */,
+				EAC77FCB20FF905C00FEBF43 /* SubtimersView.swift */,
+				EAC77FC720FE635300FEBF43 /* SeparatedStackView.swift */,
+				EA84FBB82100FF58001CF204 /* CircularButton.swift */,
+				EA7DFCD920FD1765009C6B6B /* TimerVCViewController.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -369,6 +386,15 @@
 				EA4E8F6A20E787DA009C4ADE /* PTNavigationController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		EA837942210F94080073CD3D /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				EA2477E9209F870400E2A9DA /* TimerViewController.swift */,
+				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
+			);
+			path = Old;
 			sourceTree = "<group>";
 		};
 		EABBA71320D68D6C00AFB6F9 /* Constructor */ = {
@@ -622,10 +648,13 @@
 				EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
 				EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */,
+				EAC77FC820FE635300FEBF43 /* SeparatedStackView.swift in Sources */,
 				EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */,
 				EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */,
+				EA84FBB92100FF58001CF204 /* CircularButton.swift in Sources */,
 				EA4E8F6F20E849C3009C4ADE /* Constants.swift in Sources */,
 				EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */,
+				EA7DFCDA20FD1765009C6B6B /* TimerVCViewController.swift in Sources */,
 				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
@@ -636,9 +665,12 @@
 				EA1941E420B3454400DA423F /* TimerConfig.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */,
+				EAC77FC620FE5C5A00FEBF43 /* SubTimerView.swift in Sources */,
+				EAC77FCC20FF905C00FEBF43 /* SubtimersView.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
 				EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */,
+				EA4478DF2108FD6C009A0A9D /* PTProgressBar.swift in Sources */,
 				EAEF932720CD0EB500741DF2 /* ConstructorISOCell.swift in Sources */,
 				EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */,
 				EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */,
@@ -805,6 +837,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -824,6 +857,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P436XD9267;
 				INFOPLIST_FILE = PhotoTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

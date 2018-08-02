@@ -11,11 +11,11 @@ import os.log
 
 class ConfiguratorViewController: UIViewController {
 
-    //MARK: Outlets
+    // MARK: Outlets
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    //MARK: Properties
+
+    // MARK: Properties
     var currentConfiguration: TimerConfig?
     var configToSave: TimerConfig?
     var menuNames: [[ItemList]] = []
@@ -23,11 +23,11 @@ class ConfiguratorViewController: UIViewController {
     let placeholders = ["Название таймера", "Навание пленки", "Название проявителя"]
     var fromTimer: Bool = false
     var fromConstructor: Bool = false
-    
-    //MARK: Initialization
+
+    // MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationController?.navigationBar.isHidden = false
 
         if currentConfiguration != nil {
@@ -39,41 +39,41 @@ class ConfiguratorViewController: UIViewController {
             selectedIndexPath = nil
             setup()
         }
-        
+
 //        tableview.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
     }
 
-    //MARK: Pritate methods
+    // MARK: Pritate methods
     private func setup() {
-        
+
         menuNames = [[
             ItemList(itemName: "timerName", imageName: "configIcon", itemValue: currentConfiguration?.schemeName),
             ItemList(itemName: "filmName", imageName: "filmIcon", itemValue: currentConfiguration?.filmName),
             ItemList(itemName: "developerName", imageName: "developerIcon", itemValue: currentConfiguration?.developerName)
-        ],[
+        ], [
             ItemList(itemName: "timers", imageName: "timersIcon", itemValue: "Настроить таймеры"),
             ItemList(itemName: "agitationScheme", imageName: "timersIcon", itemValue: "Настроить перемешивание")
             ]
         ]
     }
-    
+
     private func updateSaveButtonState() {
         saveButton.isEnabled = true
-        
+
         for ind in 0...2 {
             let indexPath = IndexPath(row: ind, section: 0)
             let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
-            
+
             guard let name = cell.itemTextField.text else {
                 return
             }
-            
+
             saveButton.isEnabled = !name.isEmpty && saveButton.isEnabled
         }
     }
-    
-    //MARK: Navigation
+
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
@@ -113,11 +113,11 @@ class ConfiguratorViewController: UIViewController {
         }
 
 //        configToSave?.id = id
-        
+
         configToSave = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
     }
-    
-    //MARK: Actions
+
+    // MARK: Actions
     @IBAction func unwindToConfigurator(sender: UIStoryboardSegue) {
         if let fromSetTimeViewController = sender.source as? SetTimeViewController {
             if fromSetTimeViewController.cameFrom == "set timers" {
@@ -136,26 +136,26 @@ class ConfiguratorViewController: UIViewController {
                 fatalError("UnwindToConfiguratorViewController. Unknown flag")
             }
         }
-        
+
         if let schemeName = currentConfiguration?.schemeName, let filmName = currentConfiguration?.filmName, let developerName = currentConfiguration?.developerName {
             if !schemeName.isEmpty && !filmName.isEmpty && !developerName.isEmpty {
                 saveButton.isEnabled = true
             }
         }
     }
-    
+
     @IBAction func saveButtonPressedAction(_ sender: UIBarButtonItem) {
-        
+
         for ind in 0...2 {
             let indexPath = IndexPath(row: ind, section: 0)
             let cell = self.tableview.cellForRow(at: indexPath) as! ConfiguratorTextFieldCell
-            
+
             guard let name = cell.itemTextField.text else {
                 return
             }
             menuNames[0][ind].itemValue = name
         }
-        
+
         let idd = currentConfiguration?.id
         guard let id = currentConfiguration?.id,
               let schemeName = menuNames[0][0].itemValue,
@@ -171,7 +171,7 @@ class ConfiguratorViewController: UIViewController {
               let agitationPeriod = currentConfiguration?.agitationPeriod else {
                   return
         }
-        
+
         let configToSave = TimerConfig.init()
         configToSave.id = id
         configToSave.schemeName = schemeName
@@ -185,9 +185,9 @@ class ConfiguratorViewController: UIViewController {
         configToSave.firstAgitationDuration = firstAgitationDuration
         configToSave.periodAgitationDuration = periodAgitationDuration
         configToSave.agitationPeriod = agitationPeriod
-        
+
 //        let configToSave = TimerConfig(id: id, schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
-        
+
         if fromTimer {
             let result = PTRealmDatabase.updateConfiguration(newConfig: configToSave)
             navigationController?.popViewController(animated: true)
@@ -209,40 +209,38 @@ class ConfiguratorViewController: UIViewController {
 //            navigationController?.pushViewController(dataBaseVC, animated: true)
         }
     }
-    
+
     @IBAction func cancelButtonPressedAction(_ sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
         let isPresentingInAddTimerMode = presentingViewController is UINavigationController
-        
+
         if isPresentingInAddTimerMode {
             dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController{
+        } else if let owningNavigationController = navigationController {
             owningNavigationController.popViewController(animated: true)
-        }
-        else {
+        } else {
             fatalError("The ConfiguratorViewController is not inside a navigation controller.")
         }
     }
-    
+
     @IBAction func textFieldDidEndEditing(_ sender: UITextField) {
         updateSaveButtonState()
     }
-    
+
 }
 
-//MARK: Table view extension
+// MARK: Table view extension
 extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+
         return " "
-        
+
     }
-    
+
     //Количество ячеек в таблице
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfRows: Int = 0
@@ -256,11 +254,11 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
         }
         return numberOfRows
     }
-    
+
     //Определяем содержимое ячеек
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemOfMenu = menuNames[indexPath.section][indexPath.row]
-        
+
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.configTextField, for: indexPath) as? ConfiguratorTextFieldCell else {
                 fatalError("The dequeued cell is not an instance of ConfiguratorLabelTableViewCell.")
@@ -271,7 +269,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             } else {
                 cell.itemTextField.placeholder = placeholders[indexPath.row]
             }
-            
+
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.configSetTimer, for: indexPath) as? ConfiguratorLabelTableViewCell else {
@@ -279,12 +277,12 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
             }
             cell.itemImageView.image = UIImage(named: itemOfMenu.imageName)
             cell.itemTextLabel.text = itemOfMenu.itemValue ?? ""
-            
+
             cell.accessoryType = .disclosureIndicator
-            
+
             return cell
         }
-        
+
 //        switch indexPath.row {
 //        case 0...2:
 //            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellTextFieldIdentifier, for: indexPath) as? ConfiguratorTextFieldCell else {
@@ -305,13 +303,13 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
 //            return cell
 //        }
     }
-    
+
     //Навигация до соответствующих экранов
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
-        
+
         let destinationViewController: UIViewController
-        
+
         if indexPath.section == 1 {
             switch indexPath.row {
             case 0:
@@ -326,7 +324,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
                 setTimersViewController.cameFrom = "set timers"
                 destinationViewController = setTimersViewController
                 self.navigationController?.pushViewController(destinationViewController, animated: true)
-                
+
             case 1:
                 guard let setTimersViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.setTimerVC) as? SetTimeViewController else {
                     return
@@ -337,7 +335,7 @@ extension ConfiguratorViewController: UITableViewDelegate, UITableViewDataSource
                 setTimersViewController.cameFrom = "agitation scheme"
                 destinationViewController = setTimersViewController
                 self.navigationController?.pushViewController(destinationViewController, animated: true)
-                
+
             default:
                 return
             }

@@ -12,10 +12,10 @@ import RealmSwift
 class Film: Object {
     @objc dynamic var filmName: String?
     let developers = List<Developers>()
-    
+
     convenience init (filmName: String, developers: List<Developers>) {
         self.init()
-        
+
         self.filmName = filmName
         for item in developers {
             self.developers.append(item)

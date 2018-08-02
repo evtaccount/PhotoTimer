@@ -13,15 +13,15 @@ import SwipeCellKit
 
 class DataBaseViewController: UIViewController {
 
-    //MARK: Outlets
+    // MARK: Outlets
     @IBOutlet weak var tableview: UITableView!
-    
-    //MARK: Properties
+
+    // MARK: Properties
     var realm: Realm!
     var selectedIndexPath: IndexPath?
     var configurations: [TimerConfig] = []
     var configurationsList: [TimerConfig] = []
-    
+
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -32,50 +32,48 @@ class DataBaseViewController: UIViewController {
         view.layer.shadowRadius = 10
         return view
     }()
-    
 
     //MARL: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized))
-        
+
         tableview.addGestureRecognizer(longpress)
         tableview.backgroundColor = UIColor.white
         self.navigationController?.makeNavigationBarTransparent()
-        
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         configurationsList = PTRealmDatabase.loadConfigurationsFromDB()
         self.tableview?.reloadData()
     }
-    
-    //MARK: - Actions
+
+    // MARK: - Actions
     @IBAction func addButtonPressedAction(_ sender: UIBarButtonItem) {
         guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) else {
             return
         }
         self.navigationController?.pushViewController(configuratorViewController, animated: true)
     }
-    
+
     @IBAction func unwindToDataBase(sender: UIStoryboardSegue) {
         //Проверяем, что переход был осуществлен из конфигуратора
         if let sourceViewController = sender.source as? ConfiguratorViewController, let config = sourceViewController.configToSave {
 
             //Если редактировался таймер из БД, обновляем этот таймер
             if let selectedIndexPath = selectedIndexPath {
-                
+
                 if PTRealmDatabase.updateConfiguration(newConfig: config) {
                     configurationsList[selectedIndexPath.row] = config
                     self.tableview.reloadRows(at: [selectedIndexPath], with: .none)
                 } else {
                     fatalError("Save updated configuration is fail")
                 }
-            }
-            else {
+            } else {
                 // Add a new timer
                 let newIndexPath = IndexPath(row: configurationsList.count, section: 0)
                 if PTRealmDatabase.saveNewConfiguration(forConfiguration: config) {
@@ -93,16 +91,16 @@ class DataBaseViewController: UIViewController {
         let state = longPress.state
         let locationInView = longPress.location(in: tableview)//
         var indexPath = tableview.indexPathForRow(at: locationInView)
-        
+
         if indexPath?.row == configurationsList.count {
             return
         }
 
         struct My {
-            static var cellSnapshot: UIView? = nil
+            static var cellSnapshot: UIView?
         }
         struct Path {
-            static var initialIndexPath: IndexPath? = nil
+            static var initialIndexPath: IndexPath?
         }
 
         switch state {
@@ -165,13 +163,13 @@ class DataBaseViewController: UIViewController {
             })
         }
     }
-    
+
     func snapshotOfCell(inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
         inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext() as? UIImage
         UIGraphicsEndImageContext()
-        let cellSnapshot : UIView = UIImageView(image: image)
+        let cellSnapshot: UIView = UIImageView(image: image)
         cellSnapshot.layer.masksToBounds = false
         cellSnapshot.layer.cornerRadius = 0.0
         cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
@@ -179,24 +177,23 @@ class DataBaseViewController: UIViewController {
         cellSnapshot.layer.shadowOpacity = 0.4
         return cellSnapshot
     }
-    
-    //MARK: Private method
+
+    // MARK: Private method
     private func secondsToMinutesSeconds (time counter: Int) -> (String) {
         let minutes = counter / 60
         let seconds = counter % 60
         return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
-    
-    
+
 }
 
-//MARK: Table view extension
+// MARK: Table view extension
 extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         let headerLabel = UILabel(frame: CGRect(x: 30, y: 0, width:
@@ -206,79 +203,79 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
         headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
         headerLabel.sizeToFit()
         headerView.addSubview(headerLabel)
-        
+
         return headerView
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         tableview.headerView(forSection: 0)?.textLabel?.font = UIFont(name: ".SFUIText-Semibold", size: CGFloat(55))
         return "Таймеры"
     }
-    
+
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
+
     //Количество ячеек в таблице
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return configurationsList.count + 1
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0;
+        return 90.0
     }
-    
+
     //Определяем содержимое ячеек
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < (configurationsList.count) {
             let configuration = configurationsList[indexPath.row]
-        
+
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConfigCell, for: indexPath) as? DataBaseTimerCell else {
                 fatalError("The dequeued cell is not an instance of DataBaseTableViewCell.")
             }
-        
+
             guard let timerName = configuration.schemeName else {
                 fatalError("Timer name is nil in row with index \(indexPath.row)")
             }
             cell.delegate = self
-        
+
             cell.timerNameTextLabel?.text = timerName
             cell.infoTextLabel?.text = "\(secondsToMinutesSeconds(time: configuration.devTime)) / \(secondsToMinutesSeconds(time: configuration.stopTime)) / \(secondsToMinutesSeconds(time: configuration.fixTime)) / \(secondsToMinutesSeconds(time: configuration.washTime)) / \(secondsToMinutesSeconds(time: configuration.dryTime))"
-    
+
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.dbConstructCell, for: indexPath) as? DataBaseButtonCell else {
                 fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
             }
-            
+
             cell.titleTextLabel.text = "Конструктор таймера"
             cell.titleTextLabel.textColor = UIColor.white
-          
+
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: false)
-        
+
         if indexPath.row < (configurationsList.count) {
             guard let timerVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.timerVC) as? TimerViewController else { return }
             let selectedTimer = configurationsList[indexPath.row]
-            
+
             selectedIndexPath = indexPath
             timerVC.incomingTimer = selectedTimer
             navigationController?.pushViewController(timerVC, animated: true)
         } else {
             guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) as? ConstructorVC else { return }
-            
+
             constructorVC.stepID = "film"
             navigationController?.pushViewController(constructorVC, animated: true)
         }
     }
-    
+
     @objc func addNewTimer() {
         guard let constructorVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) else { return }
         let vcWithNavBar = UINavigationController(rootViewController: constructorVC)
@@ -286,7 +283,7 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
 //        navigationController?.pushViewController(constructorVC, animated: true)
         selectedIndexPath = nil
     }
-    
+
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //        let deleteAction = UIContextualAction(style: .normal, title: nil, handler: {(ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
 //            let item = self.configurationsList[indexPath.row]
@@ -318,18 +315,17 @@ extension DataBaseViewController: UITableViewDelegate, UITableViewDataSource {
 //
 //        return swipeConfig
 //    }
-    
-    
-    //MARK: - Navigation
+
+    // MARK: - Navigation
     func goToNavigationController(viewController: UIViewController, animated: Bool) {
-        
+
     }
 }
 
 extension DataBaseViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 
-        let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+        let editAction = SwipeAction(style: .default, title: nil) { (_, indexPath) in
             guard let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) as? ConfiguratorViewController else {
                     return
                 }
@@ -342,8 +338,7 @@ extension DataBaseViewController: SwipeTableViewCellDelegate {
         editAction.image = UIImage(named: "editAction")
         editAction.backgroundColor = UIColor.white
 
-
-        let deleteAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+        let deleteAction = SwipeAction(style: .default, title: nil) { (_, indexPath) in
              //Delete the row from the data source
             let item = self.configurationsList[indexPath.row]
             if PTRealmDatabase.deleteConfiguration(forConfig: item) {

@@ -12,6 +12,5 @@ class SetTimeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timerNameLabel: UILabel!
     @IBOutlet weak var temerValueLabel: UILabel!
-    
 
 }

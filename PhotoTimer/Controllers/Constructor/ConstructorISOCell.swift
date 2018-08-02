@@ -12,5 +12,5 @@ class ConstructorISOCell: UITableViewCell {
 
     @IBOutlet weak var isoTextLabel: UILabel!
     @IBOutlet weak var dilutionTextLabel: UILabel!
-    
+
 }

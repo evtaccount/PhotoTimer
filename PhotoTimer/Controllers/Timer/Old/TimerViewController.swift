@@ -8,12 +8,11 @@
 
 import UIKit
 
-
 class TimerViewController: UIViewController {
-    //MARK: - Outlets
+    // MARK: - Outlets
     //Круговой прогресс-бар
     @IBOutlet weak var circularProgressBar: CircularProgressBar!
-    
+
     //Ярлыки для отображения значений таймеров
     @IBOutlet weak var bigTimeLabel: UILabel!
     @IBOutlet weak var devTimeLabel: UILabel!
@@ -21,51 +20,49 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var fixTimeLabel: UILabel!
     @IBOutlet weak var washTimeLabel: UILabel!
     @IBOutlet weak var dryTimeLabel: UILabel!
-    
+
     //Stack views
     @IBOutlet weak var devStackView: UIStackView!
     @IBOutlet weak var stopStackView: UIStackView!
     @IBOutlet weak var fixStackView: UIStackView!
     @IBOutlet weak var washStackView: UIStackView!
     @IBOutlet weak var dryStackView: UIStackView!
-    
+
     //Кнопки "Старт/Пауза" и "Сброс"
     @IBOutlet weak var startPauseButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    
-    
-    //MARK: - Properties
+
+    // MARK: - Properties
     var incomingTimer: TimerConfig?
     var timeProcessCounter = TimerConfig()
-    
+
     //Переменная таймера
     var timeCounter: Timer?
-    
+
     var counter: Int = 0
-    
+
     //Флаг для установки таймера на паузу
     var isPaused = true
-    
+
     //Переменные хранят имя текущего и следующего таймера соответственно
     var currentTimerName: String?
     var nextTimerName: String?
-    
+
     //Словарь используется для переключения на следующий таймер ключу эквивалентному по имени текущего
 //    let timerNamesCycle = ["devTime":"stopTime", "stopTime":"fixTime", "fixTime":"washTime", "washTime":"dryTime", "dryTime":"devTime"]
     var timerValues = [String: Int]()
-    
-    
-    //MARK: - Life cycle
+
+    // MARK: - Life cycle
     //Когда экран загрузился, инициализируем экземпляры класса в методе "setupTimersValue" и выводим заданные в выбранной конфигурации значения таймеров
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         initCurrentTimer()
         setupTimerSegmentLabels()
-        
+
         setupFirstTimerValue()
         updateMainTimerLabel(forTimerValue: timeProcessCounter.devTime)
-        
+
         adoptMainTimerLableToScreenSize()
         setNavigationBarStyle()
         setNavigationBarTiltle()
@@ -73,58 +70,57 @@ class TimerViewController: UIViewController {
         disableResetButton()
         hideCircularProgressBar()
     }
-    
+
     //Теперь, когда загрузился интерфейс, инициируем круговой прогресс-бар
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         initCircularProgressBar()
         showCircularProgressBar()
     }
 
-    
-    //MARK: - Methods
-    //MARK: View-methods
+    // MARK: - Methods
+    // MARK: View-methods
     func setButtonsStyle() {
         startPauseButton.startStyle()
         resetButton.resetStyle()
     }
-    
+
     func setNavigationBarStyle() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        
+
         navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
-    
+
     func adoptMainTimerLableToScreenSize() {
         var kFacktor: CGFloat {
             return UIScreen.main.bounds.width/375.0
         }
-        
+
         bigTimeLabel.font = UIFont(name: ".SFUIText-Semibold", size: CGFloat(55 * kFacktor))
     }
-    
+
     func disableResetButton() {
         resetButton.isEnabled = false
 
     }
-    
+
     func hideCircularProgressBar() {
         circularProgressBar.alpha = 0.0
     }
-    
+
     func showCircularProgressBar() {
         UIView.animate(withDuration: 0.5, animations: {
             self.circularProgressBar.alpha = 1.0
         })
     }
-    
+
     func setNavigationBarTiltle() {
         navigationItem.title = timeProcessCounter.schemeName
     }
-    
+
     func setupTimerSegmentLabels() {
         devTimeLabel.text = timeProcessCounter.devTime.secondsToMinutesSeconds()
         stopTimeLabel.text = timeProcessCounter.stopTime.secondsToMinutesSeconds()
@@ -132,26 +128,26 @@ class TimerViewController: UIViewController {
         washTimeLabel.text = timeProcessCounter.washTime.secondsToMinutesSeconds()
         dryTimeLabel.text = timeProcessCounter.dryTime.secondsToMinutesSeconds()
     }
-    
+
     //Костыль, который скрывает кнопки на navigationItem
     private func hideNavigationButtons() {
         navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
-        
-        navigationItem.setHidesBackButton(true, animated:true)
+
+        navigationItem.setHidesBackButton(true, animated: true)
     }
-    
+
     //Второй костыль, который делает их доступными и видимыми вновь
     private func showNavigationButtons() {
-        navigationItem.setHidesBackButton(false, animated:true)
+        navigationItem.setHidesBackButton(false, animated: true)
         navigationItem.rightBarButtonItem?.isEnabled = true
         navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.08, green: 0.49, blue: 0.98, alpha: 1.0)
     }
-    
+
     func updateMainTimerLabel(forTimerValue timerValue: Int) {
         bigTimeLabel.text = timerValue.secondsToMinutesSeconds()
     }
-    
+
     //Инициация кругового прогресс-бара
     func initCircularProgressBar() {
         guard let timerName = currentTimerName else {
@@ -161,28 +157,28 @@ class TimerViewController: UIViewController {
         circularProgressBar.initTrackLayerSegment()
         initCircularProgressBars(maxValue: timeProcessCounter.devTime, segmentName: timerName)
     }
-    
+
     //Устанавливает текущее значение текущего таймера на круговом прогресс-баре (и на главном и на сегменте)
     private func updateCurrentValuesCircularProgressBar(currentValue: Int) {
         circularProgressBar.currentValue = Float(currentValue)
         circularProgressBar.currentSegmentValue = Float(currentValue)
     }
-    
+
     //Инициирует сегмент на круговом прогресс-баре
     private func initCircularProgressBars(maxValue: Int, segmentName: String) {
         circularProgressBar.maxBarValue = Float(maxValue)
         circularProgressBar.maxSegmentValue = Float(maxValue)
         circularProgressBar.currentSegmentIsActive = segmentName
     }
-    
-    //MARK: - Controller-methods
+
+    // MARK: - Controller-methods
     //Настраивает счетчик на первый таймер. Обновляет главный таймер
     func setupFirstTimerValue() {
         counter = timeProcessCounter.devTime
         currentTimerName = "devTime"
         nextTimerName = TimerConst.timerNamesCycle[currentTimerName!]
     }
-    
+
     //Инициация конфигурации выбранного из БД таймера
     func initCurrentTimer() {
         guard let id = incomingTimer?.id,
@@ -199,13 +195,13 @@ class TimerViewController: UIViewController {
             let agitationPeriod = incomingTimer?.agitationPeriod else {
                 return
         }
-        
+
         timeProcessCounter = TimerConfig(schemeName: schemeName, filmName: filmName, developerName: developerName, devTime: devTime, stopTime: stopTime, fixTime: fixTime, washTime: washTime, dryTime: dryTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
         timeProcessCounter.id = id
-        
+
         timerValues = ["devTime": timeProcessCounter.devTime, "stopTime": timeProcessCounter.stopTime, "fixTime": timeProcessCounter.fixTime, "washTime": timeProcessCounter.washTime, "dryTime": timeProcessCounter.dryTime]
     }
-    
+
     //Метод выполняет декримент текущего таймера и переключает на следующий, елси текущий таймер достиг нуля
     private func updateTimer() {
         if counter > 0 {
@@ -215,40 +211,40 @@ class TimerViewController: UIViewController {
             guard let timerName = nextTimerName else {
                 return
             }
-            
+
             guard let timerValue = timerValues[timerName] else {
                 return
             }
-            
+
             initCircularProgressBars(maxValue: timerValue, segmentName: timerName)
-            
+
             counter = timerValue
-            
+
             currentTimerName = timerName
             nextTimerName = TimerConst.timerNamesCycle[timerName]
-            
+
             stopTimer()
         }
     }
-    
+
     //Останавливает таймер, включает автоблокировку экрана
     func stopTimer() {
         enableBacklightTimer()
-        
+
         timeCounter?.invalidate()
         isPaused = true
         startPauseButton.setTitle("Старт", for: .normal)
         resetButton.isEnabled = true
     }
-    
+
     func disableBacklightTimer() {
         UIApplication.shared.isIdleTimerDisabled = true
     }
-    
+
     func enableBacklightTimer() {
         UIApplication.shared.isIdleTimerDisabled = false
     }
-    
+
     //Функция вызывается по каждому тику таймера
     @objc func updateCountDown() {
         updateTimer()
@@ -259,7 +255,7 @@ class TimerViewController: UIViewController {
 //        stackView.insertSubview(view, at: 0)
 //        view.pin(to: stackView)
 //    }
-    
+
 //    private func backgroundView(color: UIColor) -> UIView {
 //        let view = UIView()
 //        view.backgroundColor = color
@@ -279,43 +275,43 @@ class TimerViewController: UIViewController {
 //    }
 //}
 
-//MARK: - Actions
+// MARK: - Actions
 extension TimerViewController {
     //Отправляем текущий таймер в конфигуратор для редактирования
     @IBAction func editButtonPressedAction(_ sender: UIBarButtonItem) {
         guard let configuratorViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllers.coonfiguratorVC) as? ConfiguratorViewController else {
             return
         }
-        
+
         let currentTimer = timeProcessCounter
         configuratorViewController.currentConfiguration = currentTimer
         configuratorViewController.fromTimer = true
         self.navigationController?.pushViewController(configuratorViewController, animated: true)
     }
-    
+
     @IBAction func resetTimeAction(_ sender: UIButton) {
         initCurrentTimer()
         initCircularProgressBar()
         circularProgressBar.resetCircles()
         setupFirstTimerValue()
         updateMainTimerLabel(forTimerValue: timeProcessCounter.devTime)
-        
+
         resetButton.isEnabled = false
-        
+
         timeCounter?.invalidate()
         isPaused = true
         showNavigationButtons()
     }
-    
+
     @IBAction func startPauseTimeAction(_ sender: UIButton) {
-        if isPaused{
+        if isPaused {
             timeCounter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
-            
+
             disableBacklightTimer()
             isPaused = false
             startPauseButton.setTitle("Пауза", for: .normal)
             resetButton.isEnabled = false
-            
+
             hideNavigationButtons()
         } else {
             stopTimer()

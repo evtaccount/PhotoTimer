@@ -51,7 +51,7 @@ struct TimerColors {
         UIColor().rgbToCGFloat(red: 225, green: 223, blue: 80, alpha: 0.3),
         UIColor().rgbToCGFloat(red: 254, green: 98, blue: 125, alpha: 0.3)
     ]
-    
+
     static let shapeLayerColors = [
         "devTime": UIColor().rgbToCGFloat(red: 95, green: 224, blue: 167, alpha: 1),
         "stopTime": UIColor().rgbToCGFloat(red: 225, green: 161, blue: 89, alpha: 1),
@@ -60,4 +60,3 @@ struct TimerColors {
         "dryTime": UIColor().rgbToCGFloat(red: 254, green: 98, blue: 125, alpha: 1)
     ]
 }
-

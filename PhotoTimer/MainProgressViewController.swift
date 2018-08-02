@@ -11,17 +11,17 @@ import UIKit
 class MainProgressViewController: UIViewController {
 
     @IBOutlet var mainProgressBar: MainProgressBar!
-    
+
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         mainProgressBar.createScene()
     }
-   
+
     @IBAction func actionButton(_ sender: Any) {
-        
+
 //        mainProgressBar.currentValue += 0.1
-        
+
     }
-    
+
 }

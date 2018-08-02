@@ -12,5 +12,5 @@ class ConfiguratorLabelTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemTextLabel: UILabel!
-    
+
 }

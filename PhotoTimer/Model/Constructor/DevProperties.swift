@@ -16,20 +16,25 @@ class DevProperties: Object {
     @objc dynamic var firstAgitationDuration: Int = 0
     @objc dynamic var periodAgitationDuration: Int = 0
     @objc dynamic var agitationPeriod: Int = 0
-    
-    convenience init(iso: String, dilution: String, developingTime: Int, firstAgitationDuration: Int, periodAgitationDuration: Int, agitationPeriod: Int) {
+
+    convenience init(iso: String,
+                     dilution: String,
+                     developingTime: Int,
+                     firstAgitationDuration: Int,
+                     periodAgitationDuration: Int,
+                     agitationPeriod: Int) {
         self.init()
-        
+
         self.iso = iso
         self.dilution = dilution
-        
+
         self.developingTime = developingTime
-        
+
         self.firstAgitationDuration = firstAgitationDuration
         self.periodAgitationDuration = periodAgitationDuration
         self.agitationPeriod = agitationPeriod
     }
-    
+
     static func parse(json: Dictionary<String, Any>) -> DevProperties? {
         guard let iso = json["ISO"] as? String,
             let dilution = json["dilution"] as? String,
@@ -39,7 +44,12 @@ class DevProperties: Object {
             let agitationPeriod = json["agitationPeriod"] as? Int else {
                 return nil
         }
-        
-        return DevProperties(iso: iso, dilution: dilution, developingTime: devTime, firstAgitationDuration: firstAgitationDuration, periodAgitationDuration: periodAgitationDuration, agitationPeriod: agitationPeriod)
+
+        return DevProperties(iso: iso,
+                             dilution: dilution,
+                             developingTime: devTime,
+                             firstAgitationDuration: firstAgitationDuration,
+                             periodAgitationDuration: periodAgitationDuration,
+                             agitationPeriod: agitationPeriod)
     }
 }

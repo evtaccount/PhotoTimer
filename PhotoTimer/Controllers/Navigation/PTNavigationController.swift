@@ -20,9 +20,9 @@ class PTNavigationController: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func pushDestinationController(id: String, class: UIViewController) {
-        
+
     }
 
     func popToDataBaseViewController(animated: Bool) {
