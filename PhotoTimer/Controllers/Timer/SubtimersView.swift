@@ -16,10 +16,6 @@ class SubtimersView: UIView {
     @IBOutlet weak var washingLabel: UILabel!
     @IBOutlet weak var dryingLabel: UILabel!
 
-    @IBOutlet weak var agitationFirstLabel: UILabel!
-    @IBOutlet weak var agitationDurationLabel: UILabel!
-    @IBOutlet weak var agitationPeriodLabel: UILabel!
-
     @IBOutlet weak var firstLineConstraint: NSLayoutConstraint!
     @IBOutlet weak var secondLineConstraint: NSLayoutConstraint!
 
@@ -28,15 +24,13 @@ class SubtimersView: UIView {
     @IBOutlet weak var washingStackView: UIStackView!
     @IBOutlet weak var dryingStackView: UIStackView!
 
-    @IBOutlet weak var agitationStackView: UIStackView!
     @IBOutlet weak var editStackView: UIStackView!
-//    @IBOutlet weak var agitationConstraint: NSLayoutConstraint!
 
     var flag: Bool = true
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        agitationStackView.isHidden = true
+        
     }
 
     func hideMenu() {
@@ -50,16 +44,13 @@ class SubtimersView: UIView {
                 self.washingLabel.isHidden = true
                 self.dryingLabel.isHidden = true
 
-                self.firstLineConstraint.constant = 22.5
-                self.secondLineConstraint.constant = 22.5
+                self.firstLineConstraint.constant = 28
+                self.secondLineConstraint.constant = 28
 
                 self.fixingStackView.layoutIfNeeded()
                 self.washingStackView.layoutIfNeeded()
                 self.dryingStackView.layoutIfNeeded()
 
-                self.editStackView.isHidden = true
-
-//                self.agitationStackView.isHidden = true
                 self.stackView.layoutIfNeeded()
             }) { (_) in
                 UIView.animate(withDuration: 0.2, animations: {
@@ -83,8 +74,6 @@ class SubtimersView: UIView {
                 self.washingStackView.layoutIfNeeded()
                 self.dryingStackView.layoutIfNeeded()
 
-                self.editStackView.isHidden = false
-//                self.agitationStackView.isHidden = false
                 self.stackView.layoutIfNeeded()
             }) { (_) in
 
