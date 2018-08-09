@@ -13,7 +13,7 @@ struct CellNames {
     static let dbConstructCell = "constructorCell"
     static let constructFilmCell = "constructFilmCell"
     static let constructDevCell = "constructDevCell"
-    static let constructISOCell = "constructISOCell"
+    static let constructisoCell = "constructisoCell"
     static let configTextField = "configTextField"
     static let configSetTimer = "configSetTimer"
 }
@@ -26,12 +26,21 @@ struct ViewControllers {
     static var setTimerVC = "setTimerViewController"
 }
 
+struct FilePath {
+    static let filmsDB = "filmsConfigs"
+}
+
 struct CircularPB {
     static let startAnglesForCurrentTimers = ["devTime": -90, "stopTime": -18, "fixTime": 54, "washTime": 126, "dryTime": 198]
 }
 
 struct TimerConst {
     static let timerNamesCycle = ["devTime": "stopTime", "stopTime": "fixTime", "fixTime": "washTime", "washTime": "dryTime", "dryTime": "devTime"]
+}
+
+struct BasicValues {
+    static let washTime: Int = 300
+    static let dryTime: Int = 600
 }
 
 struct DataBaseCellDimentions {

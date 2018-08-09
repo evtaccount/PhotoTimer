@@ -1,5 +1,5 @@
 //
-//  ConstructorISOCell.swift
+//  ConstructorisoCell.swift
 //  PhotoTimer
 //
 //  Created by Evgeny Evtushenko on 10/06/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConstructorISOCell: UITableViewCell {
+class ConstructorisoCell: UITableViewCell {
 
     @IBOutlet weak var isoTextLabel: UILabel!
     @IBOutlet weak var dilutionTextLabel: UILabel!

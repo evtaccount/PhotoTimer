@@ -40,94 +40,94 @@
 
     "Arista EDU Ultra 100": {
         "ARISTA 76 POWDER": [
-            {"ISO": "100", "dilution": "stock", "developinTime": 390, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "stock", "developinTime": 390, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ARISTA PREMIUM POWDER": [
-            {"ISO": "100", "dilution": "stock", "developingTime": 360, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "1+1", "developingTime": 420, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "stock", "developingTime": 360, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "1+1", "developingTime": 420, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "MARATHON FILM DEVELOPER": [
-            {"ISO": "100", "dilution": "1+9", "developingTime": 360, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "1+9", "developingTime": 360, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ILFORD ID-11": [
-            {"ISO": "100", "dilution": "stock", "developingTime": 390, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "stock", "developingTime": 390, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK D-76": [
-            {"ISO": "100", "dilution": "stock", "developingTime": 390, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "stock", "developingTime": 390, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "1+1", "developingTime": 540, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK XTOL": [
-            {"ISO": "100", "dilution": "stock", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "stock", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK TMAX": [
-            {"ISO": "100", "dilution": "1+4", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "1+4", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "AGFA RODINAL": [
-            {"ISO": "100", "dilution": "1+25", "developingTime": 210, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "100", "dilution": "1+25", "developingTime": 210, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ]
     },
 
     "Arista EDU Ultra 200": {
         "ARISTA 76 POWDER": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ARISTA PREMIUM POWDER": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 420, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "DdevelopingTime": 560, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 420, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "DdevelopingTime": 560, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "MARATHON FILM DEVELOPER": [
-            {"ISO": "200", "dilution": "1+9", "developingTime": 300, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "1+9", "developingTime": 300, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ILFORD ID-11": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK D-76": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 510, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK XTOL": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 360, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 360, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK TMAX": [
-            {"ISO": "200", "dilution": "1+4", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "1+4", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "AGFA RODINAL": [
-            {"ISO": "200", "dilution": "1+25", "developingTime": 300, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "1+25", "developingTime": 300, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ]
     },
 
     "Arista EDU Ultra 400": {
         "ARISTA 76 POWDER": [
-            {"ISO": "400", "dilution": "stock", "developingTime": 450, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 750, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "stock", "developingTime": 450, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 750, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ARISTA PREMIUM POWDER": [
-            {"ISO": "400", "dilution": "stock", "developingTime": 450, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "1+1", "developingTime": 510, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "stock", "developingTime": 450, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "1+1", "developingTime": 510, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "MARATHON FILM DEVELOPER": [
-            {"ISO": "400", "dilution": "1+9", "developingTime": 390, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "1+9", "developingTime": 390, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "ILFORD ID-11": [
-            {"ISO": "400", "dilution": "stock", "developingTime": 450, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "1+1", "developingTime": 750, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "stock", "developingTime": 450, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "1+1", "developingTime": 750, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK D-76": [
-            {"ISO": "400", "dilution": "stock", "developingTime": 450, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "1+1", "developingTime": 750, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "stock", "developingTime": 450, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "1+1", "developingTime": 750, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK XTOL": [
-            {"ISO": "400", "dilution": "stock", "developingTime": 420, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "stock", "developingTime": 420, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "KODAK TMAX": [
-            {"ISO": "400", "dilution": "1+4", "developingTime": 390, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "1+4", "developingTime": 390, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ],
         "AGFA RODINAL": [
-            {"ISO": "400", "dilution": "1+25", "developingTime": 330, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "400", "dilution": "1+25", "developingTime": 330, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ]
     },
 
@@ -199,31 +199,31 @@
 
     "ILFORD DELTA 100 Professional": {
         "Kodak XTOL": [
-            {"ISO": "50", "dilution": "stock", "developingTime": 405, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "50", "dilution": "1+1", "developingTime": 540, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "stock", "developingTime": 480, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "100", "dilution": "1+1", "developingTime": 630, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "stock", "developingTime": 570, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 720, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "stock", "developingTime": 690, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "1+1", "developingTime": 840, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "800", "dilution": "stock", "developingTime": 870, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "800", "dilution": "1+1", "developingTime": 1005, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "50", "dilution": "stock", "developingTime": 405, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "50", "dilution": "1+1", "developingTime": 540, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "stock", "developingTime": 480, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "100", "dilution": "1+1", "developingTime": 630, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "stock", "developingTime": 570, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 720, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "stock", "developingTime": 690, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "1+1", "developingTime": 840, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "800", "dilution": "stock", "developingTime": 870, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "800", "dilution": "1+1", "developingTime": 1005, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ]
     },
 
     "ILFORD DELTA 400 Professional": {
         "Kodak XTOL": [
-            {"ISO": "200", "dilution": "stock", "developingTime": 360, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "200", "dilution": "1+1", "developingTime": 540, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "stock", "developingTime": 420, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "400", "dilution": "1+1", "developingTime": 630, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "800", "dilution": "stock", "developingTime": 480, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "800", "dilution": "1+1", "developingTime": 735, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "1600", "dilution": "stock", "developingTime": 600, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "1600", "dilution": "1+1", "developingTime": 870, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "3200", "dilution": "stock", "developingTime": 720, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5},
-            {"ISO": "3200", "dilution": "1+1", "developingTime": 1020, "firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}
+            {"ISO": "200", "dilution": "stock", "developingTime": 360, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "200", "dilution": "1+1", "developingTime": 540, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "stock", "developingTime": 420, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "400", "dilution": "1+1", "developingTime": 630, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "800", "dilution": "stock", "developingTime": 480, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "800", "dilution": "1+1", "developingTime": 735, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "1600", "dilution": "stock", "developingTime": 600, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "1600", "dilution": "1+1", "developingTime": 870, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "3200", "dilution": "stock", "developingTime": 720, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}},
+            {"ISO": "3200", "dilution": "1+1", "developingTime": 1020, "agitationConfig": {"firstAgitationDuration": 30, "periodAgitationDuration": 30, "agitationPeriod": 5}}
         ]
     }
 }

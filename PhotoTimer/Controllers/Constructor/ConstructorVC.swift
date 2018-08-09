@@ -86,7 +86,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
 
             case "iso":
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructISOCell, for: indexPath) as? ConstructorISOCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructisoCell, for: indexPath) as? ConstructorisoCell else {
                     fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
                 }
                 guard let propertySet = itemsList[indexPath.row] as? DevProperties else { return cell }

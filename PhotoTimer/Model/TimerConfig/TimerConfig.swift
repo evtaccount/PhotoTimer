@@ -144,32 +144,4 @@ class TimerConfig: Object {
         return "id"
     }
 
-//    static func parse(json: Dictionary<String, Any>) -> TimerConfig? {
-//        guard let schemeName = json["schemeName"] as? String,
-//              let filmName = json["filmName"] as? String,
-//              let developerName = json["developerName"] as? String,
-//              let devTime = json["devTime"] as? Int,
-//              let stopTime = json["stopTime"] as? Int,
-//              let fixTime = json["fixTime"] as? Int,
-//              let washTime = json["washTime"] as? Int,
-//              let dryTime = json["dryTime"] as? Int,
-//              let firstAgitationDuration = json["firstAgitationDuration"] as? Int,
-//              let periodAgitationDuration = json["periodAgitationDuration"] as? Int,
-//              let agitationPeriod = json["agitationPeriod"] as? Int else {
-//            return nil
-//        }
-//
-//        return TimerConfig(schemeName: schemeName,
-//                           filmName: filmName,
-//                           developerName: developerName,
-//                           devTime: devTime,
-//                           stopTime: stopTime,
-//                           fixTime: fixTime,
-//                           washTime: washTime,
-//                           dryTime: dryTime,
-//                           firstAgitationDuration: firstAgitationDuration,
-//                           periodAgitationDuration: periodAgitationDuration,
-//                           agitationPeriod: agitationPeriod)
-//    }
-
 }
