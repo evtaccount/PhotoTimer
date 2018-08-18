@@ -14,8 +14,8 @@ class ConstructorVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var stepID: String?
-    var filmsList: [Film] = []
-    var choosenFilm: Film?
+    var filmsList: [FilmRealm] = []
+    var choosenFilm: FilmRealm?
     var filmName: String?
     var developers = List<Developers>()
     var choosenDeveloper: Developers?
@@ -28,7 +28,7 @@ class ConstructorVC: UIViewController {
         
         switch stepID {
         case "film":
-            itemsList = PTRealmDatabase.loadFilmsFormDB() as [Film]
+            itemsList = PTRealmDatabase.loadFilmsFormDB() as [FilmRealm]
             
         case "developer":
             guard let developers = choosenFilm?.developers, let filmName = choosenFilm?.filmName else {
@@ -77,7 +77,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: CellNames.constructFilmCell, for: indexPath) as? ConstructorFilmDevCell else {
                     fatalError("The dequeued cell is not an instance of ConstructorTableViewCell.")
                 }
-                guard let film = itemsList[indexPath.row] as? Film else { return cell }
+                guard let film = itemsList[indexPath.row] as? FilmRealm else { return cell }
                 cell.filmNameTextLabel.text = film.filmName
                 return cell
                 
@@ -115,7 +115,7 @@ extension ConstructorVC: UITableViewDelegate, UITableViewDataSource {
         switch stepID {
         case "film":
             guard let filmDevVC = storyboard?.instantiateViewController(withIdentifier: ViewControllers.constructorVC) as? ConstructorVC else { return }
-            let film = itemsList[indexPath.row] as? Film
+            let film = itemsList[indexPath.row] as? FilmRealm
             filmDevVC.choosenFilm = film
             filmDevVC.stepID = "developer"
             

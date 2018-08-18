@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class PTRealmDatabase {
-    class func saveFilmsToDB(filmsToSave: List<Film>) {
+    class func saveFilmsToDB(filmsToSave: List<FilmRealm>) {
         let realm = try! Realm()
         
         for item in filmsToSave {
@@ -20,11 +20,11 @@ class PTRealmDatabase {
         }
     }
     
-    class func loadFilmsFormDB() -> [Film] {
+    class func loadFilmsFormDB() -> [FilmRealm] {
         let realmFilms = try! Realm()
-        var films = [Film]()
+        var films = [FilmRealm]()
         
-        for film in realmFilms.objects(Film.self) {
+        for film in realmFilms.objects(FilmRealm.self) {
             films.append(film)
         }
         return films

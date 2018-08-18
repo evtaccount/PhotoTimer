@@ -242,15 +242,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-jP-1VI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-jP-1VI">
                                 <rect key="frame" x="0.0" y="79" width="375" height="588"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataBaseCell" rowHeight="70" id="1NZ-P5-6Uf" customClass="DataBaseTimerCell" customModule="PhotoTimer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1NZ-P5-6Uf" id="uw9-Cu-bqS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Te9-0n-Rr5">
@@ -289,16 +290,16 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="constructorCell" rowHeight="70" id="cpO-qn-a7U" customClass="DataBaseButtonCell" customModule="PhotoTimer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="125.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="98" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cpO-qn-a7U" id="Kq4-6v-Vyg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-hJ-Az5">
                                                     <rect key="frame" x="19" y="10.5" width="337" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create timer via constructor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVU-mP-bcy">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Конструктор таймера" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVU-mP-bcy">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="50"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -344,7 +345,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableview" destination="sF6-jP-1VI" id="xMz-F3-yBz"/>
+                        <outlet property="tableView" destination="sF6-jP-1VI" id="yfw-jD-sES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfR-yc-yiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -738,6 +739,247 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i78-92-078" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1965.5999999999999" y="157.87106446776613"/>
+        </scene>
+        <!--TimerVC-->
+        <scene sceneID="UUA-AH-7IZ">
+            <objects>
+                <viewController storyboardIdentifier="timerVC" id="p7m-fe-cOT" customClass="TimerVC" customModule="DevelopingTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ni-Tj-kRa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8C-Jt-iey" customClass="SubtimersView" customModule="DevelopingTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="90"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4XI-08-1hw" customClass="SeparatedStackView" customModule="DevelopingTimer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yw1-a8-kd9" customClass="SeparatedStackView" customModule="DevelopingTimer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-kT-jwf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-sQ-Njb">
+                                                                <rect key="frame" x="39.5" y="0.0" width="46" height="27.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-NF-MmE">
+                                                                <rect key="frame" x="25" y="17.5" width="75" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="7lN-nh-D1c">
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEe-4L-xjo">
+                                                                <rect key="frame" x="39.5" y="0.0" width="46" height="27.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop bath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GC-mb-WL1">
+                                                                <rect key="frame" x="35" y="17.5" width="55.5" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-WU-B1U">
+                                                        <rect key="frame" x="250" y="0.0" width="125" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6W-Hw-KCb">
+                                                                <rect key="frame" x="39.5" y="0.0" width="46" height="27.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYb-8B-uJC">
+                                                                <rect key="frame" x="46" y="17.5" width="33.5" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="P1z-WU-B1U" firstAttribute="width" secondItem="zhn-kT-jwf" secondAttribute="width" id="hE4-4I-002"/>
+                                                    <constraint firstItem="zhn-kT-jwf" firstAttribute="width" secondItem="7lN-nh-D1c" secondAttribute="width" id="xNy-46-my5"/>
+                                                    <constraint firstAttribute="height" constant="45" id="yJO-1M-uES"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lib-Jt-EGI" customClass="SeparatedStackView" customModule="DevelopingTimer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="45" width="375" height="45"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="voC-Rc-MJ5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2d-HZ-XVA">
+                                                                <rect key="frame" x="39.5" y="0.0" width="46" height="27.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-My-iRc">
+                                                                <rect key="frame" x="38.5" y="17.5" width="48.5" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="K2h-7F-TDd">
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="45"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Iz-fc-y3J">
+                                                                <rect key="frame" x="39.5" y="0.0" width="46" height="27.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqo-lp-cY7">
+                                                                <rect key="frame" x="44" y="17.5" width="37.5" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-aI-aoU">
+                                                        <rect key="frame" x="250" y="0.0" width="125" height="45"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="4hg-OO-0NB"/>
+                                                    <constraint firstItem="PGt-aI-aoU" firstAttribute="width" secondItem="voC-Rc-MJ5" secondAttribute="width" id="Srn-Lv-zbv"/>
+                                                    <constraint firstItem="voC-Rc-MJ5" firstAttribute="width" secondItem="K2h-7F-TDd" secondAttribute="width" id="d0z-l9-iAg"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4XI-08-1hw" secondAttribute="bottom" id="D0t-K7-BzJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="4XI-08-1hw" secondAttribute="trailing" id="I66-17-fE9"/>
+                                    <constraint firstItem="4XI-08-1hw" firstAttribute="leading" secondItem="k8C-Jt-iey" secondAttribute="leading" id="ovt-fn-RqT"/>
+                                    <constraint firstItem="4XI-08-1hw" firstAttribute="top" secondItem="k8C-Jt-iey" secondAttribute="top" id="q2h-kA-edB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="developLabel" destination="Wuy-sQ-Njb" id="xPM-ay-CWC"/>
+                                    <outlet property="dryingLabel" destination="0Iz-fc-y3J" id="Z4U-eS-Zj1"/>
+                                    <outlet property="dryingStackView" destination="K2h-7F-TDd" id="DVg-r3-h09"/>
+                                    <outlet property="editStackView" destination="PGt-aI-aoU" id="NCe-1S-Cgn"/>
+                                    <outlet property="firstLineConstraint" destination="yJO-1M-uES" id="zCF-Dg-jIo"/>
+                                    <outlet property="fixingLabel" destination="s6W-Hw-KCb" id="Umd-wV-Ktw"/>
+                                    <outlet property="fixingStackView" destination="P1z-WU-B1U" id="aL4-C4-V94"/>
+                                    <outlet property="secondLineConstraint" destination="4hg-OO-0NB" id="dpf-mm-cOO"/>
+                                    <outlet property="stackView" destination="4XI-08-1hw" id="VHr-of-H6s"/>
+                                    <outlet property="stopLabel" destination="DEe-4L-xjo" id="QBc-cB-jFu"/>
+                                    <outlet property="washingLabel" destination="A2d-HZ-XVA" id="ypp-AL-VL5"/>
+                                    <outlet property="washingStackView" destination="voC-Rc-MJ5" id="1Ye-kl-ZcZ"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ0-E1-Ycn" customClass="ProgressBar" customModule="DevelopingTimer" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="360" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHF-dW-Cmd" customClass="CircularButton" customModule="DevelopingTimer" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DHF-dW-Cmd" secondAttribute="height" multiplier="1:1" id="5op-o1-W1Y"/>
+                                            <constraint firstAttribute="width" constant="200" id="XHh-er-Uww"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.99607843139999996" green="0.37647058820000001" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isPlayButton" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="startPause:" destination="p7m-fe-cOT" eventType="touchUpInside" id="8zH-QO-t2w"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="07G-2O-Ag5"/>
+                                    <constraint firstAttribute="height" constant="240" id="OFb-At-FIA"/>
+                                    <constraint firstItem="DHF-dW-Cmd" firstAttribute="centerX" secondItem="ZQ0-E1-Ycn" secondAttribute="centerX" id="TJL-IW-O54"/>
+                                    <constraint firstItem="DHF-dW-Cmd" firstAttribute="centerY" secondItem="ZQ0-E1-Ycn" secondAttribute="centerY" id="wfT-iP-mCz"/>
+                                    <constraint firstItem="DHF-dW-Cmd" firstAttribute="centerX" secondItem="ZQ0-E1-Ycn" secondAttribute="centerX" id="x4A-oM-cus"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startGradientColor">
+                                        <color key="value" red="1" green="0.27167558310000001" blue="0.1554179527" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endGradientColor">
+                                        <color key="value" red="1" green="0.95024356350000005" blue="0.34352486970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ0-AA-6KB">
+                                <rect key="frame" x="128" y="210" width="119" height="80"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpy-LY-4PU">
+                                <rect key="frame" x="157.5" y="295" width="60.5" height="16"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FwY-kE-69b">
+                                <rect key="frame" x="112.5" y="320" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="SQq-jr-4jv"/>
+                                </constraints>
+                                <state key="normal" title="RESET">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.37647058820000001" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="p7m-fe-cOT" eventType="touchUpInside" id="Dlm-cx-0Li"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="6NC-ia-wse"/>
+                            <constraint firstItem="k8C-Jt-iey" firstAttribute="top" secondItem="VLj-Jg-2IV" secondAttribute="top" constant="30" id="9ua-wm-U5j"/>
+                            <constraint firstItem="VLj-Jg-2IV" firstAttribute="bottom" secondItem="ZQ0-E1-Ycn" secondAttribute="bottom" constant="67" id="DSJ-uQ-VN9"/>
+                            <constraint firstItem="VLj-Jg-2IV" firstAttribute="bottom" secondItem="nQ0-AA-6KB" secondAttribute="bottom" constant="377" id="Dkc-BD-rkB"/>
+                            <constraint firstItem="VLj-Jg-2IV" firstAttribute="trailing" secondItem="k8C-Jt-iey" secondAttribute="trailing" id="IQO-Pt-YAf"/>
+                            <constraint firstItem="k8C-Jt-iey" firstAttribute="leading" secondItem="VLj-Jg-2IV" secondAttribute="leading" id="JZM-Dn-Ix8"/>
+                            <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="top" secondItem="FwY-kE-69b" secondAttribute="bottom" constant="10" id="MAA-XY-DlA"/>
+                            <constraint firstItem="FwY-kE-69b" firstAttribute="top" secondItem="lpy-LY-4PU" secondAttribute="bottom" constant="9" id="Mnd-fY-QPh"/>
+                            <constraint firstItem="nQ0-AA-6KB" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="TaS-jG-KZU"/>
+                            <constraint firstItem="nQ0-AA-6KB" firstAttribute="top" relation="lessThanOrEqual" secondItem="k8C-Jt-iey" secondAttribute="bottom" constant="70" id="nQu-Og-Wbe"/>
+                            <constraint firstItem="lpy-LY-4PU" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="qqj-7w-vpz"/>
+                            <constraint firstItem="FwY-kE-69b" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="wCH-cf-dC8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VLj-Jg-2IV"/>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="DHF-dW-Cmd" id="M0u-zC-n0R"/>
+                        <outlet property="progressBar" destination="ZQ0-E1-Ycn" id="xKm-IA-J8I"/>
+                        <outlet property="resetButton" destination="FwY-kE-69b" id="s75-UT-qqo"/>
+                        <outlet property="subtimersView" destination="k8C-Jt-iey" id="3aq-TT-2Qk"/>
+                        <outlet property="totalTimeLabel" destination="nQ0-AA-6KB" id="BJC-gM-2ZZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7h-ZV-2A0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4577" y="-562"/>
         </scene>
     </scenes>
 </document>

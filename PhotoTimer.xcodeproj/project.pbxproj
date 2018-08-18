@@ -51,13 +51,21 @@
 		EA62047A20BDC30B00874123 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62045C20BDC30B00874123 /* SF-Pro-Text-Medium.otf */; };
 		EA62047B20BDC30B00874123 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62045D20BDC30B00874123 /* SF-Pro-Display-BoldItalic.otf */; };
 		EA62047C20BDC30B00874123 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA62045E20BDC30B00874123 /* SF-Pro-Text-SemiboldItalic.otf */; };
+		EA73C1BD2120B4DE00FDCEB9 /* DataBaseTimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1BB2120B4DE00FDCEB9 /* DataBaseTimerCell.swift */; };
+		EA73C1C32120B52C00FDCEB9 /* DataBaseButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1C12120B52C00FDCEB9 /* DataBaseButtonCell.swift */; };
+		EA73C1C82120BBE000FDCEB9 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1C72120BBE000FDCEB9 /* TimerVC.swift */; };
+		EA73C1CE2120BC2700FDCEB9 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1CA2120BC2700FDCEB9 /* SeparatedStackView.swift */; };
+		EA73C1CF2120BC2700FDCEB9 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1CB2120BC2700FDCEB9 /* CircularButton.swift */; };
+		EA73C1D02120BC2700FDCEB9 /* SubtimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1CC2120BC2700FDCEB9 /* SubtimersView.swift */; };
+		EA73C1D12120BC2700FDCEB9 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1CD2120BC2700FDCEB9 /* ProgressBar.swift */; };
+		EA73C1D321234BA500FDCEB9 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1D221234BA500FDCEB9 /* Developer.swift */; };
+		EA73C1D521234BAD00FDCEB9 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1D421234BAD00FDCEB9 /* Film.swift */; };
 		EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */; };
-		EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */; };
 		EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */; };
 		EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */; };
 		EA8A713720E21585005BF40E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A713620E21585005BF40E /* Extensions.swift */; };
 		EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */; };
-		EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71420D68D9A00AFB6F9 /* Film.swift */; };
+		EABBA71520D68D9A00AFB6F9 /* FilmRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71420D68D9A00AFB6F9 /* FilmRealm.swift */; };
 		EABBA71720D68DE700AFB6F9 /* Developers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71620D68DE700AFB6F9 /* Developers.swift */; };
 		EABBA71920D68E1400AFB6F9 /* DevProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABBA71820D68E1400AFB6F9 /* DevProperties.swift */; };
 		EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */; };
@@ -134,13 +142,21 @@
 		EA62045C20BDC30B00874123 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		EA62045D20BDC30B00874123 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		EA62045E20BDC30B00874123 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		EA73C1BB2120B4DE00FDCEB9 /* DataBaseTimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTimerCell.swift; sourceTree = "<group>"; };
+		EA73C1C12120B52C00FDCEB9 /* DataBaseButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseButtonCell.swift; sourceTree = "<group>"; };
+		EA73C1C72120BBE000FDCEB9 /* TimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
+		EA73C1CA2120BC2700FDCEB9 /* SeparatedStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
+		EA73C1CB2120BC2700FDCEB9 /* CircularButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
+		EA73C1CC2120BC2700FDCEB9 /* SubtimersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtimersView.swift; sourceTree = "<group>"; };
+		EA73C1CD2120BC2700FDCEB9 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		EA73C1D221234BA500FDCEB9 /* Developer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
+		EA73C1D421234BAD00FDCEB9 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
-		EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTableViewCell.swift; sourceTree = "<group>"; };
 		EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTLoadFilmsToDB.swift; sourceTree = "<group>"; };
 		EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTRealmDatabase.swift; sourceTree = "<group>"; };
 		EA8A713620E21585005BF40E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA95E5EA20F6A25100A7295B /* GlobalMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethods.swift; sourceTree = "<group>"; };
-		EABBA71420D68D9A00AFB6F9 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		EABBA71420D68D9A00AFB6F9 /* FilmRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRealm.swift; sourceTree = "<group>"; };
 		EABBA71620D68DE700AFB6F9 /* Developers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developers.swift; sourceTree = "<group>"; };
 		EABBA71820D68E1400AFB6F9 /* DevProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevProperties.swift; sourceTree = "<group>"; };
 		EABDE7DC20AB34BB0072489A /* ConfiguratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +204,8 @@
 		EA1941E120B20A3700DA423F /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				EA73C1C92120BBFA00FDCEB9 /* view */,
+				EA73C1C62120BBCB00FDCEB9 /* controller */,
 				EA2477E9209F870400E2A9DA /* TimerViewController.swift */,
 				EA2FB25120A3012C0058AAA2 /* CircularProgressBar.swift */,
 			);
@@ -226,7 +244,7 @@
 		EA2477C5209F79C800E2A9DA /* PhotoTimer */ = {
 			isa = PBXGroup;
 			children = (
-				EA7D7C0120E9359A0063C730 /* View */,
+				EA7D7C0120E9359A0063C730 /* Storyboards */,
 				EA7D7C0020E935450063C730 /* Controllers */,
 				EA7D7BFF20E935210063C730 /* Extensions */,
 				EA7B679920BAFF4200848617 /* Model */,
@@ -313,11 +331,39 @@
 			path = "SF Pro";
 			sourceTree = "<group>";
 		};
+		EA73C1C52120B57200FDCEB9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EA73C1BB2120B4DE00FDCEB9 /* DataBaseTimerCell.swift */,
+				EA73C1C12120B52C00FDCEB9 /* DataBaseButtonCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		EA73C1C62120BBCB00FDCEB9 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA73C1C72120BBE000FDCEB9 /* TimerVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		EA73C1C92120BBFA00FDCEB9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EA73C1CB2120BC2700FDCEB9 /* CircularButton.swift */,
+				EA73C1CD2120BC2700FDCEB9 /* ProgressBar.swift */,
+				EA73C1CA2120BC2700FDCEB9 /* SeparatedStackView.swift */,
+				EA73C1CC2120BC2700FDCEB9 /* SubtimersView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		EA76799920B034C9005E4F88 /* Data base */ = {
 			isa = PBXGroup;
 			children = (
+				EA73C1C52120B57200FDCEB9 /* view */,
 				EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */,
-				EA76799720AF8B66005E4F88 /* DataBaseTableViewCell.swift */,
 			);
 			path = "Data base";
 			sourceTree = "<group>";
@@ -328,6 +374,8 @@
 				EABBA71A20D692F400AFB6F9 /* TimerConfig */,
 				EABBA71320D68D6C00AFB6F9 /* Constructor */,
 				EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */,
+				EA73C1D221234BA500FDCEB9 /* Developer.swift */,
+				EA73C1D421234BAD00FDCEB9 /* Film.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,13 +402,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		EA7D7C0120E9359A0063C730 /* View */ = {
+		EA7D7C0120E9359A0063C730 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				EA2477CA209F79C900E2A9DA /* Main.storyboard */,
 				EA2477CF209F79CB00E2A9DA /* LaunchScreen.storyboard */,
 			);
-			path = View;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		EA7D7C0220E936700063C730 /* Navigation */ = {
@@ -377,7 +425,7 @@
 				EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */,
 				EABBA71820D68E1400AFB6F9 /* DevProperties.swift */,
 				EABBA71620D68DE700AFB6F9 /* Developers.swift */,
-				EABBA71420D68D9A00AFB6F9 /* Film.swift */,
+				EABBA71420D68D9A00AFB6F9 /* FilmRealm.swift */,
 			);
 			path = Constructor;
 			sourceTree = "<group>";
@@ -621,26 +669,34 @@
 				EA8A713720E21585005BF40E /* Extensions.swift in Sources */,
 				EABDE7DF20AB42C80072489A /* ConfiguratorLabelTableViewCell.swift in Sources */,
 				EA2477EA209F870400E2A9DA /* TimerViewController.swift in Sources */,
-				EABBA71520D68D9A00AFB6F9 /* Film.swift in Sources */,
+				EABBA71520D68D9A00AFB6F9 /* FilmRealm.swift in Sources */,
 				EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */,
 				EAEF931D20CC294800741DF2 /* ConstructorVC.swift in Sources */,
 				EA4E8F6F20E849C3009C4ADE /* Constants.swift in Sources */,
 				EA95E5EB20F6A25100A7295B /* GlobalMethods.swift in Sources */,
 				EAFE7F9F20B7DBB300D13EEE /* ConfiguratorTextFieldCell.swift in Sources */,
+				EA73C1BD2120B4DE00FDCEB9 /* DataBaseTimerCell.swift in Sources */,
 				EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */,
 				EABDE7E320ACCD0F0072489A /* SetTimeTableViewCell.swift in Sources */,
+				EA73C1C82120BBE000FDCEB9 /* TimerVC.swift in Sources */,
 				EABBA71720D68DE700AFB6F9 /* Developers.swift in Sources */,
 				EABBA71920D68E1400AFB6F9 /* DevProperties.swift in Sources */,
+				EA73C1D321234BA500FDCEB9 /* Developer.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
+				EA73C1CE2120BC2700FDCEB9 /* SeparatedStackView.swift in Sources */,
 				EA2FB27620A4C84E0058AAA2 /* GuideViewController.swift in Sources */,
 				EA1941E420B3454400DA423F /* TimerConfig.swift in Sources */,
 				EA2477C7209F79C900E2A9DA /* AppDelegate.swift in Sources */,
 				EA4E8F6B20E787DA009C4ADE /* PTNavigationController.swift in Sources */,
+				EA73C1D12120BC2700FDCEB9 /* ProgressBar.swift in Sources */,
 				EA2FB25220A3012C0058AAA2 /* CircularProgressBar.swift in Sources */,
+				EA73C1D02120BC2700FDCEB9 /* SubtimersView.swift in Sources */,
 				EABDE7E120AC64930072489A /* SetTimeViewController.swift in Sources */,
 				EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */,
+				EA73C1D521234BAD00FDCEB9 /* Film.swift in Sources */,
 				EAEF932720CD0EB500741DF2 /* ConstructorISOCell.swift in Sources */,
-				EA76799820AF8B66005E4F88 /* DataBaseTableViewCell.swift in Sources */,
+				EA73C1C32120B52C00FDCEB9 /* DataBaseButtonCell.swift in Sources */,
+				EA73C1CF2120BC2700FDCEB9 /* CircularButton.swift in Sources */,
 				EABDE7DD20AB34BB0072489A /* ConfiguratorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Film: Object {
+class FilmRealm: Object {
     @objc dynamic var filmName: String?
     let developers = List<Developers>()
     
