@@ -6,7 +6,7 @@ target 'PhotoTimer' do
   use_frameworks!
 
   # Pods for PhotoTimer
-  pod 'RealmSwift', '3.3.1'
+  pod 'RealmSwift'
   pod 'Alamofire'
   pod 'SwipeCellKit'
 

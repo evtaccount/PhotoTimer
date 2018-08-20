@@ -15,26 +15,34 @@ class TimerVC: UIViewController {
     @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var timerName: UILabel!
+    
+    @IBOutlet weak var bottomProgressBarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timerLabelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var resetButtonHeightConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
     var timeProcessCounter = TimerConfig()
     
     var timeCounter: Timer?
     var counter: Int = 0
+    var offsetCounter: Int = 0
     var requestDate = Date()
+    
+    let fontSizeSmall: CGFloat = 45
+    let fontSizeBig: CGFloat = 100
     
     var currentTimerName: String?
     var nextTimerName: String?
     
-    //Флаги
     var isPaused = true
-    
-    //Словарь используется для переключения на следующий таймер по ключу эквивалентному имени текущего
-    //    let timerNamesCycle = ["devTime":"stopTime", "stopTime":"fixTime", "fixTime":"washTime", "washTime":"dryTime", "dryTime":"devTime"]
     var timerValues = [String: Int]()
+    
+    var kFacktor: CGFloat {
+        return UIScreen.main.bounds.width / 375.0
+    }
 
     //MARK: - Life cycle
-    //Когда экран загрузился, инициализируем экземпляры класса в методе "setupTimersValue" и выводим заданные в выбранной конфигурации значения таймеров
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +53,9 @@ class TimerVC: UIViewController {
         setupFirstTimerValue()
         updateMainTimerLabel(forTimerValue: timeProcessCounter.devTime)
         
-//        adoptMainTimerLableToScreenSize()
+        timerName.text = currentTimerName
+        
+        adoptMainTimerLableToScreenSize()
         setNavigationBarStyle()
 //        setNavigationBarTiltle()
 //        setButtonsStyle()
@@ -71,8 +81,7 @@ class TimerVC: UIViewController {
     }
     
     func initCircularProgressBar() {
-        progressBar.initProgressBar()
-        progressBar.maxBarValue = CGFloat(counter)
+        progressBar.maxBarValue = Float(counter)
 //        guard let timerName = currentTimerName else {
 //            return
 //        }
@@ -81,11 +90,25 @@ class TimerVC: UIViewController {
 //        initCircularProgressBars(maxValue: timeProcessCounter.devTime, segmentName: timerName)
     }
     
+    func adoptMainTimerLableToScreenSize() {
+        
+        totalTimeLabel.font = UIFont(name: ".SFUIText-Semibold", size: CGFloat(55 * kFacktor))
+        bottomProgressBarConstraint.constant = 67 * kFacktor
+//        progressBar.layoutIfNeeded()
+    }
+    
     func configureUI() {
         self.navigationController?.makeNavigationBarTransparent()
         
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editConfigButtonTapped))
         self.navigationItem.rightBarButtonItem = editButton
+        
+        resetButtonHeightConstraint.constant = 30 * kFacktor
+        
+        resetButton.backgroundColor = .clear
+        resetButton.layer.cornerRadius = 5
+        resetButton.layer.borderWidth = 1
+        resetButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func initTimer() {
@@ -113,24 +136,29 @@ class TimerVC: UIViewController {
     @objc func handleTimer() {
         let sec = Int(-self.requestDate.timeIntervalSinceNow)
         
-        progressBar.currentValue = CGFloat(counter - sec)
+        progressBar.currentValue = Float(counter - sec)
         totalTimeLabel.text = (counter - sec).secondsToMinutesSeconds()
         
-        if counter <= sec {
-            guard let timerName = self.nextTimerName else {
+        if counter + offsetCounter < sec {
+            guard let currentName = self.nextTimerName else {
                 return
             }
             
-            guard let timerValue = self.timerValues[timerName] else {
+            guard let timerValue = self.timerValues[currentName] else {
                 return
             }
             
             //            initCircularProgressBars(maxValue: timerValue, segmentName: timerName)
             
             self.counter = timerValue
-            self.currentTimerName = timerName
-            self.nextTimerName = TimerConst.timerNamesCycle[timerName]
+            self.currentTimerName = currentName
+            progressBar.maxBarValue = Float(timerValue)
+            self.nextTimerName = TimerConst.timerNamesCycle[currentName]
             self.stopTimer()
+            shrink()
+            
+            timerName.text = currentTimerName
+            
             totalTimeLabel.text = counter.secondsToMinutesSeconds()
         }
     }
@@ -142,7 +170,7 @@ class TimerVC: UIViewController {
         isPaused = true
         playButton.isPlayButton = true
         resetButton.isEnabled = true
-        subtimersView.hideShowMenu()
+        subtimersView.isFlipped = false
     }
     
     func disableBacklightTimer() {
@@ -152,15 +180,53 @@ class TimerVC: UIViewController {
     func enableBacklightTimer() {
         UIApplication.shared.isIdleTimerDisabled = false
     }
+    
+    func shrink() {
+        let labelCopy = totalTimeLabel.copyLabel()
+        var smallerBounds = labelCopy.bounds
+        labelCopy.font = totalTimeLabel.font.withSize(fontSizeSmall)
+        smallerBounds.size = labelCopy.intrinsicContentSize
+        
+        let shrinkTransform = scaleTransform(from: totalTimeLabel.bounds.size, to: smallerBounds.size)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.totalTimeLabel.transform = shrinkTransform
+        }, completion: { _ in
+            self.totalTimeLabel.font = labelCopy.font
+            self.totalTimeLabel.transform = .identity
+            self.totalTimeLabel.bounds = smallerBounds
+        })
+    }
+    
+    func enlarge() {
+        var biggerBounds = totalTimeLabel.bounds
+        totalTimeLabel.font = totalTimeLabel.font.withSize(fontSizeBig)
+        biggerBounds.size = totalTimeLabel.intrinsicContentSize
+        
+        totalTimeLabel.transform = scaleTransform(from: biggerBounds.size, to: totalTimeLabel.bounds.size)
+        totalTimeLabel.bounds = biggerBounds
+        
+        UIView.animate(withDuration: 0.5) {
+            self.totalTimeLabel.transform = .identity
+        }
+    }
+    
+    private func scaleTransform(from: CGSize, to: CGSize) -> CGAffineTransform {
+        let scaleX = to.width / from.width
+        let scaleY = to.height / from.height
+        
+        return CGAffineTransform(scaleX: scaleX, y: scaleY)
+    }
 }
 
 // MARK: - Actions
 extension TimerVC {
     @IBAction func startPause(_ sender: CircularButton) {
-        subtimersView.hideShowMenu()
         
         if isPaused{
-            requestDate = Date()
+            subtimersView.isFlipped = isPaused
+//            timerName.isHidden = true
+            requestDate = .init()
             timeCounter = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
             
             disableBacklightTimer()
@@ -168,16 +234,41 @@ extension TimerVC {
             playButton.isPlayButton = false
             resetButton.isEnabled = false
             
+            UIView.animate(withDuration: 0.5) {
+                self.resetButton.alpha = 0
+            }
 //            hideNavigationButtons()
+            
+            enlarge()
         } else {
+//            subtimersView.isFlipped = isPaused
+            counter -= Int(-self.requestDate.timeIntervalSinceNow)
+            
+            UIView.animate(withDuration: 0.5) {
+                self.resetButton.alpha = 1
+            }
+            
             stopTimer()
+            
+            shrink()
         }
     }
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
+        timerName.text = "Total time"
     }
     
     @objc func editConfigButtonTapped() {
         
+    }
+}
+
+extension UILabel {
+    func copyLabel() -> UILabel {
+        let label = UILabel()
+        label.font = self.font
+        label.frame = self.frame
+        label.text = self.text
+        return label
     }
 }
