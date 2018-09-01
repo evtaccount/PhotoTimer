@@ -47,6 +47,10 @@ extension UIView {
 }
 
 extension UIColor {
+    convenience init(r: Int, g: Int, b: Int, a: CGFloat) {
+        self.init(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: a)
+    }
+    
     func rgbToCGFloat(red: Int, green: Int, blue: Int, alpha: Float) -> CGColor {
         let redFloat = CGFloat(Float(red)/255.0)
         let greenFloat = CGFloat(Float(green)/255.0)
@@ -77,5 +81,15 @@ extension UINavigationController {
         self.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationBar.shadowImage = nil
         self.navigationBar.isTranslucent = false
+    }
+}
+
+extension UILabel {
+    func copyLabel() -> UILabel {
+        let label = UILabel()
+        label.font = self.font
+        label.frame = self.frame
+        label.text = self.text
+        return label
     }
 }

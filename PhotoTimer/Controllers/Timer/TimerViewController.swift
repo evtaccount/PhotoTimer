@@ -180,7 +180,7 @@ class TimerViewController: UIViewController {
     func setupFirstTimerValue() {
         counter = timeProcessCounter.devTime
         currentTimerName = "devTime"
-        nextTimerName = TimerConst.timerNamesCycle[currentTimerName!]
+//        nextTimerName = TimerConst.timerNamesCycle[currentTimerName!]
     }
     
     //Инициация конфигурации выбранного из БД таймера
@@ -225,7 +225,7 @@ class TimerViewController: UIViewController {
             counter = timerValue
             
             currentTimerName = timerName
-            nextTimerName = TimerConst.timerNamesCycle[timerName]
+//            nextTimerName = TimerConst.timerNamesCycle[timerName]
             
             stopTimer()
         }
