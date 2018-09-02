@@ -61,6 +61,7 @@
 		EA73C1D321234BA500FDCEB9 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1D221234BA500FDCEB9 /* Developer.swift */; };
 		EA73C1D521234BAD00FDCEB9 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA73C1D421234BAD00FDCEB9 /* Film.swift */; };
 		EA76799620AF8B44005E4F88 /* DataBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */; };
+		EA797F8B213C1AEF00E5097B /* TimerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA797F8A213C1AEF00E5097B /* TimerCollectionViewCell.swift */; };
 		EA79BFA420D593BC0068F6FB /* PTLoadFilmsToDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */; };
 		EA79BFA620D5B4E20068F6FB /* PTRealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */; };
 		EA8A713720E21585005BF40E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A713620E21585005BF40E /* Extensions.swift */; };
@@ -156,6 +157,7 @@
 		EA73C1D221234BA500FDCEB9 /* Developer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
 		EA73C1D421234BAD00FDCEB9 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		EA76799520AF8B44005E4F88 /* DataBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
+		EA797F8A213C1AEF00E5097B /* TimerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA79BFA320D593BC0068F6FB /* PTLoadFilmsToDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTLoadFilmsToDB.swift; sourceTree = "<group>"; };
 		EA79BFA520D5B4E20068F6FB /* PTRealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTRealmDatabase.swift; sourceTree = "<group>"; };
 		EA8A713620E21585005BF40E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				EAA0806D2135EB7C00BEB261 /* PTProgressStackView.swift */,
 				EA73C1CA2120BC2700FDCEB9 /* SeparatedStackView.swift */,
 				EA73C1CC2120BC2700FDCEB9 /* SubtimersView.swift */,
+				EA797F8A213C1AEF00E5097B /* TimerCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				EABBA71720D68DE700AFB6F9 /* Developers.swift in Sources */,
 				EAA0806E2135EB7C00BEB261 /* PTProgressStackView.swift in Sources */,
 				EABBA71920D68E1400AFB6F9 /* DevProperties.swift in Sources */,
+				EA797F8B213C1AEF00E5097B /* TimerCollectionViewCell.swift in Sources */,
 				EA73C1D321234BA500FDCEB9 /* Developer.swift in Sources */,
 				EA2FB27420A4B0120058AAA2 /* GuideView.swift in Sources */,
 				EA73C1CE2120BC2700FDCEB9 /* SeparatedStackView.swift in Sources */,

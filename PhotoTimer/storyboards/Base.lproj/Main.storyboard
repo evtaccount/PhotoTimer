@@ -782,172 +782,14 @@
                                     <action selector="startPause:" destination="p7m-fe-cOT" eventType="touchUpInside" id="8zH-QO-t2w"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8C-Jt-iey" customClass="SubtimersView" customModule="PhotoTimer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="120"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4XI-08-1hw" customClass="SeparatedStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yw1-a8-kd9" customClass="SeparatedStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" tag="1" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-kT-jwf" customClass="PTProgressStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wuy-sQ-Njb">
-                                                                <rect key="frame" x="34.5" y="0.0" width="56.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-NF-MmE">
-                                                                <rect key="frame" x="16" y="22.5" width="93.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <gestureRecognizers/>
-                                                    </stackView>
-                                                    <stackView opaque="NO" tag="2" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="7lN-nh-D1c" customClass="PTProgressStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="60"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEe-4L-xjo">
-                                                                <rect key="frame" x="23" y="0.0" width="79" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop bath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GC-mb-WL1">
-                                                                <rect key="frame" x="19" y="22.5" width="87" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <gestureRecognizers/>
-                                                        <constraints>
-                                                            <constraint firstItem="0GC-mb-WL1" firstAttribute="leading" secondItem="7lN-nh-D1c" secondAttribute="leading" constant="19" id="5fy-l2-uLJ"/>
-                                                            <constraint firstItem="DEe-4L-xjo" firstAttribute="leading" secondItem="7lN-nh-D1c" secondAttribute="leading" constant="23" id="bZ4-d9-ycN"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <stackView opaque="NO" tag="3" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-WU-B1U" customClass="PTProgressStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="60"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6W-Hw-KCb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYb-8B-uJC">
-                                                                <rect key="frame" x="7" y="22.5" width="111" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <gestureRecognizers/>
-                                                        <constraints>
-                                                            <constraint firstItem="s6W-Hw-KCb" firstAttribute="leading" secondItem="P1z-WU-B1U" secondAttribute="leading" id="3RJ-pT-v9g"/>
-                                                            <constraint firstItem="SYb-8B-uJC" firstAttribute="leading" secondItem="P1z-WU-B1U" secondAttribute="leading" constant="7" id="pSV-NY-TrO"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="zhn-kT-jwf" firstAttribute="width" secondItem="7lN-nh-D1c" secondAttribute="width" id="fCL-W3-e59"/>
-                                                    <constraint firstItem="zhn-kT-jwf" firstAttribute="width" secondItem="P1z-WU-B1U" secondAttribute="width" id="sWc-6C-GiM"/>
-                                                    <constraint firstAttribute="height" constant="60" id="yJO-1M-uES"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lib-Jt-EGI" customClass="SeparatedStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="60" width="375" height="60"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" tag="4" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="K2h-7F-TDd" customClass="PTProgressStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Iz-fc-y3J">
-                                                                <rect key="frame" x="34.5" y="0.0" width="56.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqo-lp-cY7">
-                                                                <rect key="frame" x="39.5" y="22.5" width="46.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <gestureRecognizers/>
-                                                    </stackView>
-                                                    <stackView opaque="NO" tag="5" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="voC-Rc-MJ5" customClass="PTProgressStackView" customModule="PhotoTimer" customModuleProvider="target">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="60"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2d-HZ-XVA">
-                                                                <rect key="frame" x="34.5" y="0.0" width="56.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-My-iRc">
-                                                                <rect key="frame" x="32.5" y="22.5" width="60.5" height="37.5"/>
-                                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <gestureRecognizers/>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-aI-aoU">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="60"/>
-                                                    </stackView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="4hg-OO-0NB"/>
-                                                    <constraint firstItem="K2h-7F-TDd" firstAttribute="width" secondItem="voC-Rc-MJ5" secondAttribute="width" id="E3T-ka-efk"/>
-                                                    <constraint firstItem="K2h-7F-TDd" firstAttribute="width" secondItem="PGt-aI-aoU" secondAttribute="width" id="vkn-QP-Q6j"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="4XI-08-1hw" secondAttribute="bottom" id="D0t-K7-BzJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="4XI-08-1hw" secondAttribute="trailing" id="I66-17-fE9"/>
-                                    <constraint firstItem="4XI-08-1hw" firstAttribute="leading" secondItem="k8C-Jt-iey" secondAttribute="leading" id="ovt-fn-RqT"/>
-                                    <constraint firstItem="4XI-08-1hw" firstAttribute="top" secondItem="k8C-Jt-iey" secondAttribute="top" id="q2h-kA-edB"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="developLabel" destination="Wuy-sQ-Njb" id="xPM-ay-CWC"/>
-                                    <outlet property="developNameLabel" destination="YWq-NF-MmE" id="UZU-lh-F9g"/>
-                                    <outlet property="developingStackView" destination="zhn-kT-jwf" id="YDl-xj-WRW"/>
-                                    <outlet property="dryingLabel" destination="0Iz-fc-y3J" id="Z4U-eS-Zj1"/>
-                                    <outlet property="dryingNameLabel" destination="wA7-My-iRc" id="n9z-Zn-dcS"/>
-                                    <outlet property="dryingStackView" destination="voC-Rc-MJ5" id="iMx-ih-OKR"/>
-                                    <outlet property="firstLineConstraint" destination="yJO-1M-uES" id="zCF-Dg-jIo"/>
-                                    <outlet property="fixingLabel" destination="s6W-Hw-KCb" id="Umd-wV-Ktw"/>
-                                    <outlet property="fixingNameLabel" destination="SYb-8B-uJC" id="JOH-uH-wTd"/>
-                                    <outlet property="fixingStackView" destination="P1z-WU-B1U" id="lpA-Xm-UfA"/>
-                                    <outlet property="secondLineConstraint" destination="4hg-OO-0NB" id="dpf-mm-cOO"/>
-                                    <outlet property="stackView" destination="4XI-08-1hw" id="VHr-of-H6s"/>
-                                    <outlet property="stopLabel" destination="DEe-4L-xjo" id="QBc-cB-jFu"/>
-                                    <outlet property="stopNameLabel" destination="0GC-mb-WL1" id="jgZ-JF-3lt"/>
-                                    <outlet property="stoppingStackView" destination="7lN-nh-D1c" id="0Sx-hj-CDv"/>
-                                    <outlet property="washingLabel" destination="A2d-HZ-XVA" id="ypp-AL-VL5"/>
-                                    <outlet property="washingNameLabel" destination="Cqo-lp-cY7" id="Nf7-Ds-L4c"/>
-                                    <outlet property="washingStackView" destination="K2h-7F-TDd" id="dnX-fU-bPo"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpy-LY-4PU">
-                                <rect key="frame" x="153.5" y="283" width="69.5" height="18"/>
+                                <rect key="frame" x="153" y="283" width="69.5" height="18"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="467-zN-s27">
-                                <rect key="frame" x="115.5" y="174" width="145.5" height="66"/>
+                                <rect key="frame" x="115" y="174.5" width="145.5" height="66"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="55"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -965,21 +807,72 @@
                                     <action selector="resetButtonTapped:" destination="p7m-fe-cOT" eventType="touchUpInside" id="Dlm-cx-0Li"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-d9-WSw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Tz4-FX-nnY"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vX8-bm-ud9">
+                                    <size key="itemSize" width="118" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timerCollectionViewCell" id="6aN-mi-4nw" customClass="TimerCollectionViewCell" customModule="PhotoTimer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhu-4y-l1I">
+                                                    <rect key="frame" x="36" y="8.5" width="46" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwD-I6-rgY">
+                                                    <rect key="frame" x="16" y="29.5" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="mhu-4y-l1I" firstAttribute="centerX" secondItem="6aN-mi-4nw" secondAttribute="centerX" id="Nj0-pu-UWT"/>
+                                            <constraint firstItem="kwD-I6-rgY" firstAttribute="top" secondItem="6aN-mi-4nw" secondAttribute="centerYWithinMargins" id="d1r-CV-zPd"/>
+                                            <constraint firstItem="mhu-4y-l1I" firstAttribute="bottom" secondItem="6aN-mi-4nw" secondAttribute="centerYWithinMargins" id="sMc-St-WU8"/>
+                                            <constraint firstItem="kwD-I6-rgY" firstAttribute="centerX" secondItem="6aN-mi-4nw" secondAttribute="centerX" id="ud7-kv-QHo"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="timeValue" destination="mhu-4y-l1I" id="fBw-3K-A0E"/>
+                                            <outlet property="timerName" destination="kwD-I6-rgY" id="abE-lx-tnt"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="p7m-fe-cOT" id="aIl-8f-3Yf"/>
+                                    <outlet property="delegate" destination="p7m-fe-cOT" id="ZxL-rk-Fwp"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="M9a-d9-WSw" firstAttribute="top" secondItem="VLj-Jg-2IV" secondAttribute="top" id="4WY-LY-wI6"/>
                             <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="6NC-ia-wse"/>
                             <constraint firstItem="467-zN-s27" firstAttribute="centerX" secondItem="VLj-Jg-2IV" secondAttribute="centerX" id="9pu-wl-3O5"/>
-                            <constraint firstItem="k8C-Jt-iey" firstAttribute="top" secondItem="VLj-Jg-2IV" secondAttribute="top" id="9ua-wm-U5j"/>
                             <constraint firstItem="VLj-Jg-2IV" firstAttribute="bottom" secondItem="ZQ0-E1-Ycn" secondAttribute="bottom" constant="55" id="DSJ-uQ-VN9"/>
-                            <constraint firstItem="VLj-Jg-2IV" firstAttribute="trailing" secondItem="k8C-Jt-iey" secondAttribute="trailing" id="IQO-Pt-YAf"/>
                             <constraint firstItem="DHF-dW-Cmd" firstAttribute="centerX" secondItem="ZQ0-E1-Ycn" secondAttribute="centerX" id="JWI-64-gUt"/>
-                            <constraint firstItem="k8C-Jt-iey" firstAttribute="leading" secondItem="VLj-Jg-2IV" secondAttribute="leading" id="JZM-Dn-Ix8"/>
                             <constraint firstItem="VLj-Jg-2IV" firstAttribute="bottom" secondItem="lpy-LY-4PU" secondAttribute="bottom" constant="366" id="JcM-Yf-eKE"/>
                             <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="centerY" secondItem="467-zN-s27" secondAttribute="centerY" constant="275" id="Lmh-yl-ace"/>
                             <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="width" secondItem="5Ni-Tj-kRa" secondAttribute="height" multiplier="260:667" id="Pbo-6J-rNA"/>
                             <constraint firstItem="DHF-dW-Cmd" firstAttribute="centerY" secondItem="ZQ0-E1-Ycn" secondAttribute="centerY" id="WaF-pm-hro"/>
                             <constraint firstItem="ZQ0-E1-Ycn" firstAttribute="centerY" secondItem="FwY-kE-69b" secondAttribute="bottom" constant="175" id="ZRJ-Di-Quk"/>
+                            <constraint firstItem="VLj-Jg-2IV" firstAttribute="trailing" secondItem="M9a-d9-WSw" secondAttribute="trailing" id="lIo-hI-oiW"/>
+                            <constraint firstItem="M9a-d9-WSw" firstAttribute="leading" secondItem="VLj-Jg-2IV" secondAttribute="leading" id="le8-Hc-6Vg"/>
                             <constraint firstItem="lpy-LY-4PU" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="qqj-7w-vpz"/>
                             <constraint firstItem="DHF-dW-Cmd" firstAttribute="trailing" secondItem="ZQ0-E1-Ycn" secondAttribute="trailing" constant="-18" id="tGN-uq-4B0"/>
                             <constraint firstItem="FwY-kE-69b" firstAttribute="centerX" secondItem="5Ni-Tj-kRa" secondAttribute="centerX" id="wCH-cf-dC8"/>
@@ -988,18 +881,18 @@
                     </view>
                     <connections>
                         <outlet property="bottomProgressBarConstraint" destination="DSJ-uQ-VN9" id="ADO-JC-Rc2"/>
+                        <outlet property="collectionView" destination="M9a-d9-WSw" id="eJf-Nr-e81"/>
                         <outlet property="playButton" destination="DHF-dW-Cmd" id="M0u-zC-n0R"/>
                         <outlet property="progressBar" destination="ZQ0-E1-Ycn" id="xKm-IA-J8I"/>
                         <outlet property="resetButton" destination="FwY-kE-69b" id="s75-UT-qqo"/>
                         <outlet property="resetButtonHeightConstraint" destination="5FU-Ue-Pc3" id="Dms-sM-d18"/>
-                        <outlet property="subtimersView" destination="k8C-Jt-iey" id="3aq-TT-2Qk"/>
                         <outlet property="totalLabel" destination="lpy-LY-4PU" id="Xgu-Xb-6v2"/>
                         <outlet property="totalTimeLabel" destination="467-zN-s27" id="2DR-Zs-75P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7h-ZV-2A0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4577" y="-562"/>
+            <point key="canvasLocation" x="4576.8000000000002" y="-562.66866566716647"/>
         </scene>
     </scenes>
 </document>

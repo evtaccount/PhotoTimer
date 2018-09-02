@@ -42,7 +42,7 @@ enum TimerStages: String {
 class TimerVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var playButton: CircularButton!
-    @IBOutlet weak var subtimersView: SubtimersView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var totalTimeLabel: UILabel!
@@ -84,9 +84,6 @@ class TimerVC: UIViewController {
         configureUI()
         initSubtimersValue()
         setupTimerValue()
-        
-//        let tapGesture = UITapGestureRecognizer(target: subtimersView, action: #selector(subtimersView.switchTimer))
-//        subtimersView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -273,5 +270,19 @@ extension TimerVC {
                         self?.totalTimeLabel.transform = CGAffineTransform(translationX: 0, y: 50).scaledBy(x: 0.9, y: 0.9)
             },
                        completion: nil)
+    }
+}
+
+extension TimerVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
 }
