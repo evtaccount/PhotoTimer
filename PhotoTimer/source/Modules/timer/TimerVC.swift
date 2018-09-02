@@ -46,6 +46,7 @@ class TimerVC: UIViewController {
     @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     
     @IBOutlet weak var bottomProgressBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var timerLabelConstraint: NSLayoutConstraint!
@@ -61,8 +62,8 @@ class TimerVC: UIViewController {
     var offsetCounter: Int = 0
     var requestDate = Date()
     
-    let fontSizeSmall: CGFloat = 45
-    let fontSizeBig: CGFloat = 100
+    let fontSizeSmall: CGFloat = 41
+    let fontSizeBig: CGFloat = 55
     
     var currentTimerName: String?
     var nextTimerName: String?
@@ -83,11 +84,13 @@ class TimerVC: UIViewController {
         configureUI()
         initSubtimersValue()
         setupTimerValue()
+        
+//        let tapGesture = UITapGestureRecognizer(target: subtimersView, action: #selector(subtimersView.switchTimer))
+//        subtimersView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        resetButton.isHidden = true
         subtimersView.configureLabels(with: timeProcessCounter)
         updateMainTimerLabel(forTimerValue: timeProcessCounter.devTime)
     }
@@ -102,9 +105,9 @@ class TimerVC: UIViewController {
         addEditButton()
         setResetButtonStyle()
         setNavigationBarStyle()
-        adoptMainTimerLableToScreenSize()
+//        adoptMainTimerLableToScreenSize()
         
-        //        totalTimeLabel.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+        initialStateUI()
     }
     
     func addEditButton() {
@@ -118,7 +121,7 @@ class TimerVC: UIViewController {
         resetButton.layer.borderWidth = 1
         resetButton.layer.borderColor = UIColor.black.cgColor
         
-        resetButtonHeightConstraint.constant = 30 * kFacktor
+//        resetButtonHeightConstraint.constant = 48 * kFacktor
     }
     
     func setNavigationBarStyle() {
@@ -131,7 +134,7 @@ class TimerVC: UIViewController {
     }
     
     func adoptMainTimerLableToScreenSize() {
-        totalTimeLabel.font = UIFont(name: ".SFUIText-Semibold", size: CGFloat(55 * kFacktor))
+        totalTimeLabel.font = UIFont(name: ".SFUIText-Semibold", size: CGFloat(fontSizeSmall * kFacktor))
         bottomProgressBarConstraint.constant = 67 * kFacktor
     }
     
@@ -176,11 +179,7 @@ class TimerVC: UIViewController {
     }
     
     func stopTimer() {
-        enableBacklightTimer()
-        timer?.invalidate()
-        isPaused = true
-        playButton.isPlayButton = true
-        resetButton.isEnabled = true
+        
     }
     
     func disableBacklightTimer() {
@@ -198,17 +197,22 @@ extension TimerVC {
         
         if isPaused{
             subtimersView.isFlipped = isPaused
-            requestDate = .init()
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
-            
-            disableBacklightTimer()
             isPaused = false
             playButton.isPlayButton = false
-            resetButton.isEnabled = false
+            
+            disableBacklightTimer()
+            startStateUI()
+            
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
         } else {
             subtimersView.isFlipped = isPaused
+            isPaused = true
+            playButton.isPlayButton = true
             
-            stopTimer()
+            enableBacklightTimer()
+            pauseStateUI()
+            
+            timer?.invalidate()
         }
     }
     
@@ -223,42 +227,51 @@ extension TimerVC {
 
 // MARK: - Animation
 extension TimerVC {
-    
-    func shrink() {
+    func initialStateUI() {
+        progressBar.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        playButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
-        let labelCopy = totalTimeLabel.copyLabel()
-        var smallerBounds = labelCopy.bounds
-        labelCopy.font = totalTimeLabel.font.withSize(fontSizeSmall)
-        smallerBounds.size = labelCopy.intrinsicContentSize
+        resetButton.transform = CGAffineTransform(translationX: 0, y: 50).scaledBy(x: 0.5, y: 0.5)
+        resetButton.alpha = 0
         
-        let shrinkTransform = scaleTransform(from: totalTimeLabel.bounds.size, to: smallerBounds.size)
-        
-        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut, .curveLinear], animations: {
-            self.totalTimeLabel.transform = shrinkTransform
-        }) { (_) in
-            self.totalTimeLabel.font = labelCopy.font
-            self.totalTimeLabel.transform = .identity
-            self.totalTimeLabel.bounds = smallerBounds
-        }
+        totalTimeLabel.transform = CGAffineTransform(translationX: 0, y: 50).scaledBy(x: 0.9, y: 0.9)
     }
     
-    func enlarge() {
-        var biggerBounds = totalTimeLabel.bounds
-        totalTimeLabel.font = totalTimeLabel.font.withSize(fontSizeBig)
-        biggerBounds.size = totalTimeLabel.intrinsicContentSize
-        
-        totalTimeLabel.transform = scaleTransform(from: biggerBounds.size, to: totalTimeLabel.bounds.size)
-        totalTimeLabel.bounds = biggerBounds
-        
-        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut, .curveLinear], animations: {
-            self.totalTimeLabel.transform = .identity
-        }, completion: nil)
+    func startStateUI() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.5,
+                       options: .allowUserInteraction,
+                       animations: { [weak self] in
+                        self?.progressBar.transform = .identity
+                        self?.playButton.transform = .identity
+                        self?.resetButton.transform = .identity
+                        self?.resetButton.alpha = 1
+                        
+                        self?.totalLabel.transform = CGAffineTransform(translationX: 0, y: -70).scaledBy(x: 0.5, y: 0.5)
+                        self?.totalLabel.alpha = 0
+                        
+                        self?.totalTimeLabel.transform = .identity
+            },
+                       completion: nil)
     }
     
-    private func scaleTransform(from: CGSize, to: CGSize) -> CGAffineTransform {
-        let scaleX = to.width / from.width
-        let scaleY = to.height / from.height
-        
-        return CGAffineTransform(scaleX: scaleX, y: scaleY)
+    func pauseStateUI() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.5,
+                       options: .allowUserInteraction,
+                       animations: { [weak self] in
+                        self?.resetButton.transform = CGAffineTransform(translationX: 0, y: 50).scaledBy(x: 0.5, y: 0.5)
+                        self?.resetButton.alpha = 0
+                        
+                        self?.totalLabel.transform = CGAffineTransform(translationX: 0, y: 0).scaledBy(x: 1, y: 1)
+                        self?.totalLabel.alpha = 1
+                        
+                        self?.totalTimeLabel.transform = CGAffineTransform(translationX: 0, y: 50).scaledBy(x: 0.9, y: 0.9)
+            },
+                       completion: nil)
     }
 }

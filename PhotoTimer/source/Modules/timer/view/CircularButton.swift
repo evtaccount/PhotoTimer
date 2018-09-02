@@ -44,7 +44,7 @@ import UIKit
     
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(ovalIn: rect)
-        fillColor.setFill()
+        BaseColors.circularButtonColor.setFill()
         path.fill()
         
         let playIcon = {

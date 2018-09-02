@@ -15,7 +15,7 @@ import UIKit
     
     //Mark: Properties
     private struct Constants {
-        static let lineWidth: CGFloat = 15.0
+        static let lineWidth: CGFloat = 18.0
         static let startAngle: CGFloat = -.pi / 2
         static let endAngle: CGFloat = 3 * .pi / 2
     }
@@ -28,7 +28,7 @@ import UIKit
     //    }
     
     var radiusCircle: CGFloat {
-        return (bounds.width) / 2 - Constants.lineWidth
+        return (bounds.width) / 2 - Constants.lineWidth / 2
     }
     
     var centerView: CGPoint {
@@ -71,7 +71,7 @@ import UIKit
     func initTrackLayer() {
         trackLayer.frame = self.bounds
         trackLayer.path = circularPath().cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.strokeColor = BaseColors.trackLayerColor.cgColor
         trackLayer.lineWidth = Constants.lineWidth
         trackLayer.fillColor = UIColor.clear.cgColor
         
@@ -82,8 +82,8 @@ import UIKit
         gradient.frame = CGRect(
             x: 0,
             y: 0,
-            width: self.frame.width,
-            height: self.frame.height)
+            width: 260,
+            height: 260)
         
         gradient.colors = [startGradientColor, endGradientColor]
         

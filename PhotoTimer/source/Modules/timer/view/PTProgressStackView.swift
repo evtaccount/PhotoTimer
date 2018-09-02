@@ -10,8 +10,6 @@ import UIKit
 
 class PTProgressStackView: UIStackView {
 
-    let backColor = UIColor(r: 199, g: 199, b: 204, a: 1)
-    let progressColor = UIColor(r: 0, g: 122, b: 255, a: 1)
     lazy var progressView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: self.frame.height))
     
     var step: Double = 0.0
@@ -31,7 +29,7 @@ class PTProgressStackView: UIStackView {
     
     func initProgressBar() {
         addSubview(self.progressView)
-        progressView.backgroundColor = self.progressColor
+        progressView.backgroundColor = BaseColors.linearProgressColor
         self.sendSubview(toBack: progressView)
     }
     

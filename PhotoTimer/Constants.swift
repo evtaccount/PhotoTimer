@@ -26,6 +26,13 @@ struct ViewControllers {
     static var setTimerVC = "setTimerViewController"
 }
 
+struct BaseColors {
+    static let circularProgressColor = UIColor(r: 244, g: 244, b: 244, a: 1)
+    static let linearProgressColor = UIColor(r: 244, g: 244, b: 244, a: 1)
+    static let circularButtonColor = UIColor(r: 252, g: 69, b: 103, a: 1)
+    static let trackLayerColor = UIColor(r: 254, g: 242, b: 245, a: 1)
+}
+
 struct CircularPB {
     static let startAnglesForCurrentTimers = ["devTime": -90, "stopTime": -18, "fixTime": 54, "washTime": 126, "dryTime": 198]
 }
