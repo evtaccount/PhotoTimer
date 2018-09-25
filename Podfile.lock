@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Realm (3.7.6):
+    - Realm/Headers (= 3.7.6)
+  - Realm/Headers (3.7.6)
+  - RealmSwift (3.7.6):
+    - Realm (= 3.7.6)
+  - SwipeCellKit (2.4.3)
+
+DEPENDENCIES:
+  - Alamofire
+  - RealmSwift
+  - SwipeCellKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Realm
+    - RealmSwift
+    - SwipeCellKit
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
+  RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
+  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
+
+PODFILE CHECKSUM: 5a45fb3bbd77b67067e83f0f822d6a34ad9244af
+
+COCOAPODS: 1.6.0.beta.1

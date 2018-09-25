@@ -34,6 +34,8 @@ struct ItemList {
 class TimerConfig: Object {
     
     //MARK: - Properties
+    @objc dynamic var id: String = ""
+    
     //Names
     @objc dynamic var schemeName: String?
     @objc dynamic var filmName: String?
@@ -55,6 +57,7 @@ class TimerConfig: Object {
     convenience init(schemeName: String?, filmName: String?, developerName: String?) {
         self.init()
         
+        self.id = NSUUID().uuidString
         self.schemeName = schemeName
         self.filmName = filmName
         self.developerName = developerName
@@ -63,6 +66,7 @@ class TimerConfig: Object {
     convenience init(filmName: String, developerName: String, devTime: Int, firstAgitationDuration: Int, agitationPeriod: Int, periodAgitationDuration: Int) {
         self.init()
         
+        self.id = NSUUID().uuidString
         self.filmName = filmName
         self.developerName = developerName
         
@@ -80,6 +84,7 @@ class TimerConfig: Object {
     convenience init(schemeName: String, filmName: String, developerName: String, devTime: Int, stopTime: Int, fixTime: Int, washTime: Int, dryTime: Int, firstAgitationDuration: Int, periodAgitationDuration: Int, agitationPeriod: Int) {
         self.init()
         
+        self.id = NSUUID().uuidString
         self.schemeName = schemeName
         self.filmName = filmName
         self.developerName = developerName
@@ -98,6 +103,7 @@ class TimerConfig: Object {
     convenience init(schemeName: String, filmName: String, developerName: String, devTime: Int, firstAgitationDuration: Int, periodAgitationDuration: Int, agitationPeriod: Int) {
         self.init()
         
+        self.id = NSUUID().uuidString
         self.schemeName = schemeName
         self.filmName = filmName
         self.developerName = developerName
@@ -111,6 +117,10 @@ class TimerConfig: Object {
         self.firstAgitationDuration = firstAgitationDuration
         self.periodAgitationDuration = periodAgitationDuration
         self.agitationPeriod = agitationPeriod
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
 //    static func parse(json: Dictionary<String, Any>) -> TimerConfig? {
